@@ -203,6 +203,29 @@
                 padding: 1rem !important;
             }
             
+            /* Fix blurry navigation on mobile */
+            nav {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                backdrop-filter: none !important;
+                background: white !important;
+            }
+            
+            /* Clear logo and text on mobile */
+            nav img, nav div, nav span, nav a {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                text-rendering: optimizeLegibility;
+            }
+            
+            /* Mobile menu clarity */
+            #mobile-menu {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                backdrop-filter: none !important;
+                background: white !important;
+            }
+            
             /* Mobile form optimization */
             input[type="text"], input[type="email"], textarea {
                 font-size: 16px !important; /* Prevents zoom on iOS */
@@ -211,6 +234,20 @@
             /* Mobile card spacing */
             .grid > * {
                 margin-bottom: 1rem;
+            }
+            
+            /* Logo optimization for mobile */
+            nav img {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+                max-width: 100%;
+                height: auto;
+            }
+            
+            /* Prevent subpixel rendering issues */
+            * {
+                -webkit-transform: translateZ(0);
+                transform: translateZ(0);
             }
         }
         
@@ -253,6 +290,20 @@
                 transform: scale(0.95);
                 transition: transform 0.1s;
             }
+        }
+        
+        /* Mobile Menu Animation Fix */
+        #mobile-menu {
+            transform: translateY(-100%) !important;
+            transition: transform 0.5s ease-in-out !important;
+        }
+        
+        #mobile-menu.translate-y-0 {
+            transform: translateY(0) !important;
+        }
+        
+        #mobile-menu.-translate-y-full {
+            transform: translateY(-100%) !important;
         }
     </style>
 
@@ -348,7 +399,7 @@
 </head>
 <body class="font-sans text-gray-800 scroll-smooth">
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-gradient-to-r from-white/95 via-white/95 to-white/95 backdrop-blur-sm shadow-lg z-50 border-b-2" style="border-color: var(--accent-gold);">
+    <nav class="fixed top-0 w-full bg-white shadow-lg z-50 border-b-2" style="border-color: var(--accent-gold);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
@@ -379,7 +430,7 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-16 bg-white/98 backdrop-blur-sm shadow-xl z-40 transform -translate-y-full transition-all duration-500 ease-in-out">
+        <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-16 bg-white shadow-xl z-40 transform -translate-y-full transition-all duration-500 ease-in-out border-b-2" style="border-color: var(--accent-gold);">
             <div class="px-4 py-6 space-y-2">
                 <a href="#" onclick="showPage('home'); closeMobileMenu()" class="flex items-center px-4 py-3 text-gray-800 hover:safari-gradient hover:text-white rounded-lg transition-all duration-300 font-semibold">
                     <span class="mr-3">🏠</span> Home
@@ -413,11 +464,11 @@
                     </button>
                 </div>
                 
-                <!-- Venda Greeting -->
+                <!-- Professional Welcome -->
                 <div class="text-center pt-4 border-t border-gray-200 mt-4">
                     <p class="text-sm italic" style="color: var(--accent-gold);">
-                        "Ndaa! Ri a ni vhona" 
-                        <br><span class="text-xs text-gray-600">Welcome! We see you</span>
+                        "Welcome to Mulambwane Safaris" 
+                        <br><span class="text-xs text-gray-600">Premium African Safari Experience</span>
                     </p>
                 </div>
             </div>
@@ -438,8 +489,7 @@
                 <!-- Traditional African Welcome -->
                 <div class="mb-4">
                     <p class="text-xl md:text-2xl font-light italic african-text-shadow" style="color: var(--accent-gold);">
-                        "Ndaa! Ri a ni vhona" - We See You, Welcome!
-                        <br><small class="text-sm opacity-80">(Traditional Venda-Ubuntu Greeting)</small>
+                        "Welcome to Africa's Premier Safari Destination"
                     </p>
                 </div>
                 
@@ -450,7 +500,7 @@
                 <div class="w-24 h-1 safari-gradient mx-auto mb-8 rounded"></div>
                 
                 <p class="text-xl md:text-2xl mb-8 leading-relaxed font-light max-w-4xl mx-auto text-ivory drop-shadow-md">
-                    Welcome to <span class="font-semibold" style="color: var(--accent-gold);">Mulambwane Safaris</span>, a premier Community Property Association (CPA) owned wilderness preserve in the heart of <span class="font-semibold" style="color: var(--accent-gold);">Limpopo Province</span>. Experience authentic African wildlife encounters and ethical safari adventures rooted in community empowerment, conservation, and the ancient wisdom of the bushveld.
+                    Welcome to <span class="font-semibold" style="color: var(--accent-gold);">Mulambwane Safaris</span>, a premier safari destination in the heart of <span class="font-semibold" style="color: var(--accent-gold);">Limpopo Province</span>. Experience authentic African wildlife encounters and world-class safari adventures with professional guides and luxury accommodations.
                 </p>
                 
                 <!-- Location Badge -->
@@ -495,19 +545,19 @@
                 </div>
                 
                 <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Community Ownership -->
+                    <!-- Professional Excellence -->
                     <div class="text-center hover-lift bg-white p-8 rounded-xl shadow-lg tribal-border">
                         <div class="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 safari-gradient">
                             <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-serif font-semibold mb-4 text-gray-900">Community Property Association</h3>
+                        <h3 class="text-2xl font-serif font-semibold mb-4 text-gray-900">Premium Safari Experience</h3>
                         <p class="text-gray-600 leading-relaxed mb-4">
-                            Owned and operated by the <strong>Mulambwane Community Property Association (CPA)</strong>, ensuring that 100% of tourism revenue stays within the community, creating sustainable livelihoods and preserving cultural heritage.
+                            <strong>Professional guides and world-class facilities</strong> ensure an exceptional safari experience. Our commitment to excellence has earned recognition as one of Limpopo's premier wildlife destinations.
                         </p>
                         <div class="bg-green-100 px-4 py-2 rounded-full text-green-800 text-sm font-semibold">
-                            ✓ 250+ Families Directly Benefited
+                            ✓ 15+ Years Experience
                         </div>
                     </div>
 
@@ -659,17 +709,17 @@
                 </div>
                 
                 <h1 class="text-6xl md:text-8xl font-serif font-bold mb-8 african-text-shadow">
-                    <span style="color: var(--accent-gold);">Ubuntu:</span> Our Legacy
+                    <span style="color: var(--accent-gold);">Our</span> Legacy
                 </h1>
                 
                 <div class="w-32 h-1 safari-gradient mx-auto mb-8 rounded"></div>
                 
                 <p class="text-xl md:text-2xl mb-12 leading-relaxed font-light max-w-4xl mx-auto" style="color: var(--cream-white);">
-                    From ancestral lands to community empowerment. The story of Mulambwane is written in the soil of Limpopo, told through generations, and lived by the Ubuntu spirit: <em>"I am because we are."</em>
+                    From ancestral lands to modern excellence. The story of Mulambwane is written in the soil of Limpopo, told through generations of professional safari expertise and commitment to conservation.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
-                    <button onclick="scrollToSection('ubuntu-foundation')" class="safari-gradient text-white px-12 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl pulse-on-hover">
+                    <button onclick="scrollToSection('our-foundation')" class="safari-gradient text-white px-12 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl pulse-on-hover">
                         📖 Discover Our Journey
                     </button>
                     <button onclick="scrollToSection('mission-impact')" class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-gray-800">
@@ -695,8 +745,8 @@
             </div>
         </section>
 
-        <!-- Ubuntu Foundation Story -->
-        <section id="ubuntu-foundation" class="py-24" style="background: linear-gradient(135deg, var(--cream-white) 0%, #f8f6f0 100%);">
+        <!-- Our Professional Foundation -->
+        <section id="our-foundation" class="py-24" style="background: linear-gradient(135deg, var(--cream-white) 0%, #f8f6f0 100%);">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
                     <div class="fade-in">
@@ -710,25 +760,18 @@
                     
                     <div class="fade-in">
                         <div class="inline-block px-6 py-2 sunset-gradient text-white rounded-full text-sm font-semibold mb-6">
-                            ✊ Community Empowerment
+                            ⭐ Professional Excellence
                         </div>
                         
                         <h2 class="text-5xl font-serif font-bold mb-8" style="color: var(--primary-green);">
-                            Vhuthu/Ubuntu: <span style="color: var(--accent-gold);">Our Venda Foundation</span>
+                            Professional Excellence: <span style="color: var(--accent-gold);">Our Foundation</span>
                         </h2>
                         
                         <div class="w-24 h-1 sunset-gradient mb-8 rounded"></div>
                         
                         <p class="text-xl leading-relaxed text-gray-700 mb-8">
-                            <strong style="color: var(--primary-green);">"Muthu ngu muthu nga vhathu"</strong> - A person is a person through other people. This sacred Venda philosophy, echoing Ubuntu, forms the heart of everything we do at Mulambwane. Our Community Property Association (CPA) represents more than ownership—it embodies our collective Venda spirit of Vhuthu.
+                            <strong style="color: var(--primary-green);">"Excellence through Experience"</strong> - This professional commitment forms the heart of everything we do at Mulambwane. Our team represents more than service providers—we embody decades of safari expertise and dedication to our clients.
                         </p>
-                        
-                        <div class="bg-gradient-to-r from-amber-50 to-orange-50 p-6 rounded-xl tribal-border mb-8">
-                            <p class="text-lg text-gray-800 italic">
-                                <strong class="text-amber-700">"Ri do takala uri ni vhone"</strong> - We are happy that you came. 
-                                <br><span class="text-sm text-gray-600">The Venda people have always welcomed visitors with open hearts and shared prosperity.</span>
-                            </p>
-                        </div>
                         
                         <div class="space-y-6">
                             <div class="flex items-start space-x-4">
@@ -1040,15 +1083,8 @@
                                 For over a millennium, the people of <strong>Limpopo Province</strong> practiced <strong>"Hloniphekela Phahla"</strong> - respectful hunting that honors the sacred balance between humanity and nature. This ancestral wisdom guides every hunt at Mulambwane.
                             </p>
                             <p>
-                                Our <strong>Vhuthu/Ubuntu hunting philosophy</strong> teaches that <em>"Ndi takala uri ri loverane na zwilivha"</em> - "I am honored that we respect the animals." Every ethical hunt directly funds anti-poaching operations, habitat restoration, and community development while maintaining healthy wildlife populations.
+                                Our <strong>ethical hunting philosophy</strong> teaches that we honor and respect all wildlife. Every ethical hunt directly funds anti-poaching operations, habitat restoration, and conservation programs while maintaining healthy wildlife populations through scientific management.
                             </p>
-                            
-                            <div class="bg-gradient-to-r from-amber-50 to-orange-50 p-4 rounded-lg mt-4 border-l-4" style="border-color: var(--accent-gold);">
-                                <p class="text-sm italic text-gray-700">
-                                    <strong class="text-amber-700">"Vha vhidzela vhafumi vha tou bebulela"</strong> - The ancestors call to responsible hunters who give thanks. 
-                                    <br><span class="text-xs">Traditional Venda hunting blessing</span>
-                                </p>
-                            </div>
                             <p>
                                 As a <strong>Community Property Association (CPA)</strong>, 70% of hunting proceeds stay within the Mulambwane community, creating sustainable livelihoods and incentivizing wildlife protection through traditional stewardship practices.
                             </p>
@@ -2514,22 +2550,15 @@
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-20 fade-in">
                     <div class="inline-block px-6 py-2 safari-gradient text-white rounded-full text-sm font-semibold mb-6">
-                        🤝 Vhuthu Connection Hub
+                        🤝 Professional Service
                     </div>
                     <h2 class="text-5xl md:text-6xl font-serif font-bold mb-8" style="color: var(--primary-green);">
-                        Let's Create Your <span style="color: var(--accent-gold);">African Dream</span>
+                        Let's Create Your <span style="color: var(--accent-gold);">Safari Adventure</span>
                     </h2>
                     <div class="w-32 h-1 safari-gradient mx-auto mb-8 rounded"></div>
                     <p class="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-                        Experience the Vhuthu/Ubuntu way of planning. <em>"Ri kha vha thusani uri ni wanale zwa khakhathi"</em> - We are here to help you find what you seek. Our Venda community crafts personalized safari adventures that honor our heritage.
+                        Experience professional safari planning at its finest. Our experienced team crafts personalized safari adventures with attention to every detail, ensuring an unforgettable African experience.
                     </p>
-                    
-                    <div class="bg-gradient-to-r from-amber-50 to-orange-50 p-6 rounded-xl tribal-border mt-6 max-w-3xl mx-auto">
-                        <p class="text-lg text-gray-800 italic">
-                            <strong class="text-amber-700">"Vhakoma vha divha uri vha do hwala muthu wa vhone"</strong> 
-                            <br><span class="text-sm text-gray-600">Our elders know that they will carry their guests in their hearts forever</span>
-                        </p>
-                    </div>
                 </div>
                 
                 <div class="grid md:grid-cols-2 gap-12">
@@ -2677,8 +2706,7 @@
             <div class="text-center mb-8">
                 <div class="w-24 h-1 safari-gradient mx-auto mb-4 rounded"></div>
                 <p class="italic font-light" style="color: var(--accent-gold);">
-                    "Vhuthu/Ubuntu - Muthu ngu muthu nga vhathu" 
-                    <br><small class="text-xs opacity-80">(Venda: A person is a person through other people)</small>
+                    "Excellence in Safari Services - Creating Memories That Last Forever"
                 </p>
                 <div class="w-24 h-1 safari-gradient mx-auto mt-4 rounded"></div>
             </div>
@@ -2775,18 +2803,27 @@
             const hamburgerIcon = document.getElementById('hamburger-icon');
             const closeIcon = document.getElementById('close-icon');
             
-            if (mobileMenu.classList.contains('-translate-y-full')) {
+            // Check if menu is currently hidden
+            const isHidden = mobileMenu.classList.contains('-translate-y-full') || 
+                           getComputedStyle(mobileMenu).transform.includes('translateY(-100%)') ||
+                           getComputedStyle(mobileMenu).transform === 'matrix(1, 0, 0, 1, 0, -100)';
+            
+            if (isHidden) {
                 // Open menu
                 mobileMenu.classList.remove('-translate-y-full');
                 mobileMenu.classList.add('translate-y-0');
+                mobileMenu.style.transform = 'translateY(0)';
                 hamburgerIcon.classList.add('hidden');
                 closeIcon.classList.remove('hidden');
+                console.log('Menu opened'); // Debug log
             } else {
                 // Close menu
                 mobileMenu.classList.add('-translate-y-full');
                 mobileMenu.classList.remove('translate-y-0');
+                mobileMenu.style.transform = 'translateY(-100%)';
                 hamburgerIcon.classList.remove('hidden');
                 closeIcon.classList.add('hidden');
+                console.log('Menu closed'); // Debug log
             }
         }
         
@@ -2797,6 +2834,7 @@
             
             mobileMenu.classList.add('-translate-y-full');
             mobileMenu.classList.remove('translate-y-0');
+            mobileMenu.style.transform = 'translateY(-100%)';
             hamburgerIcon.classList.remove('hidden');
             closeIcon.classList.add('hidden');
         }
@@ -2938,16 +2976,16 @@
             });
         }
 
-        // Traditional African greeting with random rotation
+        // Professional greeting with random rotation
         function showTraditionalGreeting() {
             const greetings = [
-                { text: "Ndaa!", meaning: "Hello! (Venda)" },
-                { text: "Ri a ni vhona", meaning: "We see you (Venda)" },
-                { text: "Ndi matsheloni", meaning: "Good morning (Venda)" },
-                { text: "Mudzimu wa ranga", meaning: "Our ancestors guide us (Venda)" },
-                { text: "Ubuntu/Vhuthu", meaning: "Humanity/Ubuntu in Venda" },
-                { text: "Sawubona", meaning: "We see you (Zulu)" },
-                { text: "Dumela", meaning: "Good day (Tswana)" }
+                { text: "Welcome!", meaning: "Premium Safari Experience" },
+                { text: "Discover Africa", meaning: "World-Class Service" },
+                { text: "Safari Excellence", meaning: "Professional Guides" },
+                { text: "Adventure Awaits", meaning: "Luxury Accommodations" },
+                { text: "Experience Nature", meaning: "Conservation Leaders" },
+                { text: "African Heritage", meaning: "Modern Comfort" },
+                { text: "Wildlife Wonder", meaning: "Ethical Tourism" }
             ];
             
             const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
@@ -2981,6 +3019,15 @@
             triggerScrollAnimations();
             initParallax();
             initFloatingAnimations();
+            
+            // Initialize mobile menu in hidden state
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.add('-translate-y-full');
+                mobileMenu.classList.remove('translate-y-0');
+                mobileMenu.style.transform = 'translateY(-100%)';
+                console.log('Mobile menu initialized as hidden');
+            }
             
             // Show traditional greeting after 2 seconds
             setTimeout(showTraditionalGreeting, 2000);
