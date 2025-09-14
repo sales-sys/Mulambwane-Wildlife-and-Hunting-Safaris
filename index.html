@@ -202,17 +202,56 @@
                 font-size: 1rem !important;
                 padding: 1rem !important;
             }
-            /* Only keep main row + mobile menu in the nav */
-            nav > :not(.max-w-7xl):not(#mobile-menu):not(script):not(style) {
-                display: none !important;
-            }
-            
-            /* Fix blurry navigation on mobile */
+            /* Mobile navigation - consolidated and fixed */
             nav {
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                right: 0;
+                width: 100% !important;
+                height: 64px !important;
+                background: white !important;
+                z-index: 50 !important;
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
                 backdrop-filter: none !important;
-                background: white !important;
+            }
+            
+            /* Ensure nav content is visible */
+            nav .max-w-7xl {
+                display: block !important;
+                visibility: visible !important;
+            }
+            
+            nav .max-w-7xl > .flex {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                height: 64px !important;
+                min-height: 64px !important;
+                visibility: visible !important;
+            }
+            
+            /* Logo visibility */
+            nav img, nav .flex.items-center {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            
+            /* Menu button visibility */
+            nav #mobile-menu-btn {
+                display: block !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            
+            /* Desktop menu hidden on mobile */
+            nav .hidden.md\\:flex {
+                display: none !important;
             }
             
             /* Clear logo and text on mobile */
@@ -240,30 +279,6 @@
                 margin-bottom: 1rem;
             }
             
-            /* Logo optimization for mobile */
-            nav img { image-rendering: auto; -ms-interpolation-mode: bicubic; }
-
-            /* Fix blurry navigation on mobile and lock layout */
-            nav {
-                position: fixed !important;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 64px; /* match h-16 */
-                -webkit-backface-visibility: hidden;
-                backface-visibility: hidden;
-                will-change: transform;
-                contain: layout paint;
-                overflow: visible;
-                z-index: 50;
-            }
-            
-            /* Ensure only logo + menu row shows */
-            nav .max-w-7xl > .flex {
-                min-height: 64px;
-                align-items: center;
-            }
-
             /* Hide any injected message/banner in nav */
             nav .nav-message,
             nav [data-injected-message],
@@ -273,6 +288,11 @@
             nav .toast,
             nav .snackbar {
                 display: none !important;
+            }
+            
+            /* Ensure body content doesn't hide behind fixed nav */
+            body {
+                padding-top: 64px !important;
             }
         }
 
