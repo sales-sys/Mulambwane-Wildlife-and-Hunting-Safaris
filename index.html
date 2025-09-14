@@ -454,18 +454,18 @@
                 <div class="flex items-center">
                     <img src="images/logo.jpg" alt="Mulambwane Safaris Logo" class="h-16 w-20 rounded-full shadow-md" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div id="logo-fallback" class="flex items-center safari-gradient px-6 py-3 rounded-full shadow-lg" style="display: none;">
-                        <div class="text-2xl font-serif font-bold text-white african-text-shadow">🦁 Mulambwane</div>
-                        <div class="text-sm text-white ml-2 font-semibold">CPA Safaris</div>
+                        <div class="text-2xl font-serif font-bold text-white african-text-shadow">Mulambwane</div>
+                        <div class="text-sm text-white ml-2 font-semibold">Safaris</div>
                     </div>
                 </div>
                 <div class="hidden md:flex space-x-1">
-                    <a href="#" onclick="showPage('home')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">🏠 Home</a>
-                    <a href="#" onclick="showPage('story')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">📖 Our Story</a>
-                    <a href="#" onclick="showPage('hunting')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">🏹 Hunting</a>
-                    <a href="#" onclick="showPage('photography')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">📸 Photo Safaris</a>
-                    <a href="#" onclick="showPage('lodge')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">🏨 Lodge</a>
-                    <a href="#" onclick="showPage('gamemeat')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">🥩 Game Meat</a>
-                    <a href="#" onclick="showPage('contact')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">📞 Contact</a>
+                    <a href="#" onclick="showPage('home')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Home</a>
+                    <a href="#" onclick="showPage('story')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Our Story</a>
+                    <a href="#" onclick="showPage('hunting')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Hunting</a>
+                    <a href="#" onclick="showPage('photography')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Photo Safaris</a>
+                    <a href="#" onclick="showPage('lodge')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Lodge</a>
+                    <a href="#" onclick="showPage('gamemeat')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Game Meat</a>
+                    <a href="#" onclick="showPage('contact')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Contact</a>
                 </div>
                 <button id="mobile-menu-btn" class="md:hidden safari-gradient p-3 rounded-full text-white shadow-lg transition-all duration-300 hover:scale-105" onclick="toggleMobileMenu()">
                     <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -482,43 +482,35 @@
         <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-16 bg-white shadow-2xl z-40 transform -translate-y-full transition-transform duration-500 ease-in-out border-b-2" style="border-color: var(--accent-gold);">
             <div class="px-4 py-6 space-y-2 max-h-screen overflow-y-auto">
                 <a href="#" onclick="showPage('home'); closeMobileMenu()" class="flex items-center px-4 py-4 text-gray-800 hover:safari-gradient hover:text-white rounded-xl transition-all duration-300 font-semibold text-lg">
-                    <span class="mr-4 text-2xl">🏠</span> Home
+                    Home
                 </a>
                 <a href="#" onclick="showPage('story'); closeMobileMenu()" class="flex items-center px-4 py-4 text-gray-800 hover:safari-gradient hover:text-white rounded-xl transition-all duration-300 font-semibold text-lg">
-                    <span class="mr-4 text-2xl">📖</span> Our Story
+                    Our Story
                 </a>
                 <a href="#" onclick="showPage('hunting'); closeMobileMenu()" class="flex items-center px-4 py-4 text-gray-800 hover:safari-gradient hover:text-white rounded-xl transition-all duration-300 font-semibold text-lg">
-                    <span class="mr-4 text-2xl">🏹</span> Hunting
+                    Hunting
                 </a>
                 <a href="#" onclick="showPage('photography'); closeMobileMenu()" class="flex items-center px-4 py-4 text-gray-800 hover:safari-gradient hover:text-white rounded-xl transition-all duration-300 font-semibold text-lg">
-                    <span class="mr-4 text-2xl">📸</span> Photo Safaris
+                    Photo Safaris
                 </a>
                 <a href="#" onclick="showPage('lodge'); closeMobileMenu()" class="flex items-center px-4 py-4 text-gray-800 hover:safari-gradient hover:text-white rounded-xl transition-all duration-300 font-semibold text-lg">
-                    <span class="mr-4 text-2xl">🏨</span> Lodge
+                    Lodge
                 </a>
                 <a href="#" onclick="showPage('gamemeat'); closeMobileMenu()" class="flex items-center px-4 py-4 text-gray-800 hover:safari-gradient hover:text-white rounded-xl transition-all duration-300 font-semibold text-lg">
-                    <span class="mr-4 text-2xl">🥩</span> Game Meat
+                    Game Meat
                 </a>
                 <a href="#" onclick="showPage('contact'); closeMobileMenu()" class="flex items-center px-4 py-4 text-gray-800 hover:safari-gradient hover:text-white rounded-xl transition-all duration-300 font-semibold text-lg">
-                    <span class="mr-4 text-2xl">📞</span> Contact
+                    Contact
                 </a>
                 
                 <!-- Mobile CTA Buttons -->
                 <div class="pt-6 border-t border-gray-200 mt-6">
                     <button onclick="showPage('contact'); closeMobileMenu()" class="w-full safari-gradient text-white py-4 rounded-xl font-bold mb-3 pulse-on-hover text-lg shadow-lg">
-                        🌟 Book Safari Adventure
+                        Book Safari Adventure
                     </button>
                     <button onclick="openHelpChat(); closeMobileMenu()" class="w-full border-2 border-gray-300 text-gray-800 py-4 rounded-xl font-semibold hover:bg-gray-50 text-lg">
-                        💬 Get Live Help
+                        Get Live Help
                     </button>
-                </div>
-                
-                <!-- Professional Welcome -->
-                <div class="text-center pt-6 border-t border-gray-200 mt-6">
-                    <p class="text-base italic font-semibold" style="color: var(--accent-gold);">
-                        "Welcome to Mulambwane Safaris" 
-                        <br><span class="text-sm text-gray-600 font-normal">Premium African Safari Experience</span>
-                    </p>
                 </div>
             </div>
         </div>
@@ -555,16 +547,16 @@
                 <!-- Location Badge -->
                 <div class="flex justify-center mb-8">
                     <div class="safari-gradient px-6 py-2 rounded-full text-white font-semibold shadow-lg">
-                        📍 Limpopo Province, South Africa
+                        Limpopo Province, South Africa
                     </div>
                 </div>
                 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <button onclick="scrollToSection('safari-experiences')" class="safari-gradient text-white px-10 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl pulse-on-hover border-2 border-white">
-                        🦁 Discover Your Safari
+                        Discover Your Safari
                     </button>
                     <button onclick="showPage('story')" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-gray-800">
-                        🌍 Learn About Our Community
+                        Learn About Our Story
                     </button>
                 </div>
             </div>
@@ -583,13 +575,13 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
                     <div class="inline-block px-6 py-2 safari-gradient text-white rounded-full text-sm font-semibold mb-4">
-                        🌍 Community Property Association Owned
+                        Professional Safari Services
                     </div>
                     <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4 african-text-shadow">
-                        More Than a Safari. <span style="color: var(--primary-green);">Ubuntu</span> in Action.
+                        More Than a Safari. <span style="color: var(--primary-green);">Community</span> in Action.
                     </h2>
                     <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                        "Ubuntu" - I am because we are. Experience authentic Africa while directly empowering the Mulambwane community.
+                        Experience authentic Africa while directly supporting conservation efforts and local community development.
                     </p>
                 </div>
                 
@@ -2761,82 +2753,57 @@
                 <div class="md:col-span-2">
                     <div class="flex items-center mb-6">
                         <div class="text-3xl font-serif font-bold african-text-shadow" style="color: var(--accent-gold);">
-                            🦁 Mulambwane CPA Safaris
+                            Mulambwane Safaris
                         </div>
                     </div>
                     <div class="p-4 rounded-lg tribal-border mb-6" style="background: linear-gradient(135deg, var(--primary-green)/30, var(--bush-green)/20);">
-                        <p class="text-gray-200 mb-2 font-semibold">Community Property Association Owned</p>
+                        <p class="text-gray-200 mb-2 font-semibold">Professional Safari Services</p>
                         <p class="text-gray-300 text-sm">
-                            Every visit directly supports the Mulambwane community, creating sustainable livelihoods while preserving Africa's wildlife heritage.
+                            Experience authentic African wildlife safaris with professional guides and premium accommodations in Limpopo Province.
                         </p>
                     </div>
                     <p class="text-gray-300 mb-6 max-w-md leading-relaxed">
-                        Experience authentic African safaris in the heart of <strong>Limpopo Province</strong> - where ancient traditions meet modern conservation.
+                        Authentic African safari experiences in the heart of <strong>Limpopo Province</strong> - where professional service meets African wilderness.
                     </p>
-                    
-                    <div class="flex space-x-4">
-                        <div class="w-12 h-12 rounded-full safari-gradient flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer">
-                            <span class="text-white font-bold">📘</span>
-                        </div>
-                        <div class="w-12 h-12 rounded-full sunset-gradient flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer">
-                            <span class="text-white font-bold">📷</span>
-                        </div>
-                        <div class="w-12 h-12 rounded-full" style="background: linear-gradient(135deg, #6B8E23, #8FBC8F);" class="flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer">
-                            <span class="text-white font-bold">🐦</span>
-                        </div>
-                    </div>
                 </div>
                 
                 <div class="p-6 rounded-lg" style="background: linear-gradient(135deg, var(--bush-green)/20, transparent);">
-                    <h3 class="text-lg font-semibold mb-4 flex items-center" style="color: var(--accent-gold);">
-                        🗺️ Safari Navigation
+                    <h3 class="text-lg font-semibold mb-4" style="color: var(--accent-gold);">
+                        Navigation
                     </h3>
                     <ul class="space-y-3 text-gray-300">
-                        <li><a href="#" onclick="showPage('home')" class="transition-colors flex items-center" style="--hover-color: var(--accent-gold);" onmouseover="this.style.color='var(--accent-gold)'" onmouseout="this.style.color=''"><span class="mr-2">🏠</span>Home</a></li>
-                        <li><a href="#" onclick="showPage('story')" class="transition-colors flex items-center" style="--hover-color: var(--accent-gold);" onmouseover="this.style.color='var(--accent-gold)'" onmouseout="this.style.color=''"><span class="mr-2">📖</span>Ubuntu Story</a></li>
-                        <li><a href="#" onclick="showPage('hunting')" class="transition-colors flex items-center" style="--hover-color: var(--accent-gold);" onmouseover="this.style.color='var(--accent-gold)'" onmouseout="this.style.color=''"><span class="mr-2">🏹</span>Traditional Hunting</a></li>
-                        <li><a href="#" onclick="showPage('photography')" class="hover:text-yellow-300 transition-colors flex items-center"><span class="mr-2">📸</span>Photo Safaris</a></li>
-                        <li><a href="#" onclick="showPage('lodge')" class="hover:text-yellow-300 transition-colors flex items-center"><span class="mr-2">🏨</span>Bush Lodge</a></li>
-                        <li><a href="#" onclick="showPage('contact')" class="hover:text-yellow-300 transition-colors flex items-center"><span class="mr-2">📞</span>Contact</a></li>
+                        <li><a href="#" onclick="showPage('home')" class="hover:text-yellow-300 transition-colors">Home</a></li>
+                        <li><a href="#" onclick="showPage('story')" class="hover:text-yellow-300 transition-colors">Our Story</a></li>
+                        <li><a href="#" onclick="showPage('hunting')" class="hover:text-yellow-300 transition-colors">Hunting Safaris</a></li>
+                        <li><a href="#" onclick="showPage('photography')" class="hover:text-yellow-300 transition-colors">Photo Safaris</a></li>
+                        <li><a href="#" onclick="showPage('lodge')" class="hover:text-yellow-300 transition-colors">Lodge</a></li>
+                        <li><a href="#" onclick="showPage('contact')" class="hover:text-yellow-300 transition-colors">Contact</a></li>
                     </ul>
                 </div>
                 
                 <div class="bg-gradient-to-b from-amber-800/20 to-transparent p-6 rounded-lg">
-                    <h3 class="text-lg font-semibold mb-4 text-yellow-300 flex items-center">
-                        📍 Ubuntu Contact
+                    <h3 class="text-lg font-semibold mb-4 text-yellow-300">
+                        Contact Information
                     </h3>
                     <div class="space-y-3 text-gray-300">
-                        <div class="flex items-start">
-                            <span class="mr-3 text-yellow-400 mt-1">🌍</span>
-                            <div>
-                                <p class="font-semibold text-yellow-200">Limpopo Province</p>
-                                <p class="text-sm">Heart of Africa, South Africa</p>
-                            </div>
+                        <div>
+                            <p class="font-semibold text-yellow-200">Limpopo Province</p>
+                            <p class="text-sm">South Africa</p>
                         </div>
-                        <div class="flex items-center">
-                            <span class="mr-3 text-yellow-400">📞</span>
+                        <div>
                             <p>+27 (0) 123 456 789</p>
                         </div>
-                        <div class="flex items-center">
-                            <span class="mr-3 text-yellow-400">✉️</span>
-                            <p>ubuntu@mulambwanesafaris.com</p>
+                        <div>
+                            <p>info@mulambwanesafaris.com</p>
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="border-t border-yellow-600/30 mt-12 pt-8 text-center">
-                <div class="bg-gradient-to-r from-amber-100 to-orange-100 text-gray-800 p-4 rounded-lg mb-4 inline-block">
-                    <p class="font-semibold italic">
-                        "Motho ke motho ka batho" - Ubuntu Philosophy
-                    </p>
-                    <p class="text-sm text-gray-600 mt-1">
-                        Foundation of Mulambwane Community Property Association
-                    </p>
-                </div>
                 <p class="text-gray-400">
                     &copy; 2024 Mulambwane Wildlife & Hunting Safaris | 
-                    <span class="text-yellow-300 font-semibold">Proudly Community Owned (CPA)</span>
+                    <span class="text-yellow-300 font-semibold">Professional Safari Services</span>
                 </p>
             </div>
         </div>
