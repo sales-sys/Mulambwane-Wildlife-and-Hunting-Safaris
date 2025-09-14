@@ -202,7 +202,7 @@
                 font-size: 1rem !important;
                 padding: 1rem !important;
             }
-            /* Mobile navigation - consolidated and fixed */
+            /* Mobile navigation - always visible */
             nav {
                 position: fixed !important;
                 top: 0;
@@ -215,10 +215,14 @@
                 display: block !important;
                 visibility: visible !important;
                 opacity: 1 !important;
+                transform: translateY(0) !important;
+                transition: all 0.3s ease !important;
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
                 backdrop-filter: none !important;
             }
+            
+            /* Nav is always visible on mobile now */
             
             /* Ensure nav content is visible */
             nav .max-w-7xl {
@@ -289,14 +293,14 @@
             nav .snackbar {
                 display: none !important;
             }
-            
-            /* Ensure body content doesn't hide behind fixed nav */
-            body {
-                padding-top: 64px !important;
-            }
         }
 
         /* Small mobile devices */
+        /* Add body padding for mobile nav */
+        body {
+            padding-top: 64px !important;
+        }
+
         @media (max-width: 480px) {
             .text-6xl, .text-8xl {
                 font-size: 2rem !important;
@@ -328,6 +332,11 @@
             nav {
                 height: 60px;
             }
+            
+            /* Adjust body padding for smaller nav */
+            body {
+                padding-top: 60px !important;
+            }
         }
         
         /* Touch device optimizations */
@@ -344,10 +353,9 @@
         
         /* Modern Mobile Menu Styles */
         #mobile-menu {
-            transform: translateY(-100%) !important;
-            transition: all 0.3s ease-in-out !important;
             backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
+            background: linear-gradient(135deg, var(--cream-white) 0%, #f8f6f0 100%);
+            border-left: 3px solid var(--accent-gold);
         }
         
         #mobile-menu.translate-y-0 {
@@ -358,11 +366,45 @@
             transform: translateY(-100%) !important;
         }
         
+        /* Ensure mobile menu is above everything */
+        @media (max-width: 768px) {
+            #mobile-menu {
+                z-index: 999 !important;
+            }
+            
+            /* Better touch targets for mobile */
+            #mobile-menu a {
+                min-height: 48px !important;
+                display: flex !important;
+                align-items: center !important;
+                font-size: 16px !important;
+            }
+            
+            /* Prevent zoom on form inputs on iOS */
+            #mobile-menu input, 
+            #mobile-menu button {
+                font-size: 16px !important;
+            }
+        }
+        
         /* Mobile menu item animations */
         #mobile-menu a {
             transform: translateX(-20px);
             opacity: 0;
             animation: slideInFromLeft 0.3s ease-out forwards;
+            color: var(--earth-brown) !important;
+            transition: all 0.3s ease;
+        }
+        
+        /* Mobile menu link styling */
+        .mobile-menu-link {
+            color: var(--earth-brown) !important;
+        }
+        
+        .mobile-menu-link:hover {
+            color: var(--cream-white) !important;
+            background: linear-gradient(135deg, var(--primary-green), var(--accent-gold)) !important;
+            transform: translateX(5px) !important;
         }
         
         #mobile-menu a:nth-child(1) { animation-delay: 0.1s; }
@@ -384,6 +426,12 @@
         #mobile-menu-btn {
             backdrop-filter: blur(10px);
             background: linear-gradient(135deg, var(--primary-green), var(--accent-gold)) !important;
+            border: 2px solid var(--accent-gold) !important;
+        }
+        
+        /* Mobile menu backdrop styling */
+        #mobile-menu-backdrop {
+            background: linear-gradient(135deg, var(--earth-brown)/70, var(--primary-green)/50) !important;
         }
     </style>
 
@@ -457,8 +505,15 @@
     
 </head>
 <body class="font-sans text-gray-800 scroll-smooth">
-    <!-- Floating Get Help Button -->
-    <button id="get-help-btn" class="fixed bottom-6 right-6 z-50 bg-[#abb874] text-white px-6 py-3 rounded-full shadow-lg font-semibold flex items-center gap-2 hover:bg-[#889976] transition-all" onclick="openHelpChat()">
+    <!-- Floating Menu Button (Hidden since nav is always visible) -->
+    <button id="floating-menu-btn" class="fixed top-4 left-4 z-50 bg-[#abb874] text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:bg-[#889976] md:hidden hidden" onclick="toggleMobileMenu()">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+    </button>
+
+    <!-- Floating Get Help Button (Hidden by default) -->
+    <button id="get-help-btn" class="fixed bottom-6 right-6 z-50 bg-[#abb874] text-white px-6 py-3 rounded-full shadow-lg font-semibold flex items-center gap-2 hover:bg-[#889976] transition-all duration-300 opacity-0 pointer-events-none" onclick="openHelpChat()">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.77 9.77 0 01-4-.8l-4 1 1-3.1A7.96 7.96 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
         Get Help
     </button>
@@ -492,7 +547,6 @@
                     <a href="#" onclick="showPage('home')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Home</a>
                     <a href="#" onclick="showPage('story')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Our Story</a>
                     <a href="#" onclick="showPage('hunting')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Hunting</a>
-                    <a href="#" onclick="showPage('photography')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Photo Safaris</a>
                     <a href="#" onclick="showPage('lodge')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Lodge</a>
                     <a href="#" onclick="showPage('gamemeat')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Game Meat</a>
                     <a href="#" onclick="showPage('contact')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Contact</a>
@@ -508,41 +562,38 @@
             </div>
         </div>
         
+        <!-- Mobile Menu Backdrop -->
+        <div id="mobile-menu-backdrop" class="md:hidden fixed inset-0 z-40 opacity-0 pointer-events-none transition-opacity duration-300" style="background: linear-gradient(135deg, var(--earth-brown)/60, var(--primary-green)/40);" onclick="closeMobileMenu()"></div>
+        
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-16 bg-white shadow-2xl z-40 transform -translate-y-full transition-transform duration-300 ease-in-out border-b border-gray-200">
+        <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-16 shadow-2xl z-50 transform -translate-y-full transition-all duration-300 ease-in-out border-b max-h-screen overflow-hidden" style="background: linear-gradient(135deg, var(--cream-white) 0%, #f8f6f0 100%); border-color: var(--accent-gold);">
             <div class="px-6 py-4 max-h-screen overflow-y-auto">
                 <!-- Menu Items with Clean Design -->
                 <div class="space-y-1">
-                    <a href="#" onclick="showPage('home'); closeMobileMenu()" class="block px-4 py-3 text-gray-700 hover:text-white hover:bg-gradient-to-r hover:from-green-600 hover:to-green-500 rounded-lg transition-all duration-200 font-medium">
+                    <a href="#" onclick="showPage('home'); closeMobileMenu()" class="mobile-menu-link block px-4 py-3 rounded-lg transition-all duration-200 font-medium">
                         Home
                     </a>
-                    <a href="#" onclick="showPage('story'); closeMobileMenu()" class="block px-4 py-3 text-gray-700 hover:text-white hover:bg-gradient-to-r hover:from-green-600 hover:to-green-500 rounded-lg transition-all duration-200 font-medium">
+                    <a href="#" onclick="showPage('story'); closeMobileMenu()" class="mobile-menu-link block px-4 py-3 rounded-lg transition-all duration-200 font-medium">
                         Our Story
                     </a>
-                    <a href="#" onclick="showPage('hunting'); closeMobileMenu()" class="block px-4 py-3 text-gray-700 hover:text-white hover:bg-gradient-to-r hover:from-green-600 hover:to-green-500 rounded-lg transition-all duration-200 font-medium">
+                    <a href="#" onclick="showPage('hunting'); closeMobileMenu()" class="mobile-menu-link block px-4 py-3 rounded-lg transition-all duration-200 font-medium">
                         Hunting Safaris
                     </a>
-                    <a href="#" onclick="showPage('photography'); closeMobileMenu()" class="block px-4 py-3 text-gray-700 hover:text-white hover:bg-gradient-to-r hover:from-green-600 hover:to-green-500 rounded-lg transition-all duration-200 font-medium">
-                        Photo Safaris
-                    </a>
-                    <a href="#" onclick="showPage('lodge'); closeMobileMenu()" class="block px-4 py-3 text-gray-700 hover:text-white hover:bg-gradient-to-r hover:from-green-600 hover:to-green-500 rounded-lg transition-all duration-200 font-medium">
+                    <a href="#" onclick="showPage('lodge'); closeMobileMenu()" class="mobile-menu-link block px-4 py-3 rounded-lg transition-all duration-200 font-medium">
                         Safari Lodge
                     </a>
-                    <a href="#" onclick="showPage('gamemeat'); closeMobileMenu()" class="block px-4 py-3 text-gray-700 hover:text-white hover:bg-gradient-to-r hover:from-green-600 hover:to-green-500 rounded-lg transition-all duration-200 font-medium">
+                    <a href="#" onclick="showPage('gamemeat'); closeMobileMenu()" class="mobile-menu-link block px-4 py-3 rounded-lg transition-all duration-200 font-medium">
                         Game Meat
                     </a>
-                    <a href="#" onclick="showPage('contact'); closeMobileMenu()" class="block px-4 py-3 text-gray-700 hover:text-white hover:bg-gradient-to-r hover:from-green-600 hover:to-green-500 rounded-lg transition-all duration-200 font-medium">
+                    <a href="#" onclick="showPage('contact'); closeMobileMenu()" class="mobile-menu-link block px-4 py-3 rounded-lg transition-all duration-200 font-medium">
                         Contact Us
                     </a>
                 </div>
                 
                 <!-- Action Buttons -->
-                <div class="mt-6 pt-4 border-t border-gray-100 space-y-3">
-                    <button onclick="showPage('contact'); closeMobileMenu()" class="w-full bg-gradient-to-r from-green-600 to-green-500 text-white py-3 px-4 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-105">
+                <div class="mt-6 pt-4 space-y-3" style="border-top: 1px solid var(--accent-gold);">
+                    <button onclick="showPage('contact'); closeMobileMenu()" class="w-full py-3 px-4 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-105" style="background: linear-gradient(135deg, var(--primary-green), var(--accent-gold)); color: var(--cream-white);">
                         Book Your Safari
-                    </button>
-                    <button onclick="openHelpChat(); closeMobileMenu()" class="w-full border border-gray-300 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-50 transition-all duration-200">
-                        Get Help
                     </button>
                 </div>
             </div>
@@ -708,22 +759,7 @@
                         </div>
                     </div>
 
-                    <!-- Photographic Safaris -->
-                    <div class="relative group overflow-hidden rounded-lg shadow-lg hover-lift">
-                        <img src="images/photo-safari.jpg" alt="Photographic Safaris" class="h-80 w-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="h-80 bg-gradient-to-br flex items-center justify-center" style="background: linear-gradient(to bottom right, #889976, #abb874); display: none;">
-                            <svg class="w-24 h-24 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                            </svg>
-                        </div>
-                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-end p-6 pointer-events-none">
-                            <div class="text-white">
-                                <h3 class="text-2xl font-serif font-semibold mb-2 text-white drop-shadow-md">Photographic Safaris</h3>
-                                <button onclick="showPage('photography')" class="font-medium pointer-events-auto" style="color: #abb874;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#abb874'">Learn More →</button>
-                            </div>
-                        </div>
-                    </div>
+
 
                     <!-- Conservation -->
                     <div class="relative group overflow-hidden rounded-lg shadow-lg hover-lift">
@@ -1271,12 +1307,11 @@
                 <!-- Master Tracker Wisdom -->
                 <div class="bg-gradient-to-r from-amber-100 to-orange-100 p-8 rounded-3xl tribal-border shadow-xl max-w-4xl mx-auto">
                     <div class="text-center">
-                        <div class="text-6xl mb-4">👴🏿</div>
                         <p class="text-2xl italic mb-4 african-text-shadow" style="color: var(--primary-green);">
-                            "The tracker who knows the ways of all animals becomes one with the bush. The bush speaks to those who know how to listen."
+                            "The tracker who knows the ways of all animals becomes one with the wild. The wild speaks to those who know how to listen."
                         </p>
                         <p class="text-lg font-semibold" style="color: var(--accent-gold);">
-                            - Master Tracker Sekoati, Mulambwane CPA
+                            - Thomas Machinge, Mulambwane wildlife & Hunting Safaris
                         </p>
                     </div>
                 </div>
@@ -1556,8 +1591,6 @@
                         <div class="bg-gradient-to-br from-green-50 to-yellow-50 p-6 rounded-xl">
                             <h4 class="text-xl font-bold mb-4" style="color: var(--primary-green);">Plains Game Safari</h4>
                             <div class="space-y-2 mb-6">
-                                <p class="text-gray-700">• 7 Days / 6 Nights</p>
-                                <p class="text-gray-700">• 4-6 Trophy Animals</p>
                                 <p class="text-gray-700">• Professional Hunter & Tracker</p>
                                 <p class="text-gray-700">• All Meals & Accommodation</p>
                                 <p class="text-gray-700">• Trophy Preparation Included</p>
@@ -1577,8 +1610,6 @@
                             </div>
                             <h4 class="text-xl font-bold mb-4" style="color: var(--primary-green);">Premium Safari</h4>
                             <div class="space-y-2 mb-6">
-                                <p class="text-gray-700">• 10 Days / 9 Nights</p>
-                                <p class="text-gray-700">• 6-8 Trophy Animals + Dangerous Game</p>
                                 <p class="text-gray-700">• Master Professional Hunter</p>
                                 <p class="text-gray-700">• Luxury Suite Accommodation</p>
                                 <p class="text-gray-700">• Cultural Experiences Included</p>
@@ -1593,8 +1624,6 @@
                         <div class="bg-gradient-to-br from-red-50 to-pink-50 p-6 rounded-xl">
                             <h4 class="text-xl font-bold mb-4" style="color: var(--primary-green);">Big Five Experience</h4>
                             <div class="space-y-2 mb-6">
-                                <p class="text-gray-700">• 14 Days / 13 Nights</p>
-                                <p class="text-gray-700">• Big Five + Premium Trophies</p>
                                 <p class="text-gray-700">• Elite Professional Hunter Team</p>
                                 <p class="text-gray-700">• Presidential Suite</p>
                                 <p class="text-gray-700">• Conservation Impact Tour</p>
@@ -1628,339 +1657,7 @@
         </section>
     </div>
 
-    <!-- Spectacular Photographic Safaris Page -->
-    <div id="photographypage" class="hidden-page">
-        <!-- Breathtaking Hero Section -->
-        <section class="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
-            <img src="images/photography-hero.jpg" alt="Wildlife Photography Safari" class="absolute inset-0 w-full h-full object-cover z-0" style="object-fit: cover;" />
-            <div class="absolute inset-0 bg-gradient-to-br from-black/70 via-orange-900/30 to-amber-900/50 z-10"></div>
-            <div class="absolute inset-0 african-pattern opacity-8 z-15"></div>
-            
-            <div class="relative z-20 text-center max-w-6xl mx-auto px-4 fade-in">
-                <div class="mb-6">
-                    <div class="inline-block px-6 py-2 sunset-gradient text-white rounded-full text-sm font-semibold mb-4">
-                        Professional Photography Experience
-                    </div>
-                </div>
-                
-                <h1 class="text-6xl md:text-8xl font-serif font-bold mb-8 african-text-shadow">
-                    Capture the <span style="color: var(--accent-gold);">Wild Soul</span> of Africa
-                </h1>
-                
-                <div class="w-32 h-1 safari-gradient mx-auto mb-8 rounded"></div>
-                
-                <p class="text-xl md:text-2xl mb-12 leading-relaxed font-light max-w-4xl mx-auto" style="color: var(--cream-white);">
-                    Through the lens of community heritage and conservation, photograph Africa's magnificent wildlife in the pristine wilderness of Limpopo Province, where every shot tells a story of excellence and conservation.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
-                    <button class="safari-gradient text-white px-12 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl pulse-on-hover">
-                        Book Photo Safari
-                    </button>
-                    <button class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-gray-800">
-                        Photography Workshops
-                    </button>
-                </div>
-                
-                <!-- Photography Stats -->
-                <div class="grid grid-cols-3 gap-8 mt-12 max-w-2xl mx-auto">
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2" style="color: var(--accent-gold);">150+</div>
-                        <p class="text-sm opacity-90">Species Captured</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2" style="color: var(--accent-gold);">15,000</div>
-                        <p class="text-sm opacity-90">Hectares Wilderness</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-3xl font-bold mb-2" style="color: var(--accent-gold);">24/7</div>
-                        <p class="text-sm opacity-90">Wildlife Activity</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Photographer's Paradise with Professional Philosophy -->
-        <section class="py-24" style="background: linear-gradient(135deg, var(--cream-white) 0%, #f8f6f0 100%);">
-            <div class="max-w-7xl mx-auto px-4">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div class="fade-in">
-                        <div class="relative">
-                            <img src="images/photo-paradise-placeholder.jpg" alt="Photography Paradise" class="w-full h-96 object-cover rounded-3xl tribal-border shadow-2xl" 
-                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="w-full h-96 safari-gradient rounded-3xl flex items-center justify-center text-white text-6xl shadow-2xl" style="display: none;">
-                                Professional Photography
-                            </div>
-                            <!-- Floating elements -->
-                            <div class="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-xl floating">
-                                <span class="text-xl font-bold" style="color: var(--primary-green);">Wildlife</span>
-                            </div>
-                            <div class="absolute -bottom-4 -left-4 bg-white rounded-full p-4 shadow-xl floating" style="animation-delay: 1s;">
-                                <span class="text-xl font-bold" style="color: var(--accent-gold);">Excellence</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="fade-in">
-                        <div class="inline-block px-6 py-2 forest-gradient text-white rounded-full text-sm font-semibold mb-6">
-                            Professional Vision: "Excellence through Experience"
-                        </div>
-                        <h2 class="text-5xl font-serif font-bold mb-8" style="color: var(--primary-green);">
-                            A Photographer's <span style="color: var(--accent-gold);">Professional</span> Canvas
-                        </h2>
-                        <div class="w-24 h-1 sunset-gradient mb-8 rounded"></div>
-                        
-                        <div class="space-y-6 text-gray-700 text-lg leading-relaxed">
-                            <p>
-                                In the heart of <strong>Limpopo Province</strong>, Mulambwane offers photographers a living gallery where every frame captures the essence of African wilderness and community spirit.
-                            </p>
-                            <p>
-                                Our <strong>professional philosophy</strong> extends to photography - "Excellence through experience." Our expert guides, born from the local community, possess an intuitive understanding of wildlife behavior, seasonal migrations, and the golden hours that transform ordinary moments into extraordinary photographs.
-                            </p>
-                            <p>
-                                From the majestic baobab trees silhouetted against crimson sunsets to the intimate moments of a mother cheetah with her cubs, every photograph you take contributes to our <strong>conservation story</strong> and supports the Mulambwane Community Property Association.
-                            </p>
-                        </div>
-                        
-                        <div class="mt-8 grid grid-cols-2 gap-6">
-                            <div class="bg-white p-4 rounded-xl shadow-lg text-center">
-                                <div class="text-2xl mb-2 font-bold" style="color: var(--accent-gold);">Excellence</div>
-                                <p class="font-semibold">Award-Winning</p>
-                                <p class="text-sm text-gray-600">Photo Opportunities</p>
-                            </div>
-                            <div class="bg-white p-4 rounded-xl shadow-lg text-center">
-                                <div class="text-2xl mb-2 font-bold" style="color: var(--primary-green);">Partnership</div>
-                                <p class="font-semibold">Community Guides</p>
-                                <p class="text-sm text-gray-600">Local Wildlife Experts</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Photography Excellence Features -->
-        <section class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4">
-                <div class="text-center mb-20 fade-in">
-                    <div class="inline-block px-6 py-2 safari-gradient text-white rounded-full text-sm font-semibold mb-6">
-                        Professional Photography Experience
-                    </div>
-                    <h2 class="text-5xl md:text-6xl font-serif mb-8" style="color: var(--primary-green);">
-                        Designed for the <span style="color: var(--accent-gold);">Perfect Shot</span>
-                    </h2>
-                    <div class="w-32 h-1 sunset-gradient mx-auto mb-8 rounded"></div>
-                    <p class="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-                        Every detail of our photography safaris is crafted to maximize your creative potential and capture the untamed beauty of African wilderness.
-                    </p>
-                </div>
-
-                <div class="grid lg:grid-cols-3 gap-12">
-                    <!-- Specialized Equipment -->
-                    <div class="group bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 tribal-border">
-                        <div class="w-24 h-24 mx-auto mb-6 sunset-gradient rounded-2xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-                            <span class="text-3xl text-white">🚗</span>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-center" style="color: var(--primary-green);">Specialized Vehicles</h3>
-                        <ul class="text-gray-600 space-y-3">
-                            <li class="flex items-center"><span class="text-orange-500 mr-3">✓</span> Custom photography platforms</li>
-                            <li class="flex items-center"><span class="text-orange-500 mr-3">✓</span> Beanbag stabilization mounts</li>
-                            <li class="flex items-center"><span class="text-orange-500 mr-3">✓</span> Power outlets for equipment</li>
-                            <li class="flex items-center"><span class="text-orange-500 mr-3">✓</span> 360-degree shooting access</li>
-                            <li class="flex items-center"><span class="text-orange-500 mr-3">✓</span> Silent approach capability</li>
-                        </ul>
-                    </div>
-
-                    <!-- Expert Guidance -->
-                    <div class="group bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 tribal-border">
-                        <div class="w-24 h-24 mx-auto mb-6 forest-gradient rounded-2xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-                            <span class="text-lg text-white font-bold">Guides</span>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-center" style="color: var(--primary-green);">Professional Photography Guides</h3>
-                        <ul class="text-gray-600 space-y-3">
-                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Local wildlife behavior experts</li>
-                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Professional photography experience</li>
-                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Light and composition mastery</li>
-                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Animal tracking specialists</li>
-                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Conservation storytelling</li>
-                        </ul>
-                    </div>
-
-                    <!-- Perfect Timing -->
-                    <div class="group bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 tribal-border">
-                        <div class="w-24 h-24 mx-auto mb-6 safari-gradient rounded-2xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-                            <span class="text-lg text-white font-bold">Timing</span>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-center" style="color: var(--primary-green);">Golden Hour Mastery</h3>
-                        <ul class="text-gray-600 space-y-3">
-                            <li class="flex items-center"><span class="text-blue-500 mr-3">✓</span> Dawn & dusk photography drives</li>
-                            <li class="flex items-center"><span class="text-blue-500 mr-3">✓</span> Patient wildlife observation</li>
-                            <li class="flex items-center"><span class="text-blue-500 mr-3">✓</span> Seasonal migration timing</li>
-                            <li class="flex items-center"><span class="text-blue-500 mr-3">✓</span> Weather pattern insights</li>
-                            <li class="flex items-center"><span class="text-blue-500 mr-3">✓</span> Unlimited shooting time</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Photography Packages & Workshops -->
-        <section class="py-24" style="background: linear-gradient(135deg, var(--primary-green) 0%, var(--bush-green) 100%);">
-            <div class="max-w-7xl mx-auto px-4">
-                <div class="text-center mb-20 fade-in">
-                    <h2 class="text-5xl font-serif font-bold mb-6" style="color: var(--cream-white);">
-                        Photography <span style="color: var(--accent-gold);">Experiences</span>
-                    </h2>
-                    <div class="w-32 h-1 sunset-gradient mx-auto mb-8 rounded"></div>
-                    <p class="text-xl max-w-4xl mx-auto leading-relaxed" style="color: var(--cream-white);">
-                        From intimate wildlife encounters to professional workshops, choose your perfect photography adventure in the Limpopo wilderness.
-                    </p>
-                </div>
-                
-                <div class="grid lg:grid-cols-3 gap-8 mb-16">
-                    <!-- Essential Photography Safari -->
-                    <div class="bg-white rounded-3xl p-8 tribal-border shadow-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                        <div class="text-center mb-6">
-                            <div class="w-20 h-20 mx-auto sunset-gradient rounded-2xl flex items-center justify-center mb-4">
-                                <span class="text-3xl text-white">📸</span>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-2" style="color: var(--primary-green);">Essential Photo Safari</h3>
-                            <p class="text-gray-600">Perfect introduction to wildlife photography</p>
-                        </div>
-                        <div class="space-y-4 mb-8">
-                            <div class="flex items-center">
-                                <span class="w-2 h-2 bg-orange-400 rounded-full mr-3"></span>
-                                <span class="text-gray-700">3 Days / 2 Nights</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="w-2 h-2 bg-orange-400 rounded-full mr-3"></span>
-                                <span class="text-gray-700">6 Photography Drives</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="w-2 h-2 bg-orange-400 rounded-full mr-3"></span>
-                                <span class="text-gray-700">Professional Guide</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="w-2 h-2 bg-orange-400 rounded-full mr-3"></span>
-                                <span class="text-gray-700">Equipment Support</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="w-2 h-2 bg-orange-400 rounded-full mr-3"></span>
-                                <span class="text-gray-700">Digital Photo Review</span>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-3xl font-bold mb-4" style="color: var(--accent-gold);">From R4,200</p>
-                            <button class="w-full sunset-gradient text-white py-3 rounded-xl font-bold transition-all duration-300 hover:scale-105">
-                                Book Essential Safari
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Professional Photography Workshop -->
-                    <div class="bg-white rounded-3xl p-8 tribal-border shadow-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold">
-                            MOST POPULAR
-                        </div>
-                        <div class="text-center mb-6">
-                            <div class="w-20 h-20 mx-auto safari-gradient rounded-2xl flex items-center justify-center mb-4">
-                                <span class="text-lg text-white font-bold">Workshop</span>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-2" style="color: var(--primary-green);">Pro Photography Workshop</h3>
-                            <p class="text-gray-600">Master wildlife photography techniques</p>
-                        </div>
-                        <div class="space-y-4 mb-8">
-                            <div class="flex items-center">
-                                <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                                <span class="text-gray-700">5 Days / 4 Nights</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                                <span class="text-gray-700">12 Photography Sessions</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                                <span class="text-gray-700">Professional Photographer Mentor</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                                <span class="text-gray-700">Editing Workshops</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
-                                <span class="text-gray-700">Portfolio Review & Print</span>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-3xl font-bold mb-4" style="color: var(--accent-gold);">From R8,500</p>
-                            <button class="w-full safari-gradient text-white py-3 rounded-xl font-bold transition-all duration-300 hover:scale-105">
-                                Book Workshop
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Ultimate Photography Expedition -->
-                    <div class="bg-white rounded-3xl p-8 tribal-border shadow-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                        <div class="text-center mb-6">
-                            <div class="w-20 h-20 mx-auto forest-gradient rounded-2xl flex items-center justify-center mb-4">
-                                <span class="text-3xl text-white">🌟</span>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-2" style="color: var(--primary-green);">Ultimate Photo Expedition</h3>
-                            <p class="text-gray-600">Comprehensive wildlife photography mastery</p>
-                        </div>
-                        <div class="space-y-4 mb-8">
-                            <div class="flex items-center">
-                                <span class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
-                                <span class="text-gray-700">7 Days / 6 Nights</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
-                                <span class="text-gray-700">18 Photography Drives</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
-                                <span class="text-gray-700">Award-Winning Photo Mentor</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
-                                <span class="text-gray-700">Night Photography Sessions</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
-                                <span class="text-gray-700">Exhibition-Quality Prints</span>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-3xl font-bold mb-4" style="color: var(--accent-gold);">From R15,200</p>
-                            <button class="w-full forest-gradient text-white py-3 rounded-xl font-bold transition-all duration-300 hover:scale-105">
-                                Book Expedition
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Call to Action -->
-                <div class="text-center">
-                    <div class="bg-white rounded-3xl p-8 tribal-border shadow-xl max-w-4xl mx-auto">
-                        <h3 class="text-3xl font-bold mb-4" style="color: var(--primary-green);">Ready to Capture Africa's Soul?</h3>
-                        <p class="text-gray-700 mb-6 text-lg">
-                            Join us for an unforgettable photography journey where every image supports community conservation and celebrates the Ubuntu spirit of togetherness.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <button onclick="showPage('contact')" class="safari-gradient text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 pulse-on-hover">
-                                Contact Our Photography Team
-                            </button>
-                            <button class="bg-transparent border-2 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white" style="border-color: var(--primary-green); color: var(--primary-green);" onmouseover="this.style.backgroundColor='var(--primary-green)'; this.style.color='white'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--primary-green)'">
-                                Download Photography Guide
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Add Lodge Page Section (after photographypage, before gamemeatpage) -->
+    <!-- Lodge Page Section -->
     <div id="lodgepage" class="hidden-page">
         <!-- Stunning Hero Section -->
         <section class="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
@@ -1971,12 +1668,12 @@
             <div class="relative z-20 text-center max-w-6xl mx-auto px-4 fade-in">
                 <div class="mb-6">
                     <div class="inline-block px-6 py-2 forest-gradient text-white rounded-full text-sm font-semibold mb-4">
-                        🏠 Community-Owned Luxury Lodge
+                        Community-Owned Luxury Lodge
                     </div>
                 </div>
                 
                 <h1 class="text-6xl md:text-8xl font-serif font-bold mb-8 african-text-shadow">
-                    Mulambwane <span style="color: var(--accent-gold);">Bush Lodge</span>
+                    Mulambwane <span style="color: var(--accent-gold);">Wildlife Lodge</span>
                 </h1>
                 
                 <div class="w-32 h-1 safari-gradient mx-auto mb-8 rounded"></div>
@@ -1987,7 +1684,7 @@
                 
                 <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
                     <button class="safari-gradient text-white px-12 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl pulse-on-hover">
-                        🏨 Book Your Stay
+                        Book Your Stay
                     </button>
                     <button class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-gray-800">
                         View Packages
@@ -2001,14 +1698,14 @@
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-20 fade-in">
                     <div class="inline-block px-6 py-2 forest-gradient text-white rounded-full text-sm font-semibold mb-6">
-                        🌿 Ubuntu Philosophy: "I am because we are"
+                        Professional Lodge Experience
                     </div>
                     <h2 class="text-5xl md:text-6xl font-serif mb-8" style="color: var(--primary-green);">
-                        Luxury Meets <span style="color: var(--accent-gold);">Ubuntu</span>
+                        Luxury Meets <span style="color: var(--accent-gold);">Excellence</span>
                     </h2>
                     <div class="w-32 h-1 safari-gradient mx-auto mb-8 rounded"></div>
                     <p class="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-                        Experience the harmony of modern luxury and traditional African values at our community-owned lodge in Limpopo Province, where every comfort tells a story of Ubuntu.
+                        Experience the harmony of modern luxury and professional service at our community-owned lodge in Limpopo Province, where every comfort reflects our commitment to excellence.
                     </p>
                 </div>
 
@@ -2016,52 +1713,39 @@
                     <!-- Premium Suites -->
                     <div class="group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 tribal-border">
                         <div class="w-24 h-24 mx-auto mb-6 forest-gradient rounded-2xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-                            <span class="text-3xl text-white">🏡</span>
+                            <span class="text-lg text-white font-bold">Suites</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-4 text-center" style="color: var(--primary-green);">Luxury Bush Suites</h3>
                         <ul class="text-gray-600 space-y-3">
                             <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Private decks with bush views</li>
                             <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> En-suite bathrooms with soaking tubs</li>
-                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Air conditioning & heating</li>
-                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Mini-bar & tea station</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Air conditioning</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Mini-bar</li>
                             <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> African-inspired décor</li>
                         </ul>
                     </div>
 
-                    <!-- Gourmet Dining -->
-                    <div class="group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 tribal-border">
-                        <div class="w-24 h-24 mx-auto mb-6 sunset-gradient rounded-2xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-                            <span class="text-3xl text-white">🍽️</span>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 text-center" style="color: var(--primary-green);">Ubuntu Kitchen</h3>
-                        <ul class="text-gray-600 space-y-3">
-                            <li class="flex items-center"><span class="text-orange-500 mr-3">✓</span> Traditional Limpopo cuisine</li>
-                            <li class="flex items-center"><span class="text-orange-500 mr-3">✓</span> International fine dining</li>
-                            <li class="flex items-center"><span class="text-orange-500 mr-3">✓</span> Community-sourced ingredients</li>
-                            <li class="flex items-center"><span class="text-orange-500 mr-3">✓</span> Boma dining under stars</li>
-                            <li class="flex items-center"><span class="text-orange-500 mr-3">✓</span> Local chef specialties</li>
-                        </ul>
-                    </div>
 
-                    <!-- Wellness & Activities -->
+
+                    <!-- Recreation Activities -->
                     <div class="group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 tribal-border">
                         <div class="w-24 h-24 mx-auto mb-6 safari-gradient rounded-2xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-                            <span class="text-3xl text-white">🧘</span>
+                            <span class="text-lg text-white font-bold">Activities</span>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4 text-center" style="color: var(--primary-green);">Wellness Haven</h3>
+                        <h3 class="text-2xl font-bold mb-4 text-center" style="color: var(--primary-green);">Recreation Activities</h3>
                         <ul class="text-gray-600 space-y-3">
-                            <li class="flex items-center"><span class="text-blue-500 mr-3">✓</span> Traditional African spa treatments</li>
-                            <li class="flex items-center"><span class="text-blue-500 mr-3">✓</span> Outdoor massage pavilions</li>
-                            <li class="flex items-center"><span class="text-blue-500 mr-3">✓</span> Yoga & meditation spaces</li>
-                            <li class="flex items-center"><span class="text-blue-500 mr-3">✓</span> Infinity pool with bush views</li>
-                            <li class="flex items-center"><span class="text-blue-500 mr-3">✓</span> Fitness & walking trails</li>
+                            <li class="flex items-center"><span class="text-blue-500 mr-3">✓</span> Outdoor leisure areas</li>
+                            <li class="flex items-center"><span class="text-blue-500 mr-3">✓</span> Recreational facilities</li>
+                            <li class="flex items-center"><span class="text-blue-500 mr-3">✓</span> Walking trails</li>
+                            <li class="flex items-center"><span class="text-blue-500 mr-3">✓</span> Game viewing areas</li>
+                            <li class="flex items-center"><span class="text-blue-500 mr-3">✓</span> Bush relaxation spots</li>
                         </ul>
                     </div>
 
                     <!-- Community Experiences -->
                     <div class="group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 tribal-border">
                         <div class="w-24 h-24 mx-auto mb-6 forest-gradient rounded-2xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-                            <span class="text-3xl text-white">�</span>
+                            <span class="text-lg text-white font-bold">Culture</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-4 text-center" style="color: var(--primary-green);">Cultural Connection</h3>
                         <ul class="text-gray-600 space-y-3">
@@ -2076,7 +1760,7 @@
                     <!-- Adventure Activities -->
                     <div class="group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 tribal-border">
                         <div class="w-24 h-24 mx-auto mb-6 sunset-gradient rounded-2xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-                            <span class="text-3xl text-white">🦁</span>
+                            <span class="text-lg text-white font-bold">Adventure</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-4 text-center" style="color: var(--primary-green);">Bush Adventures</h3>
                         <ul class="text-gray-600 space-y-3">
@@ -2084,14 +1768,14 @@
                             <li class="flex items-center"><span class="text-red-500 mr-3">✓</span> Bird watching expeditions</li>
                             <li class="flex items-center"><span class="text-red-500 mr-3">✓</span> Night safari experiences</li>
                             <li class="flex items-center"><span class="text-red-500 mr-3">✓</span> Bush survival courses</li>
-                            <li class="flex items-center"><span class="text-red-500 mr-3">✓</span> Photography workshops</li>
+                            <li class="flex items-center"><span class="text-red-500 mr-3">✓</span> Wildlife tracking experiences</li>
                         </ul>
                     </div>
 
                     <!-- Conservation -->
                     <div class="group bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 tribal-border">
                         <div class="w-24 h-24 mx-auto mb-6 safari-gradient rounded-2xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-                            <span class="text-3xl text-white">🌍</span>
+                            <span class="text-lg text-white font-bold">Conservation</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-4 text-center" style="color: var(--primary-green);">Conservation Impact</h3>
                         <ul class="text-gray-600 space-y-3">
@@ -2111,7 +1795,7 @@
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-16 fade-in">
                     <h2 class="text-5xl font-serif font-bold mb-6" style="color: var(--cream-white);">
-                        Experience <span style="color: var(--accent-gold);">Ubuntu</span> Lodge
+                        Experience <span style="color: var(--accent-gold);">Professional</span> Lodge
                     </h2>
                     <div class="w-32 h-1 safari-gradient mx-auto mb-8 rounded"></div>
                     <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: var(--cream-white);">
@@ -2124,8 +1808,8 @@
                         <div class="overflow-hidden rounded-3xl tribal-border shadow-2xl">
                             <img src="images/lodge-gallery1.jpg" alt="Luxury Suite Interior" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" 
                                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="w-full h-64 safari-gradient rounded-t-3xl flex items-center justify-center text-white text-6xl" style="display: none;">
-                                🛏️
+                            <div class="w-full h-64 safari-gradient rounded-t-3xl flex items-center justify-center text-white text-3xl font-bold" style="display: none;">
+                                Luxury Suites
                             </div>
                         </div>
                         <div class="mt-4 text-center">
@@ -2136,15 +1820,15 @@
                     
                     <div class="group cursor-pointer">
                         <div class="overflow-hidden rounded-3xl tribal-border shadow-2xl">
-                            <img src="images/lodge-gallery2.jpg" alt="Ubuntu Kitchen" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                            <img src="images/lodge-gallery2.jpg" alt="Lodge Lounge Area" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="w-full h-64 sunset-gradient rounded-t-3xl flex items-center justify-center text-white text-6xl" style="display: none;">
-                                🍽️
+                            <div class="w-full h-64 sunset-gradient rounded-t-3xl flex items-center justify-center text-white text-3xl font-bold" style="display: none;">
+                                Lodge Lounge
                             </div>
                         </div>
                         <div class="mt-4 text-center">
-                            <h3 class="text-xl font-bold mb-2" style="color: var(--cream-white);">Ubuntu Kitchen</h3>
-                            <p class="text-sm" style="color: var(--cream-white); opacity: 0.8;">Traditional & international cuisine</p>
+                            <h3 class="text-xl font-bold mb-2" style="color: var(--cream-white);">Common Lounge Area</h3>
+                            <p class="text-sm" style="color: var(--cream-white); opacity: 0.8;">Relaxation & social spaces</p>
                         </div>
                     </div>
                     
@@ -2152,8 +1836,8 @@
                         <div class="overflow-hidden rounded-3xl tribal-border shadow-2xl">
                             <img src="images/lodge-gallery3.jpg" alt="Boma Fire Area" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="w-full h-64 forest-gradient rounded-t-3xl flex items-center justify-center text-white text-6xl" style="display: none;">
-                                🔥
+                            <div class="w-full h-64 forest-gradient rounded-t-3xl flex items-center justify-center text-white text-3xl font-bold" style="display: none;">
+                                Traditional Boma
                             </div>
                         </div>
                         <div class="mt-4 text-center">
@@ -2162,26 +1846,14 @@
                         </div>
                     </div>
                     
-                    <div class="group cursor-pointer">
-                        <div class="overflow-hidden rounded-3xl tribal-border shadow-2xl">
-                            <img src="images/lodge-gallery4.jpg" alt="Spa & Wellness" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="w-full h-64 safari-gradient rounded-t-3xl flex items-center justify-center text-white text-6xl" style="display: none;">
-                                🧘
-                            </div>
-                        </div>
-                        <div class="mt-4 text-center">
-                            <h3 class="text-xl font-bold mb-2" style="color: var(--cream-white);">Wellness Haven</h3>
-                            <p class="text-sm" style="color: var(--cream-white); opacity: 0.8;">African spa & infinity pool</p>
-                        </div>
-                    </div>
+
                     
                     <div class="group cursor-pointer">
                         <div class="overflow-hidden rounded-3xl tribal-border shadow-2xl">
                             <img src="images/lodge-gallery5.jpg" alt="Cultural Experience" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="w-full h-64 sunset-gradient rounded-t-3xl flex items-center justify-center text-white text-6xl" style="display: none;">
-                                🎭
+                                
                             </div>
                         </div>
                         <div class="mt-4 text-center">
@@ -2195,7 +1867,7 @@
                             <img src="images/lodge-gallery6.jpg" alt="Bush Views" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="w-full h-64 forest-gradient rounded-t-3xl flex items-center justify-center text-white text-6xl" style="display: none;">
-                                🌿
+                                
                             </div>
                         </div>
                         <div class="mt-4 text-center">
@@ -2212,10 +1884,10 @@
             <div class="max-w-6xl mx-auto px-4">
                 <div class="text-center mb-16 fade-in">
                     <div class="inline-block px-6 py-2 forest-gradient text-white rounded-full text-sm font-semibold mb-6">
-                        🏨 Reserve Your Ubuntu Experience
+                        Reserve Your Wildlife Experience
                     </div>
                     <h2 class="text-5xl font-serif font-bold mb-8" style="color: var(--primary-green);">
-                        Book Your <span style="color: var(--accent-gold);">Bush Lodge</span> Stay
+                        Book Your <span style="color: var(--accent-gold);">Wildlife Lodge</span> Stay
                     </h2>
                     <div class="w-32 h-1 safari-gradient mx-auto mb-8 rounded"></div>
                     <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
@@ -2290,10 +1962,10 @@
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">Suite Preference</label>
                                 <select class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors">
                                     <option value="">Select Suite Type</option>
-                                    <option value="standard">Standard Bush Suite</option>
-                                    <option value="deluxe">Deluxe Bush Suite</option>
-                                    <option value="family">Family Bush Suite</option>
-                                    <option value="honeymoon">Honeymoon Suite</option>
+                                    <option value="standard">Standard wildlife Suite</option>
+                                    <option value="deluxe">Deluxe wildlife Suite</option>
+                                    <option value="family">Family wildlife Suite</option>
+                                    <option value="honeymoon">Honeymoon wildlife Suite</option>
                                 </select>
                             </div>
                             
@@ -2304,7 +1976,7 @@
                             </div>
                             
                             <button type="submit" class="w-full safari-gradient text-white py-4 rounded-xl text-lg font-bold transition-all duration-300 transform hover:scale-105 pulse-on-hover">
-                                🏨 Reserve Your Ubuntu Experience
+                            Reserve Your Wildlife Experience
                             </button>
                         </form>
                     </div>
@@ -2312,17 +1984,17 @@
                     <!-- Package Information -->
                     <div class="space-y-8">
                         <div class="bg-white rounded-3xl p-8 shadow-xl tribal-border">
-                            <h4 class="text-2xl font-bold mb-6" style="color: var(--primary-green);">🌟 Lodge Packages</h4>
+                            <h4 class="text-2xl font-bold mb-6" style="color: var(--primary-green);">Lodge Packages</h4>
                             <div class="space-y-6">
                                 <div class="p-4 bg-gradient-to-r from-green-50 to-yellow-50 rounded-xl">
-                                    <h5 class="font-bold text-lg mb-2" style="color: var(--primary-green);">Ubuntu Experience (2 Nights)</h5>
+                                    <h5 class="font-bold text-lg mb-2" style="color: var(--primary-green);">Wildlife Experience (2 Nights)</h5>
                                     <p class="text-gray-600 text-sm mb-2">Full board + cultural activities + conservation tour</p>
                                     <p class="font-bold" style="color: var(--accent-gold);">From R2,800 per person</p>
                                 </div>
                                 <div class="p-4 bg-gradient-to-r from-orange-50 to-red-50 rounded-xl">
                                     <h5 class="font-bold text-lg mb-2" style="color: var(--primary-green);">Romantic Retreat (3 Nights)</h5>
-                                    <p class="text-gray-600 text-sm mb-2">Honeymoon suite + spa treatments + private dining</p>
-                                    <p class="font-bold" style="color: var(--accent-gold);">From R4,200 per couple</p>
+                                    <p class="text-gray-600 text-sm mb-2">Honeymoon suite + Wildlife walks + private sunset viewing</p>
+                                    <p class="font-bold" style="color: var(--accent-gold);">From R3,800 per couple</p>
                                 </div>
                                 <div class="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl">
                                     <h5 class="font-bold text-lg mb-2" style="color: var(--primary-green);">Family Adventure (4 Nights)</h5>
@@ -2333,17 +2005,17 @@
                         </div>
 
                         <div class="bg-white rounded-3xl p-8 shadow-xl tribal-border">
-                            <h4 class="text-2xl font-bold mb-6" style="color: var(--primary-green);">📞 Direct Booking</h4>
+                            <h4 class="text-2xl font-bold mb-6" style="color: var(--primary-green);">Direct Booking</h4>
                             <div class="space-y-4">
                                 <div class="flex items-center">
-                                    <span class="text-2xl mr-4">📧</span>
+                                    <span class="text-2xl mr-4"></span>
                                     <div>
                                         <p class="font-semibold">Email Reservations</p>
                                         <p class="text-gray-600">bookings@mulambwanesafaris.com</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center">
-                                    <span class="text-2xl mr-4">📱</span>
+                                    <span class="text-2xl mr-4"></span>
                                     <div>
                                         <p class="font-semibold">WhatsApp Booking</p>
                                         <p class="text-gray-600">+27 (0)82 555 0123</p>
@@ -2360,7 +2032,7 @@
                         </div>
 
                         <div class="bg-gradient-to-br from-green-100 to-yellow-100 rounded-3xl p-8 tribal-border">
-                            <h4 class="text-2xl font-bold mb-4" style="color: var(--primary-green);">🌍 Community Impact</h4>
+                            <h4 class="text-2xl font-bold mb-4" style="color: var(--primary-green);">Community Impact</h4>
                             <p class="text-gray-700 mb-4">
                                 Your stay directly supports the Mulambwane Community Property Association (CPA) and local conservation efforts in Limpopo Province.
                             </p>
@@ -2388,7 +2060,7 @@
             <div class="relative z-20 text-center max-w-6xl mx-auto px-4 fade-in">
                 <div class="mb-6">
                     <div class="inline-block px-6 py-2 safari-gradient text-white rounded-full text-sm font-semibold mb-4">
-                        🥩 Premium Wild Harvest
+                        Premium Wild Harvest
                     </div>
                 </div>
                 
@@ -2404,10 +2076,10 @@
                 
                 <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
                     <button class="safari-gradient text-white px-12 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl pulse-on-hover">
-                        🛒 Shop Premium Selection
+                        Shop Premium Selection
                     </button>
                     <button class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-gray-800">
-                        📋 View Product Catalog
+                        View Product Catalog
                     </button>
                 </div>
                 
@@ -2437,14 +2109,14 @@
                         <div class="relative">
                             <img src="images/game-sourcing-placeholder.jpg" alt="Ubuntu Conservation Philosophy" class="w-full h-96 object-cover rounded-3xl shadow-2xl tribal-border" />
                             <div class="absolute -bottom-4 -right-4 w-24 h-24 sunset-gradient rounded-full flex items-center justify-center shadow-xl">
-                                <span class="text-2xl">🌿</span>
+                                <span class="text-2xl"></span>
                             </div>
                         </div>
                     </div>
                     
                     <div class="fade-in">
                         <div class="inline-block px-6 py-2 forest-gradient text-white rounded-full text-sm font-semibold mb-6">
-                            🌍 Conservation Through Utilization
+                            Conservation Through Utilization
                         </div>
                         
                         <h2 class="text-5xl font-serif font-bold mb-8" style="color: var(--primary-green);">
@@ -2454,13 +2126,13 @@
                         <div class="w-24 h-1 sunset-gradient mb-8 rounded"></div>
                         
                         <p class="text-xl leading-relaxed text-gray-700 mb-8">
-                            Every product embodies our Ubuntu philosophy: <strong style="color: var(--primary-green);">"I am because we are."</strong> Our sustainable harvesting practices ensure wildlife populations thrive while providing premium, ethically-sourced nutrition for your family.
+                            Every product embodies our Venda traditional philosophy: <strong style="color: var(--primary-green);">"I am because we are."</strong> Our sustainable harvesting practices ensure wildlife populations thrive while providing premium, ethically-sourced nutrition for your family.
                         </p>
                         
                         <div class="space-y-6">
                             <div class="flex items-start space-x-4">
                                 <div class="w-12 h-12 safari-gradient rounded-full flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white font-bold">🦌</span>
+                                    <span class="text-white font-bold"></span>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg mb-2" style="color: var(--primary-green);">Wild & Free-Range</h4>
@@ -2575,7 +2247,7 @@
             <div class="relative z-20 text-center max-w-6xl mx-auto px-4 fade-in">
                 <div class="mb-6">
                     <div class="inline-block px-6 py-2 safari-gradient text-white rounded-full text-sm font-semibold mb-4">
-                        🤝 Connect With Ubuntu
+                        Connect With Us
                     </div>
                 </div>
                 
@@ -2591,10 +2263,10 @@
                 
                 <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
                     <button class="safari-gradient text-white px-12 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl pulse-on-hover">
-                        📞 Start Planning Now
+                        Start Planning Now
                     </button>
                     <button class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-gray-800">
-                        📧 Send Quick Inquiry
+                        Send Quick Inquiry
                     </button>
                 </div>
                 
@@ -2610,18 +2282,18 @@
                     </div>
                     <div class="text-center">
                         <div class="text-3xl font-bold" style="color: var(--accent-gold);">100%</div>
-                        <div class="text-sm text-white/80">Ubuntu Service</div>
+                        <div class="text-sm text-white/80">Premium Wildlife Service</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Ubuntu Connection Hub -->
+        <!-- Premium Wildlfie Connection Hub -->
         <section class="py-24" style="background: linear-gradient(135deg, var(--cream-white) 0%, #f8f6f0 100%);">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-20 fade-in">
                     <div class="inline-block px-6 py-2 safari-gradient text-white rounded-full text-sm font-semibold mb-6">
-                        🤝 Professional Service
+                        Professional Service
                     </div>
                     <h2 class="text-5xl md:text-6xl font-serif font-bold mb-8" style="color: var(--primary-green);">
                         Let's Create Your <span style="color: var(--accent-gold);">Safari Adventure</span>
@@ -2660,7 +2332,6 @@
                                 <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:border-transparent" style="outline: none;" onfocus="this.style.borderColor='#abb874'; this.style.boxShadow='0 0 0 2px rgba(171, 184, 116, 0.2)'" onblur="this.style.borderColor='#d1d5db'; this.style.boxShadow='none'">
                                     <option>Select an option</option>
                                     <option>Hunting Safari</option>
-                                    <option>Photographic Safari</option>
                                     <option>Accommodation</option>
                                     <option>Game Meat</option>
                                     <option>General Inquiry</option>
@@ -2712,7 +2383,7 @@
                                     </div>
                                     <div>
                                         <h4 class="font-semibold text-gray-900">Address</h4>
-                                        <p class="text-gray-600">Mulambwane Wildlife Reserve<br>Limpopo Province, South Africa</p>
+                                        <p class="text-gray-600">Mulambwane Wildlife & Hunting Safaris Reserve<br>Limpopo Province, South Africa</p>
                                     </div>
                                 </div>
                             </div>
@@ -2808,7 +2479,6 @@
                         <li><a href="#" onclick="showPage('home')" class="hover:text-yellow-300 transition-colors">Home</a></li>
                         <li><a href="#" onclick="showPage('story')" class="hover:text-yellow-300 transition-colors">Our Story</a></li>
                         <li><a href="#" onclick="showPage('hunting')" class="hover:text-yellow-300 transition-colors">Hunting Safaris</a></li>
-                        <li><a href="#" onclick="showPage('photography')" class="hover:text-yellow-300 transition-colors">Photo Safaris</a></li>
                         <li><a href="#" onclick="showPage('lodge')" class="hover:text-yellow-300 transition-colors">Lodge</a></li>
                         <li><a href="#" onclick="showPage('contact')" class="hover:text-yellow-300 transition-colors">Contact</a></li>
                     </ul>
@@ -2835,7 +2505,7 @@
             
             <div class="border-t border-yellow-600/30 mt-12 pt-8 text-center">
                 <p class="text-gray-400">
-                    &copy; 2024 Mulambwane Wildlife & Hunting Safaris | 
+                    &copy; 2024 Mulambwane Wildlife & Hunting Safaris | This site is designed and maintained by MU Marketing
                     <span class="text-yellow-300 font-semibold">Professional Safari Services</span>
                 </p>
             </div>
@@ -2846,52 +2516,102 @@
         // Mobile Menu Functions
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
+            const backdrop = document.getElementById('mobile-menu-backdrop');
             const hamburgerIcon = document.getElementById('hamburger-icon');
             const closeIcon = document.getElementById('close-icon');
+            const getHelpBtn = document.getElementById('get-help-btn');
             
-            // Check if menu is currently hidden
-            const isHidden = mobileMenu.classList.contains('-translate-y-full') || 
-                           getComputedStyle(mobileMenu).transform.includes('translateY(-100%)') ||
-                           getComputedStyle(mobileMenu).transform === 'matrix(1, 0, 0, 1, 0, -100)';
+            if (!mobileMenu || !hamburgerIcon || !closeIcon) return;
             
-            if (isHidden) {
-                // Open menu
-                mobileMenu.classList.remove('-translate-y-full');
-                mobileMenu.classList.add('translate-y-0');
-                mobileMenu.style.transform = 'translateY(0)';
-                hamburgerIcon.classList.add('hidden');
-                closeIcon.classList.remove('hidden');
-                console.log('Menu opened'); // Debug log
-            } else {
+            // Use a data attribute to track state more reliably
+            const isOpen = mobileMenu.getAttribute('data-open') === 'true';
+            
+            if (isOpen) {
                 // Close menu
                 mobileMenu.classList.add('-translate-y-full');
                 mobileMenu.classList.remove('translate-y-0');
-                mobileMenu.style.transform = 'translateY(-100%)';
+                mobileMenu.setAttribute('data-open', 'false');
                 hamburgerIcon.classList.remove('hidden');
                 closeIcon.classList.add('hidden');
-                console.log('Menu closed'); // Debug log
+                document.body.style.overflow = ''; // Re-enable scrolling
+                if (backdrop) {
+                    backdrop.style.opacity = '0';
+                    backdrop.style.pointerEvents = 'none';
+                }
+                // Hide Get Help button
+                if (getHelpBtn) {
+                    getHelpBtn.style.opacity = '0';
+                    getHelpBtn.style.pointerEvents = 'none';
+                }
+            } else {
+                // Open menu
+                mobileMenu.classList.remove('-translate-y-full');
+                mobileMenu.classList.add('translate-y-0');
+                mobileMenu.setAttribute('data-open', 'true');
+                hamburgerIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                if (backdrop) {
+                    backdrop.style.opacity = '1';
+                    backdrop.style.pointerEvents = 'auto';
+                }
+                // Show Get Help button
+                if (getHelpBtn) {
+                    getHelpBtn.style.opacity = '1';
+                    getHelpBtn.style.pointerEvents = 'auto';
+                }
             }
         }
         
         function closeMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
+            const backdrop = document.getElementById('mobile-menu-backdrop');
             const hamburgerIcon = document.getElementById('hamburger-icon');
             const closeIcon = document.getElementById('close-icon');
+            const getHelpBtn = document.getElementById('get-help-btn');
+            
+            if (!mobileMenu || !hamburgerIcon || !closeIcon) return;
             
             mobileMenu.classList.add('-translate-y-full');
             mobileMenu.classList.remove('translate-y-0');
-            mobileMenu.style.transform = 'translateY(-100%)';
+            mobileMenu.setAttribute('data-open', 'false');
             hamburgerIcon.classList.remove('hidden');
             closeIcon.classList.add('hidden');
+            document.body.style.overflow = ''; // Re-enable scrolling
+            if (backdrop) {
+                backdrop.style.opacity = '0';
+                backdrop.style.pointerEvents = 'none';
+            }
+            // Hide Get Help button
+            if (getHelpBtn) {
+                getHelpBtn.style.opacity = '0';
+                getHelpBtn.style.pointerEvents = 'none';
+            }
         }
         
-        // Close mobile menu when clicking outside
+        // Close mobile menu when clicking outside (improved)
         document.addEventListener('click', function(event) {
             const mobileMenu = document.getElementById('mobile-menu');
             const menuButton = document.getElementById('mobile-menu-btn');
             
-            if (!mobileMenu.contains(event.target) && !menuButton.contains(event.target)) {
+            if (!mobileMenu || !menuButton) return;
+            
+            const isMenuOpen = mobileMenu.getAttribute('data-open') === 'true';
+            const clickedInsideMenu = mobileMenu.contains(event.target);
+            const clickedMenuButton = menuButton.contains(event.target);
+            
+            if (isMenuOpen && !clickedInsideMenu && !clickedMenuButton) {
                 closeMobileMenu();
+            }
+        });
+        
+        // Handle escape key to close menu
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu && mobileMenu.getAttribute('data-open') === 'true') {
+                    closeMobileMenu();
+                }
             }
         });
         
@@ -2908,7 +2628,7 @@
 
         function showPage(pageName) {
             // Hide all pages with exit animation
-            var pages = ['homepage','storypage','huntingpage','photographypage','lodgepage','gamemeatpage','contactpage'];
+            var pages = ['homepage','storypage','huntingpage','lodgepage','gamemeatpage','contactpage'];
             pages.forEach(function(id) {
                 var el = document.getElementById(id);
                 if (el && el.className === 'current-page fade-in') {
@@ -3066,13 +2786,31 @@
             initParallax();
             initFloatingAnimations();
             
-            // Initialize mobile menu in hidden state
+            // Initialize mobile menu in closed state (nav is always visible)
             const mobileMenu = document.getElementById('mobile-menu');
+            const getHelpBtn = document.getElementById('get-help-btn');
+            const floatingMenuBtn = document.getElementById('floating-menu-btn');
+            
             if (mobileMenu) {
                 mobileMenu.classList.add('-translate-y-full');
                 mobileMenu.classList.remove('translate-y-0');
-                mobileMenu.style.transform = 'translateY(-100%)';
-                console.log('Mobile menu initialized as hidden');
+                mobileMenu.setAttribute('data-open', 'false');
+                // Ensure icons are in correct state
+                const hamburgerIcon = document.getElementById('hamburger-icon');
+                const closeIcon = document.getElementById('close-icon');
+                if (hamburgerIcon) hamburgerIcon.classList.remove('hidden');
+                if (closeIcon) closeIcon.classList.add('hidden');
+            }
+            
+            // Ensure Get Help button starts hidden
+            if (getHelpBtn) {
+                getHelpBtn.style.opacity = '0';
+                getHelpBtn.style.pointerEvents = 'none';
+            }
+            
+            // Hide floating menu button since nav is always visible
+            if (floatingMenuBtn) {
+                floatingMenuBtn.style.display = 'none';
             }
             
             // Show traditional greeting after 2 seconds
