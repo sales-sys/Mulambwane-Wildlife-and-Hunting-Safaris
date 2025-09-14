@@ -342,10 +342,12 @@
             }
         }
         
-        /* Mobile Menu Animation Fix */
+        /* Modern Mobile Menu Styles */
         #mobile-menu {
             transform: translateY(-100%) !important;
-            transition: transform 0.5s ease-in-out !important;
+            transition: all 0.3s ease-in-out !important;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
         }
         
         #mobile-menu.translate-y-0 {
@@ -354,6 +356,34 @@
         
         #mobile-menu.-translate-y-full {
             transform: translateY(-100%) !important;
+        }
+        
+        /* Mobile menu item animations */
+        #mobile-menu a {
+            transform: translateX(-20px);
+            opacity: 0;
+            animation: slideInFromLeft 0.3s ease-out forwards;
+        }
+        
+        #mobile-menu a:nth-child(1) { animation-delay: 0.1s; }
+        #mobile-menu a:nth-child(2) { animation-delay: 0.15s; }
+        #mobile-menu a:nth-child(3) { animation-delay: 0.2s; }
+        #mobile-menu a:nth-child(4) { animation-delay: 0.25s; }
+        #mobile-menu a:nth-child(5) { animation-delay: 0.3s; }
+        #mobile-menu a:nth-child(6) { animation-delay: 0.35s; }
+        #mobile-menu a:nth-child(7) { animation-delay: 0.4s; }
+        
+        @keyframes slideInFromLeft {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Improved mobile menu button */
+        #mobile-menu-btn {
+            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, var(--primary-green), var(--accent-gold)) !important;
         }
     </style>
 
@@ -479,37 +509,40 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-16 bg-white shadow-2xl z-40 transform -translate-y-full transition-transform duration-500 ease-in-out border-b-2" style="border-color: var(--accent-gold);">
-            <div class="px-4 py-6 space-y-2 max-h-screen overflow-y-auto">
-                <a href="#" onclick="showPage('home'); closeMobileMenu()" class="flex items-center px-4 py-4 text-gray-800 hover:safari-gradient hover:text-white rounded-xl transition-all duration-300 font-semibold text-lg">
-                    Home
-                </a>
-                <a href="#" onclick="showPage('story'); closeMobileMenu()" class="flex items-center px-4 py-4 text-gray-800 hover:safari-gradient hover:text-white rounded-xl transition-all duration-300 font-semibold text-lg">
-                    Our Story
-                </a>
-                <a href="#" onclick="showPage('hunting'); closeMobileMenu()" class="flex items-center px-4 py-4 text-gray-800 hover:safari-gradient hover:text-white rounded-xl transition-all duration-300 font-semibold text-lg">
-                    Hunting
-                </a>
-                <a href="#" onclick="showPage('photography'); closeMobileMenu()" class="flex items-center px-4 py-4 text-gray-800 hover:safari-gradient hover:text-white rounded-xl transition-all duration-300 font-semibold text-lg">
-                    Photo Safaris
-                </a>
-                <a href="#" onclick="showPage('lodge'); closeMobileMenu()" class="flex items-center px-4 py-4 text-gray-800 hover:safari-gradient hover:text-white rounded-xl transition-all duration-300 font-semibold text-lg">
-                    Lodge
-                </a>
-                <a href="#" onclick="showPage('gamemeat'); closeMobileMenu()" class="flex items-center px-4 py-4 text-gray-800 hover:safari-gradient hover:text-white rounded-xl transition-all duration-300 font-semibold text-lg">
-                    Game Meat
-                </a>
-                <a href="#" onclick="showPage('contact'); closeMobileMenu()" class="flex items-center px-4 py-4 text-gray-800 hover:safari-gradient hover:text-white rounded-xl transition-all duration-300 font-semibold text-lg">
-                    Contact
-                </a>
+        <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-16 bg-white shadow-2xl z-40 transform -translate-y-full transition-transform duration-300 ease-in-out border-b border-gray-200">
+            <div class="px-6 py-4 max-h-screen overflow-y-auto">
+                <!-- Menu Items with Clean Design -->
+                <div class="space-y-1">
+                    <a href="#" onclick="showPage('home'); closeMobileMenu()" class="block px-4 py-3 text-gray-700 hover:text-white hover:bg-gradient-to-r hover:from-green-600 hover:to-green-500 rounded-lg transition-all duration-200 font-medium">
+                        Home
+                    </a>
+                    <a href="#" onclick="showPage('story'); closeMobileMenu()" class="block px-4 py-3 text-gray-700 hover:text-white hover:bg-gradient-to-r hover:from-green-600 hover:to-green-500 rounded-lg transition-all duration-200 font-medium">
+                        Our Story
+                    </a>
+                    <a href="#" onclick="showPage('hunting'); closeMobileMenu()" class="block px-4 py-3 text-gray-700 hover:text-white hover:bg-gradient-to-r hover:from-green-600 hover:to-green-500 rounded-lg transition-all duration-200 font-medium">
+                        Hunting Safaris
+                    </a>
+                    <a href="#" onclick="showPage('photography'); closeMobileMenu()" class="block px-4 py-3 text-gray-700 hover:text-white hover:bg-gradient-to-r hover:from-green-600 hover:to-green-500 rounded-lg transition-all duration-200 font-medium">
+                        Photo Safaris
+                    </a>
+                    <a href="#" onclick="showPage('lodge'); closeMobileMenu()" class="block px-4 py-3 text-gray-700 hover:text-white hover:bg-gradient-to-r hover:from-green-600 hover:to-green-500 rounded-lg transition-all duration-200 font-medium">
+                        Safari Lodge
+                    </a>
+                    <a href="#" onclick="showPage('gamemeat'); closeMobileMenu()" class="block px-4 py-3 text-gray-700 hover:text-white hover:bg-gradient-to-r hover:from-green-600 hover:to-green-500 rounded-lg transition-all duration-200 font-medium">
+                        Game Meat
+                    </a>
+                    <a href="#" onclick="showPage('contact'); closeMobileMenu()" class="block px-4 py-3 text-gray-700 hover:text-white hover:bg-gradient-to-r hover:from-green-600 hover:to-green-500 rounded-lg transition-all duration-200 font-medium">
+                        Contact Us
+                    </a>
+                </div>
                 
-                <!-- Mobile CTA Buttons -->
-                <div class="pt-6 border-t border-gray-200 mt-6">
-                    <button onclick="showPage('contact'); closeMobileMenu()" class="w-full safari-gradient text-white py-4 rounded-xl font-bold mb-3 pulse-on-hover text-lg shadow-lg">
-                        Book Safari Adventure
+                <!-- Action Buttons -->
+                <div class="mt-6 pt-4 border-t border-gray-100 space-y-3">
+                    <button onclick="showPage('contact'); closeMobileMenu()" class="w-full bg-gradient-to-r from-green-600 to-green-500 text-white py-3 px-4 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-105">
+                        Book Your Safari
                     </button>
-                    <button onclick="openHelpChat(); closeMobileMenu()" class="w-full border-2 border-gray-300 text-gray-800 py-4 rounded-xl font-semibold hover:bg-gray-50 text-lg">
-                        Get Live Help
+                    <button onclick="openHelpChat(); closeMobileMenu()" class="w-full border border-gray-300 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-50 transition-all duration-200">
+                        Get Help
                     </button>
                 </div>
             </div>
@@ -598,7 +631,7 @@
                             <strong>Professional guides and world-class facilities</strong> ensure an exceptional safari experience. Our commitment to excellence has earned recognition as one of Limpopo's premier wildlife destinations.
                         </p>
                         <div class="bg-green-100 px-4 py-2 rounded-full text-green-800 text-sm font-semibold">
-                            ✓ 15+ Years Experience
+                            15+ Years Experience
                         </div>
                     </div>
 
@@ -614,7 +647,7 @@
                             Nestled in the ancient <strong>Limpopo Province</strong>, where the baobab trees whisper ancestral stories and the Big Five roam freely. Experience authentic African bush culture, traditional healing plants, and time-honored hunting methods passed down through generations.
                         </p>
                         <div class="px-4 py-2 rounded-full text-sm font-semibold" style="background-color: var(--accent-gold)/20; color: var(--primary-green);">
-                            🌳 15,000 Hectares Protected
+                            15,000 Hectares Protected
                         </div>
                     </div>
 
@@ -630,7 +663,7 @@
                             Our <strong>community-based conservation model</strong> proves that when local people benefit from wildlife, they become its greatest protectors. Sustainable hunting and photographic tourism fund anti-poaching efforts and habitat restoration.
                         </p>
                         <div class="bg-blue-100 px-4 py-2 rounded-full text-blue-800 text-sm font-semibold">
-                            💼 50+ Local Jobs Created
+                            50+ Local Jobs Created
                         </div>
                     </div>
                 </div>
@@ -744,7 +777,7 @@
             <div class="relative z-20 text-center max-w-6xl mx-auto px-4 fade-in">
                 <div class="mb-6">
                     <div class="inline-block px-6 py-2 safari-gradient text-white rounded-full text-sm font-semibold mb-4">
-                        🏛️ Ubuntu Heritage Story
+                        Professional Heritage Story
                     </div>
                 </div>
                 
@@ -760,10 +793,10 @@
                 
                 <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
                     <button onclick="scrollToSection('our-foundation')" class="safari-gradient text-white px-12 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl pulse-on-hover">
-                        📖 Discover Our Journey
+                        Discover Our Journey
                     </button>
                     <button onclick="scrollToSection('mission-impact')" class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-gray-800">
-                        🌍 Community Impact
+                        Community Impact
                     </button>
                 </div>
                 
@@ -791,9 +824,9 @@
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
                     <div class="fade-in">
                         <div class="relative">
-                            <img src="images/heritage-placeholder.jpg" alt="Ubuntu Heritage" class="w-full h-96 object-cover rounded-3xl shadow-2xl tribal-border" />
+                            <img src="images/heritage-placeholder.jpg" alt="Professional Heritage" class="w-full h-96 object-cover rounded-3xl shadow-2xl tribal-border" />
                             <div class="absolute -bottom-4 -right-4 w-24 h-24 safari-gradient rounded-full flex items-center justify-center shadow-xl">
-                                <span class="text-2xl">🏛️</span>
+                                <span class="text-2xl font-bold" style="color: white;">Excellence</span>
                             </div>
                         </div>
                     </div>
@@ -816,7 +849,7 @@
                         <div class="space-y-6">
                             <div class="flex items-start space-x-4">
                                 <div class="w-12 h-12 safari-gradient rounded-full flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white font-bold">🤝</span>
+                                    <span class="text-white font-bold">Partnership</span>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg mb-2" style="color: var(--primary-green);">Community Ownership</h4>
@@ -826,7 +859,7 @@
                             
                             <div class="flex items-start space-x-4">
                                 <div class="w-12 h-12 sunset-gradient rounded-full flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white font-bold">🌱</span>
+                                    <span class="text-white font-bold">Growth</span>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg mb-2" style="color: var(--primary-green);">Sustainable Future</h4>
@@ -836,7 +869,7 @@
                             
                             <div class="flex items-start space-x-4">
                                 <div class="w-12 h-12 forest-gradient rounded-full flex items-center justify-center flex-shrink-0">
-                                    <span class="text-white font-bold">🏺</span>
+                                    <span class="text-white font-bold">Heritage</span>
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg mb-2" style="color: var(--primary-green);">Cultural Heritage</h4>
@@ -847,7 +880,7 @@
                         
                         <div class="mt-8 p-6 rounded-2xl tribal-border" style="background: linear-gradient(135deg, var(--accent-gold)/10, var(--bush-green)/5);">
                             <p class="text-lg font-semibold italic" style="color: var(--primary-green);">
-                                "When you visit Mulambwane, you're not just a guest—you become part of our Ubuntu family, contributing to a legacy that spans generations."
+                                "When you visit Mulambwane, you're not just a guest—you become part of our safari family, contributing to a legacy that spans generations."
                             </p>
                             <p class="text-sm text-gray-600 mt-2">- Community Elders, Mulambwane CPA</p>
                         </div>
@@ -861,7 +894,7 @@
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-20 fade-in">
                     <div class="inline-block px-6 py-2 bg-white/20 text-white rounded-full text-sm font-semibold mb-6">
-                        🌍 Sacred Province of Africa
+                        Sacred Province of Africa
                     </div>
                     <h2 class="text-5xl md:text-6xl font-serif font-bold mb-8" style="color: var(--cream-white);">
                         Limpopo: <span style="color: var(--accent-gold);">Land of Legends</span>
@@ -922,10 +955,10 @@
                                 Limpopo Province is renowned as the "pharmacy of Africa," home to over 3,000 medicinal plant species. Our guided bush walks include educational sessions about traditional healing plants used by our ancestors for centuries.
                             </p>
                             <ul class="space-y-2 text-gray-600">
-                                <li class="flex items-center"><span class="mr-2" style="color: var(--accent-gold);">🌿</span> African Potato (Hypoxis hemerocallidea)</li>
-                                <li class="flex items-center"><span class="mr-2" style="color: var(--accent-gold);">🌿</span> Sutherlandia (Cancer Bush)</li>
-                                <li class="flex items-center"><span class="mr-2" style="color: var(--accent-gold);">🌿</span> Marula Tree (Sclerocarya birrea)</li>
-                                <li class="flex items-center"><span class="mr-2" style="color: var(--accent-gold);">🌿</span> Wild Fig Trees (Ficus sycamorus)</li>
+                                <li class="flex items-center"><span class="mr-2 font-bold" style="color: var(--accent-gold);">•</span> African Potato (Hypoxis hemerocallidea)</li>
+                                <li class="flex items-center"><span class="mr-2 font-bold" style="color: var(--accent-gold);">•</span> Sutherlandia (Cancer Bush)</li>
+                                <li class="flex items-center"><span class="mr-2 font-bold" style="color: var(--accent-gold);">•</span> Marula Tree (Sclerocarya birrea)</li>
+                                <li class="flex items-center"><span class="mr-2 font-bold" style="color: var(--accent-gold);">•</span> Wild Fig Trees (Ficus sycamorus)</li>
                             </ul>
                         </div>
                         <div>
@@ -935,7 +968,7 @@
                                     Experience authentic cultural exchange as our local guides, many of whom are traditional healers (sangomas), share ancestral knowledge about the medicinal and spiritual properties of indigenous plants.
                                 </p>
                                 <div class="bg-green-200 px-4 py-2 rounded-full text-green-800 text-sm font-semibold">
-                                    🌱 Authentic Cultural Experience
+                                    Authentic Cultural Experience
                                 </div>
                             </div>
                         </div>
@@ -1044,10 +1077,10 @@
             <div class="relative z-20 text-center max-w-6xl mx-auto px-4 fade-in">
                 <div class="mb-6">
                     <div class="inline-block px-6 py-2 forest-gradient text-white rounded-full text-sm font-semibold mb-4">
-                        🏹 Ubuntu Hunting Heritage
+                        Professional Hunting Heritage
                     </div>
                     <p class="text-xl md:text-2xl text-yellow-300 font-light italic african-text-shadow mb-4">
-                        "Thuthuka ngokwenza" - Hunt with ancient wisdom
+                        "Excellence through Experience" - Hunt with professional guidance
                     </p>
                 </div>
                 
@@ -1058,15 +1091,15 @@
                 <div class="w-32 h-1 safari-gradient mx-auto mb-8 rounded"></div>
                 
                 <p class="text-xl md:text-2xl mb-12 leading-relaxed font-light max-w-4xl mx-auto" style="color: var(--cream-white);">
-                    Honor the ancestral traditions of ethical hunting through 15,000 hectares of pristine Limpopo wilderness. Every hunt supports community conservation and celebrates the Ubuntu spirit of respect for nature.
+                    Honor the ancestral traditions of ethical hunting through 15,000 hectares of pristine Limpopo wilderness. Every hunt supports community conservation and celebrates our commitment to respectful nature stewardship.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
                     <button class="safari-gradient text-white px-12 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl pulse-on-hover">
-                        🏹 Plan Your Hunt
+                        Plan Your Hunt
                     </button>
                     <button class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-gray-800">
-                        📋 Species & Pricing
+                        Species & Pricing
                     </button>
                 </div>
                 
@@ -1088,56 +1121,56 @@
             </div>
         </section>
 
-        <!-- Ubuntu Hunting Philosophy -->
+        <!-- Professional Hunting Philosophy -->
         <section class="py-24" style="background: linear-gradient(135deg, var(--cream-white) 0%, #f8f6f0 100%);">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
                     <div class="fade-in">
                         <div class="relative">
-                            <img src="images/hunting-philosophy-placeholder.jpg" alt="Conservation Through Ubuntu Wisdom" class="w-full h-96 object-cover rounded-3xl tribal-border shadow-2xl" 
+                            <img src="images/hunting-philosophy-placeholder.jpg" alt="Conservation Through Professional Wisdom" class="w-full h-96 object-cover rounded-3xl tribal-border shadow-2xl" 
                                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="w-full h-96 forest-gradient rounded-3xl flex items-center justify-center text-white text-8xl shadow-2xl" style="display: none;">
-                                🏹
+                            <div class="w-full h-96 forest-gradient rounded-3xl flex items-center justify-center text-white text-6xl shadow-2xl" style="display: none;">
+                                Professional Hunting
                             </div>
                             <!-- Floating conservation icons -->
                             <div class="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-xl floating">
-                                <span class="text-2xl">🛡️</span>
+                                <span class="text-2xl font-bold" style="color: var(--primary-green);">Conservation</span>
                             </div>
                             <div class="absolute -bottom-4 -left-4 bg-white rounded-full p-4 shadow-xl floating" style="animation-delay: 1s;">
-                                <span class="text-2xl">🌍</span>
+                                <span class="text-2xl font-bold" style="color: var(--accent-gold);">Excellence</span>
                             </div>
                         </div>
                     </div>
                     
                     <div class="fade-in">
                         <div class="inline-block px-6 py-2 sunset-gradient text-white rounded-full text-sm font-semibold mb-6">
-                            🏹 Ubuntu Conservation Philosophy
+                            Professional Conservation Philosophy
                         </div>
                         <h2 class="text-5xl font-serif font-bold mb-8" style="color: var(--primary-green);">
-                            <span style="color: var(--accent-gold);">Hloniphekela</span> - Sacred Respect
+                            <span style="color: var(--accent-gold);">Excellence</span> - Sacred Respect
                         </h2>
                         <div class="w-24 h-1 forest-gradient mb-8 rounded"></div>
                         
                         <div class="space-y-6 text-gray-700 text-lg leading-relaxed">
                             <p>
-                                For over a millennium, the people of <strong>Limpopo Province</strong> practiced <strong>"Hloniphekela Phahla"</strong> - respectful hunting that honors the sacred balance between humanity and nature. This ancestral wisdom guides every hunt at Mulambwane.
+                                For generations, the people of <strong>Limpopo Province</strong> have practiced <strong>respectful hunting</strong> that honors the sacred balance between humanity and nature. This time-tested wisdom guides every hunt at Mulambwane.
                             </p>
                             <p>
                                 Our <strong>ethical hunting philosophy</strong> teaches that we honor and respect all wildlife. Every ethical hunt directly funds anti-poaching operations, habitat restoration, and conservation programs while maintaining healthy wildlife populations through scientific management.
                             </p>
                             <p>
-                                As a <strong>Community Property Association (CPA)</strong>, 70% of hunting proceeds stay within the Mulambwane community, creating sustainable livelihoods and incentivizing wildlife protection through traditional stewardship practices.
+                                As a <strong>Community Property Association (CPA)</strong>, 70% of hunting proceeds stay within the Mulambwane community, creating sustainable livelihoods and incentivizing wildlife protection through proven stewardship practices.
                             </p>
                         </div>
                         
                         <div class="mt-8 grid grid-cols-2 gap-6">
                             <div class="bg-white p-6 rounded-xl shadow-lg tribal-border text-center">
-                                <div class="text-3xl mb-3" style="color: var(--accent-gold);">💰</div>
+                                <div class="text-2xl mb-3 font-bold" style="color: var(--accent-gold);">Revenue</div>
                                 <p class="font-bold text-lg mb-2" style="color: var(--primary-green);">70%</p>
                                 <p class="text-sm text-gray-600">Revenue to Community</p>
                             </div>
                             <div class="bg-white p-6 rounded-xl shadow-lg tribal-border text-center">
-                                <div class="text-3xl mb-3" style="color: var(--primary-green);">🛡️</div>
+                                <div class="text-2xl mb-3 font-bold" style="color: var(--primary-green);">Ethics</div>
                                 <p class="font-bold text-lg mb-2" style="color: var(--primary-green);">100%</p>
                                 <p class="text-sm text-gray-600">Ethical Fair Chase</p>
                             </div>
@@ -1222,9 +1255,9 @@
                     <!-- Bushcraft Wisdom -->
                     <div class="group bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 tribal-border">
                         <div class="w-20 h-20 mx-auto mb-6 safari-gradient rounded-2xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-                            <span class="text-3xl text-white">🌿</span>
+                            <span class="text-xl text-white font-bold">Bushcraft</span>
                         </div>
-                        <h3 class="text-xl font-bold mb-4 text-center" style="color: var(--primary-green);">Ubuntu Bushcraft</h3>
+                        <h3 class="text-xl font-bold mb-4 text-center" style="color: var(--primary-green);">Professional Bushcraft</h3>
                         <ul class="text-gray-600 space-y-2 text-sm">
                             <li class="flex items-center"><span class="text-purple-500 mr-2">•</span> Silent movement</li>
                             <li class="flex items-center"><span class="text-purple-500 mr-2">•</span> Natural concealment</li>
@@ -1250,16 +1283,16 @@
             </div>
         </section>
 
-        <!-- The Ubuntu Hunting Experience -->
+        <!-- The Professional Hunting Experience -->
         <section class="py-24" style="background: linear-gradient(135deg, var(--primary-green) 0%, var(--bush-green) 100%);">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-20 fade-in">
                     <h2 class="text-5xl font-serif font-bold mb-6" style="color: var(--cream-white);">
-                        Your Sacred <span style="color: var(--accent-gold);">Hunting Journey</span>
+                        Your Professional <span style="color: var(--accent-gold);">Hunting Journey</span>
                     </h2>
                     <div class="w-32 h-1 sunset-gradient mx-auto mb-8 rounded"></div>
                     <p class="text-xl max-w-4xl mx-auto leading-relaxed" style="color: var(--cream-white);">
-                        Journey with our licensed Professional Hunters and master trackers on an expedition steeped in ancestral wisdom. From dawn's first light to fireside stories under African stars, experience hunting as our forefathers intended.
+                        Journey with our licensed Professional Hunters and master trackers on an expedition steeped in time-honored wisdom. From dawn's first light to fireside stories under African stars, experience hunting as generations intended.
                     </p>
                 </div>
                 
@@ -1297,16 +1330,16 @@
                         </div>
                     </div>
 
-                    <!-- Ubuntu Ethics -->
+                    <!-- Professional Ethics -->
                     <div class="bg-white rounded-3xl p-8 tribal-border shadow-2xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 relative">
                         <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-green-400 to-yellow-500 text-white px-4 py-2 rounded-full text-sm font-bold">
                             CONSERVATION CORE
                         </div>
                         <div class="text-center mb-6">
                             <div class="w-20 h-20 mx-auto forest-gradient rounded-2xl flex items-center justify-center mb-6">
-                                <span class="text-3xl text-white">🛡️</span>
+                                <span class="text-lg text-white font-bold">Ethics</span>
                             </div>
-                            <h3 class="text-2xl font-bold mb-4" style="color: var(--primary-green);">Ubuntu Ethics</h3>
+                            <h3 class="text-2xl font-bold mb-4" style="color: var(--primary-green);">Professional Ethics</h3>
                             <p class="text-gray-600 mb-6">Hunting with respect, purpose, and community impact</p>
                         </div>
                         <div class="space-y-4">
@@ -1394,7 +1427,7 @@
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-20 fade-in">
                     <div class="inline-block px-6 py-2 safari-gradient text-white rounded-full text-sm font-semibold mb-6">
-                        🦁 Limpopo Wildlife Diversity
+                        Limpopo Wildlife Diversity
                     </div>
                     <h2 class="text-5xl md:text-6xl font-serif mb-8" style="color: var(--primary-green);">
                         Magnificent <span style="color: var(--accent-gold);">African Game</span>
@@ -1512,7 +1545,7 @@
                 <!-- Hunting Packages -->
                 <div class="bg-white rounded-3xl p-8 tribal-border shadow-xl">
                     <div class="text-center mb-12">
-                        <h3 class="text-4xl font-bold mb-6" style="color: var(--primary-green);">Ubuntu Hunting Packages</h3>
+                        <h3 class="text-4xl font-bold mb-6" style="color: var(--primary-green);">Professional Hunting Packages</h3>
                         <p class="text-lg text-gray-700 max-w-3xl mx-auto">
                             All packages include luxury lodge accommodation, meals, professional hunting guide, field preparation, and cultural experiences.
                         </p>
@@ -1577,16 +1610,16 @@
                 <!-- Call to Action -->
                 <div class="text-center mt-12">
                     <div class="bg-gradient-to-r from-green-100 to-yellow-100 p-8 rounded-3xl tribal-border shadow-xl max-w-4xl mx-auto">
-                        <h3 class="text-3xl font-bold mb-4" style="color: var(--primary-green);">Ready for Your Ubuntu Hunting Adventure?</h3>
+                        <h3 class="text-3xl font-bold mb-4" style="color: var(--primary-green);">Ready for Your Professional Hunting Adventure?</h3>
                         <p class="text-gray-700 mb-6 text-lg">
                             Join us for an ethical hunting experience that honors tradition, supports conservation, and creates lasting memories in the heart of Africa.
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
                             <button onclick="showPage('contact')" class="safari-gradient text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 pulse-on-hover">
-                                📞 Plan Your Hunt
+                                Plan Your Hunt
                             </button>
                             <button class="bg-transparent border-2 text-black px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-gray-100" style="border-color: var(--primary-green); color: var(--primary-green);">
-                                📋 Full Species List & Pricing
+                                Full Species List & Pricing
                             </button>
                         </div>
                     </div>
@@ -1606,7 +1639,7 @@
             <div class="relative z-20 text-center max-w-6xl mx-auto px-4 fade-in">
                 <div class="mb-6">
                     <div class="inline-block px-6 py-2 sunset-gradient text-white rounded-full text-sm font-semibold mb-4">
-                        📸 Ubuntu Photography Experience
+                        Professional Photography Experience
                     </div>
                 </div>
                 
@@ -1617,15 +1650,15 @@
                 <div class="w-32 h-1 safari-gradient mx-auto mb-8 rounded"></div>
                 
                 <p class="text-xl md:text-2xl mb-12 leading-relaxed font-light max-w-4xl mx-auto" style="color: var(--cream-white);">
-                    Through the lens of community heritage and conservation, photograph Africa's magnificent wildlife in the pristine wilderness of Limpopo Province, where every shot tells a story of Ubuntu and conservation.
+                    Through the lens of community heritage and conservation, photograph Africa's magnificent wildlife in the pristine wilderness of Limpopo Province, where every shot tells a story of excellence and conservation.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
                     <button class="safari-gradient text-white px-12 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl pulse-on-hover">
-                        📷 Book Photo Safari
+                        Book Photo Safari
                     </button>
                     <button class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-gray-800">
-                        🎓 Photography Workshops
+                        Photography Workshops
                     </button>
                 </div>
                 
@@ -1647,7 +1680,7 @@
             </div>
         </section>
 
-        <!-- Photographer's Paradise with Ubuntu Philosophy -->
+        <!-- Photographer's Paradise with Professional Philosophy -->
         <section class="py-24" style="background: linear-gradient(135deg, var(--cream-white) 0%, #f8f6f0 100%);">
             <div class="max-w-7xl mx-auto px-4">
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -1655,25 +1688,25 @@
                         <div class="relative">
                             <img src="images/photo-paradise-placeholder.jpg" alt="Photography Paradise" class="w-full h-96 object-cover rounded-3xl tribal-border shadow-2xl" 
                                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="w-full h-96 safari-gradient rounded-3xl flex items-center justify-center text-white text-8xl shadow-2xl" style="display: none;">
-                                📸
+                            <div class="w-full h-96 safari-gradient rounded-3xl flex items-center justify-center text-white text-6xl shadow-2xl" style="display: none;">
+                                Professional Photography
                             </div>
                             <!-- Floating elements -->
                             <div class="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-xl floating">
-                                <span class="text-2xl">🦁</span>
+                                <span class="text-xl font-bold" style="color: var(--primary-green);">Wildlife</span>
                             </div>
                             <div class="absolute -bottom-4 -left-4 bg-white rounded-full p-4 shadow-xl floating" style="animation-delay: 1s;">
-                                <span class="text-2xl">🐘</span>
+                                <span class="text-xl font-bold" style="color: var(--accent-gold);">Excellence</span>
                             </div>
                         </div>
                     </div>
                     
                     <div class="fade-in">
                         <div class="inline-block px-6 py-2 forest-gradient text-white rounded-full text-sm font-semibold mb-6">
-                            🌿 Ubuntu Vision: "We see together"
+                            Professional Vision: "Excellence through Experience"
                         </div>
                         <h2 class="text-5xl font-serif font-bold mb-8" style="color: var(--primary-green);">
-                            A Photographer's <span style="color: var(--accent-gold);">Sacred</span> Canvas
+                            A Photographer's <span style="color: var(--accent-gold);">Professional</span> Canvas
                         </h2>
                         <div class="w-24 h-1 sunset-gradient mb-8 rounded"></div>
                         
@@ -1682,7 +1715,7 @@
                                 In the heart of <strong>Limpopo Province</strong>, Mulambwane offers photographers a living gallery where every frame captures the essence of African wilderness and community spirit.
                             </p>
                             <p>
-                                Our <strong>Ubuntu philosophy</strong> extends to photography - "I see because we see." Our expert guides, born from the local community, possess an intuitive understanding of wildlife behavior, seasonal migrations, and the golden hours that transform ordinary moments into extraordinary photographs.
+                                Our <strong>professional philosophy</strong> extends to photography - "Excellence through experience." Our expert guides, born from the local community, possess an intuitive understanding of wildlife behavior, seasonal migrations, and the golden hours that transform ordinary moments into extraordinary photographs.
                             </p>
                             <p>
                                 From the majestic baobab trees silhouetted against crimson sunsets to the intimate moments of a mother cheetah with her cubs, every photograph you take contributes to our <strong>conservation story</strong> and supports the Mulambwane Community Property Association.
@@ -1691,12 +1724,12 @@
                         
                         <div class="mt-8 grid grid-cols-2 gap-6">
                             <div class="bg-white p-4 rounded-xl shadow-lg text-center">
-                                <div class="text-3xl mb-2" style="color: var(--accent-gold);">🏆</div>
+                                <div class="text-2xl mb-2 font-bold" style="color: var(--accent-gold);">Excellence</div>
                                 <p class="font-semibold">Award-Winning</p>
                                 <p class="text-sm text-gray-600">Photo Opportunities</p>
                             </div>
                             <div class="bg-white p-4 rounded-xl shadow-lg text-center">
-                                <div class="text-3xl mb-2" style="color: var(--primary-green);">🤝</div>
+                                <div class="text-2xl mb-2 font-bold" style="color: var(--primary-green);">Partnership</div>
                                 <p class="font-semibold">Community Guides</p>
                                 <p class="text-sm text-gray-600">Local Wildlife Experts</p>
                             </div>
@@ -1711,7 +1744,7 @@
             <div class="max-w-7xl mx-auto px-4">
                 <div class="text-center mb-20 fade-in">
                     <div class="inline-block px-6 py-2 safari-gradient text-white rounded-full text-sm font-semibold mb-6">
-                        📷 Professional Photography Experience
+                        Professional Photography Experience
                     </div>
                     <h2 class="text-5xl md:text-6xl font-serif mb-8" style="color: var(--primary-green);">
                         Designed for the <span style="color: var(--accent-gold);">Perfect Shot</span>
@@ -1741,9 +1774,9 @@
                     <!-- Expert Guidance -->
                     <div class="group bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 tribal-border">
                         <div class="w-24 h-24 mx-auto mb-6 forest-gradient rounded-2xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-                            <span class="text-3xl text-white">👥</span>
+                            <span class="text-lg text-white font-bold">Guides</span>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4 text-center" style="color: var(--primary-green);">Ubuntu Photography Guides</h3>
+                        <h3 class="text-2xl font-bold mb-4 text-center" style="color: var(--primary-green);">Professional Photography Guides</h3>
                         <ul class="text-gray-600 space-y-3">
                             <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Local wildlife behavior experts</li>
                             <li class="flex items-center"><span class="text-green-500 mr-3">✓</span> Professional photography experience</li>
@@ -1756,7 +1789,7 @@
                     <!-- Perfect Timing -->
                     <div class="group bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 tribal-border">
                         <div class="w-24 h-24 mx-auto mb-6 safari-gradient rounded-2xl flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300">
-                            <span class="text-3xl text-white">⏰</span>
+                            <span class="text-lg text-white font-bold">Timing</span>
                         </div>
                         <h3 class="text-2xl font-bold mb-4 text-center" style="color: var(--primary-green);">Golden Hour Mastery</h3>
                         <ul class="text-gray-600 space-y-3">
@@ -1831,7 +1864,7 @@
                         </div>
                         <div class="text-center mb-6">
                             <div class="w-20 h-20 mx-auto safari-gradient rounded-2xl flex items-center justify-center mb-4">
-                                <span class="text-3xl text-white">🎓</span>
+                                <span class="text-lg text-white font-bold">Workshop</span>
                             </div>
                             <h3 class="text-2xl font-bold mb-2" style="color: var(--primary-green);">Pro Photography Workshop</h3>
                             <p class="text-gray-600">Master wildlife photography techniques</p>
@@ -1915,10 +1948,10 @@
                         </p>
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
                             <button onclick="showPage('contact')" class="safari-gradient text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 pulse-on-hover">
-                                📞 Contact Our Photography Team
+                                Contact Our Photography Team
                             </button>
                             <button class="bg-transparent border-2 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white" style="border-color: var(--primary-green); color: var(--primary-green);" onmouseover="this.style.backgroundColor='var(--primary-green)'; this.style.color='white'" onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--primary-green)'">
-                                📋 Download Photography Guide
+                                Download Photography Guide
                             </button>
                         </div>
                     </div>
@@ -1957,7 +1990,7 @@
                         🏨 Book Your Stay
                     </button>
                     <button class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-gray-800">
-                        📋 View Packages
+                        View Packages
                     </button>
                 </div>
             </div>
