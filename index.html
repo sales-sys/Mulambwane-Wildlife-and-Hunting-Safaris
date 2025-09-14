@@ -202,6 +202,10 @@
                 font-size: 1rem !important;
                 padding: 1rem !important;
             }
+            /* Only keep main row + mobile menu in the nav */
+            nav > :not(.max-w-7xl):not(#mobile-menu):not(script):not(style) {
+                display: none !important;
+            }
             
             /* Fix blurry navigation on mobile */
             nav {
@@ -237,20 +241,41 @@
             }
             
             /* Logo optimization for mobile */
-            nav img {
-                image-rendering: -webkit-optimize-contrast;
-                image-rendering: crisp-edges;
-                max-width: 100%;
-                height: auto;
+            nav img { image-rendering: auto; -ms-interpolation-mode: bicubic; }
+
+            /* Fix blurry navigation on mobile and lock layout */
+            nav {
+                position: fixed !important;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 64px; /* match h-16 */
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                will-change: transform;
+                contain: layout paint;
+                overflow: visible;
+                z-index: 50;
             }
             
-            /* Prevent subpixel rendering issues */
-            * {
-                -webkit-transform: translateZ(0);
-                transform: translateZ(0);
+            /* Ensure only logo + menu row shows */
+            nav .max-w-7xl > .flex {
+                min-height: 64px;
+                align-items: center;
+            }
+
+            /* Hide any injected message/banner in nav */
+            nav .nav-message,
+            nav [data-injected-message],
+            nav .greeting-banner,
+            nav .notice,
+            nav .announcement,
+            nav .toast,
+            nav .snackbar {
+                display: none !important;
             }
         }
-        
+
         /* Small mobile devices */
         @media (max-width: 480px) {
             .text-6xl, .text-8xl {
@@ -277,6 +302,11 @@
                 left: 0;
                 right: 0;
                 margin: 0;
+            }
+
+            /* Keep top nav compact and clear on very small screens */
+            nav {
+                height: 60px;
             }
         }
         
@@ -306,27 +336,6 @@
             transform: translateY(-100%) !important;
         }
     </style>
-
-        <!-- Floating Get Help Button -->
-        <button id="get-help-btn" class="fixed bottom-6 right-6 z-50 bg-[#abb874] text-white px-6 py-3 rounded-full shadow-lg font-semibold flex items-center gap-2 hover:bg-[#889976] transition-all" onclick="openHelpChat()">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.77 9.77 0 01-4-.8l-4 1 1-3.1A7.96 7.96 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-            Get Help
-        </button>
-
-        <!-- Chatbot Modal -->
-        <div id="chatbot-modal" class="fixed inset-0 z-50 flex items-end justify-end pointer-events-none">
-            <div class="bg-white rounded-lg shadow-2xl w-full max-w-sm m-2 md:m-6 p-4 flex flex-col max-h-96" style="display:none; pointer-events:auto;" id="chatbot-box">
-                <div class="flex justify-between items-center mb-2">
-                    <span class="font-bold text-lg text-[#abb874]">Mulambwane Live Help</span>
-                    <button onclick="closeHelpChat()" class="text-gray-500 hover:text-gray-900">&times;</button>
-                </div>
-                <div id="chatbot-messages" class="flex-1 overflow-y-auto mb-2" style="max-height: 300px;"></div>
-                <form id="chatbot-form" class="flex gap-2" onsubmit="sendChatMessage(event)">
-                    <input type="text" id="chatbot-input" class="flex-1 border rounded px-2 py-1" placeholder="Type your question..." autocomplete="off" required />
-                    <button type="submit" class="bg-[#abb874] text-white px-4 py-1 rounded font-semibold hover:bg-[#889976]">Send</button>
-                </form>
-            </div>
-        </div>
 
         <script>
         // Chatbot API Key (kept in JS, not exposed in HTML)
@@ -395,9 +404,29 @@
             }
         }
         </script>
-    <!-- ...existing code...
+    
 </head>
 <body class="font-sans text-gray-800 scroll-smooth">
+    <!-- Floating Get Help Button -->
+    <button id="get-help-btn" class="fixed bottom-6 right-6 z-50 bg-[#abb874] text-white px-6 py-3 rounded-full shadow-lg font-semibold flex items-center gap-2 hover:bg-[#889976] transition-all" onclick="openHelpChat()">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.77 9.77 0 01-4-.8l-4 1 1-3.1A7.96 7.96 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+        Get Help
+    </button>
+
+    <!-- Chatbot Modal -->
+    <div id="chatbot-modal" class="fixed inset-0 z-50 flex items-end justify-end pointer-events-none">
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-sm m-2 md:m-6 p-4 flex flex-col max-h-96" style="display:none; pointer-events:auto;" id="chatbot-box">
+            <div class="flex justify-between items-center mb-2">
+                <span class="font-bold text-lg text-[#abb874]">Mulambwane Live Help</span>
+                <button onclick="closeHelpChat()" class="text-gray-500 hover:text-gray-900">&times;</button>
+            </div>
+            <div id="chatbot-messages" class="flex-1 overflow-y-auto mb-2" style="max-height: 300px;"></div>
+            <form id="chatbot-form" class="flex gap-2" onsubmit="sendChatMessage(event)">
+                <input type="text" id="chatbot-input" class="flex-1 border rounded px-2 py-1" placeholder="Type your question..." autocomplete="off" required />
+                <button type="submit" class="bg-[#abb874] text-white px-4 py-1 rounded font-semibold hover:bg-[#889976]">Send</button>
+            </form>
+        </div>
+    </div>
     <!-- Navigation -->
     <nav class="fixed top-0 w-full bg-white shadow-lg z-50 border-b-2" style="border-color: var(--accent-gold);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -690,7 +719,6 @@
                     </div>
                 </div>
             </div>
-        </section>
     </div>
 
     <!-- Our Story Page -->
@@ -2302,8 +2330,6 @@
                 </div>
             </div>
         </section>
-            </div>
-        </section>
     </div>
 
     <!-- Premium Game Meat Page -->
@@ -3076,6 +3102,46 @@
                 button.style.overflow = 'hidden';
             });
         });
+    </script>
+
+    <!-- Hard-disable any injected nav message and keep only logo + menu -->
+    <script>
+        (function() {
+            // No-op any greeting/banner injector if defined elsewhere
+            try { window.showTraditionalGreeting = function(){}; } catch (e) {}
+
+            function cleanNav() {
+                const nav = document.querySelector('nav');
+                if (!nav) return;
+                const junkSelectors = [
+                    '.nav-message',
+                    '[data-injected-message]',
+                    '.greeting-banner',
+                    '.notice',
+                    '.announcement',
+                    '.toast',
+                    '.snackbar'
+                ];
+                junkSelectors.forEach(sel => nav.querySelectorAll(sel).forEach(el => el.remove()));
+
+                // Remove stray empty text nodes directly under nav to avoid odd spacing/messages
+                Array.from(nav.childNodes).forEach(n => {
+                    if (n.nodeType === Node.TEXT_NODE && !n.textContent.trim()) {
+                        n.parentNode && n.parentNode.removeChild(n);
+                    }
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', cleanNav);
+            window.addEventListener('load', cleanNav);
+
+            // Watch for future insertions and clean them up immediately
+            const nav = document.querySelector('nav');
+            if (nav && 'MutationObserver' in window) {
+                const mo = new MutationObserver(cleanNav);
+                mo.observe(nav, { childList: true, subtree: true });
+            }
+        })();
     </script>
 
     <style>
