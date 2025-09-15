@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mulambwane Safaris - The Soul of Africa is Calling</title>
+    <title>Mulambwane WildLife & Hunting Safaris - The Soul of Africa is Calling</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Ubuntu:wght@300;400;500;700&display=swap');
@@ -178,13 +178,7 @@
                 gap: 2rem !important;
             }
             
-            /* Chatbot mobile positioning */
-            #get-help-btn {
-                bottom: 1rem !important;
-                right: 1rem !important;
-                padding: 0.75rem 1rem !important;
-                font-size: 0.875rem !important;
-            }
+
             
             /* Card adjustments */
             .hover-lift {
@@ -197,81 +191,7 @@
                 min-width: 44px;
             }
             
-            /* Enhanced mobile navigation */
-            .nav-link {
-                font-size: 1rem !important;
-                padding: 1rem !important;
-            }
-            /* Mobile navigation - always visible */
-            nav {
-                position: fixed !important;
-                top: 0;
-                left: 0;
-                right: 0;
-                width: 100% !important;
-                height: 64px !important;
-                background: white !important;
-                z-index: 50 !important;
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                transform: translateY(0) !important;
-                transition: all 0.3s ease !important;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-                backdrop-filter: none !important;
-            }
-            
-            /* Nav is always visible on mobile now */
-            
-            /* Ensure nav content is visible */
-            nav .max-w-7xl {
-                display: block !important;
-                visibility: visible !important;
-            }
-            
-            nav .max-w-7xl > .flex {
-                display: flex !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-                height: 64px !important;
-                min-height: 64px !important;
-                visibility: visible !important;
-            }
-            
-            /* Logo visibility */
-            nav img, nav .flex.items-center {
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-            }
-            
-            /* Menu button visibility */
-            nav #mobile-menu-btn {
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-            }
-            
-            /* Desktop menu hidden on mobile */
-            nav .hidden.md\\:flex {
-                display: none !important;
-            }
-            
-            /* Clear logo and text on mobile */
-            nav img, nav div, nav span, nav a {
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-                text-rendering: optimizeLegibility;
-            }
-            
-            /* Mobile menu clarity */
-            #mobile-menu {
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-                backdrop-filter: none !important;
-                background: white !important;
-            }
+
             
             /* Mobile form optimization */
             input[type="text"], input[type="email"], textarea {
@@ -295,11 +215,7 @@
             }
         }
 
-        /* Small mobile devices */
-        /* Add body padding for mobile nav */
-        body {
-            padding-top: 64px !important;
-        }
+
 
         @media (max-width: 480px) {
             .text-6xl, .text-8xl {
@@ -351,88 +267,58 @@
             }
         }
         
-        /* Modern Mobile Menu Styles */
-        #mobile-menu {
-            backdrop-filter: blur(10px);
-            background: linear-gradient(135deg, var(--cream-white) 0%, #f8f6f0 100%);
-            border-left: 3px solid var(--accent-gold);
-        }
-        
-        #mobile-menu.translate-y-0 {
-            transform: translateY(0) !important;
-        }
-        
-        #mobile-menu.-translate-y-full {
-            transform: translateY(-100%) !important;
-        }
-        
-        /* Ensure mobile menu is above everything */
+        /* Simple Mobile Navigation Styles */
         @media (max-width: 768px) {
+            /* Hide desktop menu on mobile */
+            .hidden.md\\:flex {
+                display: none !important;
+            }
+            
+            /* Show mobile menu button */
+            #mobile-menu-btn {
+                display: block;
+                color: var(--primary-green);
+            }
+            
+            /* Mobile dropdown styling */
             #mobile-menu {
-                z-index: 999 !important;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             }
             
-            /* Better touch targets for mobile */
-            #mobile-menu a {
-                min-height: 48px !important;
+            #mobile-menu a:hover {
+                background-color: var(--accent-gold) !important;
+                color: white !important;
+            }
+            
+            /* Hide Get Help button on mobile */
+            #get-help-btn {
+                display: none !important;
+            }
+        }
+        
+        /* Desktop - hide mobile button and show Get Help button */
+        @media (min-width: 769px) {
+            #mobile-menu-btn {
+                display: none;
+            }
+            
+            #mobile-menu {
+                display: none !important;
+            }
+            
+            /* Show Get Help button on desktop */
+            #get-help-btn {
                 display: flex !important;
-                align-items: center !important;
-                font-size: 16px !important;
-            }
-            
-            /* Prevent zoom on form inputs on iOS */
-            #mobile-menu input, 
-            #mobile-menu button {
-                font-size: 16px !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                position: fixed;
+                bottom: 24px;
+                right: 24px;
+                z-index: 50;
             }
         }
         
-        /* Mobile menu item animations */
-        #mobile-menu a {
-            transform: translateX(-20px);
-            opacity: 0;
-            animation: slideInFromLeft 0.3s ease-out forwards;
-            color: var(--earth-brown) !important;
-            transition: all 0.3s ease;
-        }
-        
-        /* Mobile menu link styling */
-        .mobile-menu-link {
-            color: var(--earth-brown) !important;
-        }
-        
-        .mobile-menu-link:hover {
-            color: var(--cream-white) !important;
-            background: linear-gradient(135deg, var(--primary-green), var(--accent-gold)) !important;
-            transform: translateX(5px) !important;
-        }
-        
-        #mobile-menu a:nth-child(1) { animation-delay: 0.1s; }
-        #mobile-menu a:nth-child(2) { animation-delay: 0.15s; }
-        #mobile-menu a:nth-child(3) { animation-delay: 0.2s; }
-        #mobile-menu a:nth-child(4) { animation-delay: 0.25s; }
-        #mobile-menu a:nth-child(5) { animation-delay: 0.3s; }
-        #mobile-menu a:nth-child(6) { animation-delay: 0.35s; }
-        #mobile-menu a:nth-child(7) { animation-delay: 0.4s; }
-        
-        @keyframes slideInFromLeft {
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        
-        /* Improved mobile menu button */
-        #mobile-menu-btn {
-            backdrop-filter: blur(10px);
-            background: linear-gradient(135deg, var(--primary-green), var(--accent-gold)) !important;
-            border: 2px solid var(--accent-gold) !important;
-        }
-        
-        /* Mobile menu backdrop styling */
-        #mobile-menu-backdrop {
-            background: linear-gradient(135deg, var(--earth-brown)/70, var(--primary-green)/50) !important;
-        }
+
     </style>
 
         <script>
@@ -512,8 +398,8 @@
         </svg>
     </button>
 
-    <!-- Floating Get Help Button (Hidden by default) -->
-    <button id="get-help-btn" class="fixed bottom-6 right-6 z-50 bg-[#abb874] text-white px-6 py-3 rounded-full shadow-lg font-semibold flex items-center gap-2 hover:bg-[#889976] transition-all duration-300 opacity-0 pointer-events-none" onclick="openHelpChat()">
+    <!-- Floating Get Help Button -->
+    <button id="get-help-btn" class="fixed bottom-6 right-6 z-50 bg-[#abb874] text-white px-6 py-3 rounded-full shadow-lg font-semibold flex items-center gap-2 hover:bg-[#889976] transition-all duration-300 hover:shadow-xl" onclick="openHelpChat()">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.77 9.77 0 01-4-.8l-4 1 1-3.1A7.96 7.96 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
         Get Help
     </button>
@@ -536,13 +422,15 @@
     <nav class="fixed top-0 w-full bg-white shadow-lg z-50 border-b-2" style="border-color: var(--accent-gold);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
+                <!-- Logo on the left -->
                 <div class="flex items-center">
-                    <img src="images/logo.jpg" alt="Mulambwane Safaris Logo" class="h-16 w-20 rounded-full shadow-md" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div id="logo-fallback" class="flex items-center safari-gradient px-6 py-3 rounded-full shadow-lg" style="display: none;">
-                        <div class="text-2xl font-serif font-bold text-white african-text-shadow">Mulambwane</div>
-                        <div class="text-sm text-white ml-2 font-semibold">Safaris</div>
+                    <img src="images/logo.jpg" alt="Mulambwane Safaris Logo" class="h-12 w-28 rounded-full shadow-md" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div id="logo-fallback" class="flex items-center safari-gradient px-4 py-2 rounded-full shadow-lg" style="display: none;">
+                        <div class="text-lg font-serif font-bold text-white">Mulambwane</div>
                     </div>
                 </div>
+                
+                <!-- Desktop menu (visible on larger screens) -->
                 <div class="hidden md:flex space-x-1">
                     <a href="#" onclick="showPage('home')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Home</a>
                     <a href="#" onclick="showPage('story')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Our Story</a>
@@ -551,51 +439,25 @@
                     <a href="#" onclick="showPage('gamemeat')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Game Meat</a>
                     <a href="#" onclick="showPage('contact')" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:safari-gradient hover:text-white hover:shadow-lg">Contact</a>
                 </div>
-                <button id="mobile-menu-btn" class="md:hidden safari-gradient p-3 rounded-full text-white shadow-lg transition-all duration-300 hover:scale-105" onclick="toggleMobileMenu()">
-                    <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                
+                <!-- Hamburger button on the right (visible on mobile) -->
+                <button id="mobile-menu-btn" class="md:hidden p-2" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                    <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
             </div>
         </div>
         
-        <!-- Mobile Menu Backdrop -->
-        <div id="mobile-menu-backdrop" class="md:hidden fixed inset-0 z-40 opacity-0 pointer-events-none transition-opacity duration-300" style="background: linear-gradient(135deg, var(--earth-brown)/60, var(--primary-green)/40);" onclick="closeMobileMenu()"></div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden fixed inset-x-0 top-16 shadow-2xl z-50 transform -translate-y-full transition-all duration-300 ease-in-out border-b max-h-screen overflow-hidden" style="background: linear-gradient(135deg, var(--cream-white) 0%, #f8f6f0 100%); border-color: var(--accent-gold);">
-            <div class="px-6 py-4 max-h-screen overflow-y-auto">
-                <!-- Menu Items with Clean Design -->
-                <div class="space-y-1">
-                    <a href="#" onclick="showPage('home'); closeMobileMenu()" class="mobile-menu-link block px-4 py-3 rounded-lg transition-all duration-200 font-medium">
-                        Home
-                    </a>
-                    <a href="#" onclick="showPage('story'); closeMobileMenu()" class="mobile-menu-link block px-4 py-3 rounded-lg transition-all duration-200 font-medium">
-                        Our Story
-                    </a>
-                    <a href="#" onclick="showPage('hunting'); closeMobileMenu()" class="mobile-menu-link block px-4 py-3 rounded-lg transition-all duration-200 font-medium">
-                        Hunting Safaris
-                    </a>
-                    <a href="#" onclick="showPage('lodge'); closeMobileMenu()" class="mobile-menu-link block px-4 py-3 rounded-lg transition-all duration-200 font-medium">
-                        Safari Lodge
-                    </a>
-                    <a href="#" onclick="showPage('gamemeat'); closeMobileMenu()" class="mobile-menu-link block px-4 py-3 rounded-lg transition-all duration-200 font-medium">
-                        Game Meat
-                    </a>
-                    <a href="#" onclick="showPage('contact'); closeMobileMenu()" class="mobile-menu-link block px-4 py-3 rounded-lg transition-all duration-200 font-medium">
-                        Contact Us
-                    </a>
-                </div>
-                
-                <!-- Action Buttons -->
-                <div class="mt-6 pt-4 space-y-3" style="border-top: 1px solid var(--accent-gold);">
-                    <button onclick="showPage('contact'); closeMobileMenu()" class="w-full py-3 px-4 rounded-lg font-semibold shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-105" style="background: linear-gradient(135deg, var(--primary-green), var(--accent-gold)); color: var(--cream-white);">
-                        Book Your Safari
-                    </button>
-                </div>
+        <!-- Simple Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t-2" style="border-color: var(--accent-gold);">
+            <div class="px-4 py-2 space-y-1">
+                <a href="#" onclick="showPage('home'); closeMobileMenu()" class="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded">Home</a>
+                <a href="#" onclick="showPage('story'); closeMobileMenu()" class="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded">Our Story</a>
+                <a href="#" onclick="showPage('hunting'); closeMobileMenu()" class="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded">Hunting Safaris</a>
+                <a href="#" onclick="showPage('lodge'); closeMobileMenu()" class="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded">Safari Lodge</a>
+                <a href="#" onclick="showPage('gamemeat'); closeMobileMenu()" class="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded">Game Meat</a>
+                <a href="#" onclick="showPage('contact'); closeMobileMenu()" class="block px-3 py-2 text-gray-800 hover:bg-gray-100 rounded">Contact Us</a>
             </div>
         </div>
     </nav>
@@ -614,18 +476,18 @@
                 <!-- Traditional African Welcome -->
                 <div class="mb-4">
                     <p class="text-xl md:text-2xl font-light italic african-text-shadow" style="color: var(--accent-gold);">
-                        "Welcome to Africa's Premier Safari Destination"
+                        "Welcome to South Africa's Premier Safari Destination"
                     </p>
                 </div>
                 
                 <h1 class="text-6xl md:text-8xl hero-title font-serif font-bold mb-6 leading-tight text-white african-text-shadow">
-                    The Soul of Africa is Calling
+                    The Soul of South Africa is Calling
                 </h1>
                 
                 <div class="w-24 h-1 safari-gradient mx-auto mb-8 rounded"></div>
                 
                 <p class="text-xl md:text-2xl mb-8 leading-relaxed font-light max-w-4xl mx-auto text-ivory drop-shadow-md">
-                    Welcome to <span class="font-semibold" style="color: var(--accent-gold);">Mulambwane Safaris</span>, a premier safari destination in the heart of <span class="font-semibold" style="color: var(--accent-gold);">Limpopo Province</span>. Experience authentic African wildlife encounters and world-class safari adventures with professional guides and luxury accommodations.
+                    Welcome to <span class="font-semibold" style="color: var(--accent-gold);">Mulambwane Wildlife & Hunting Safaris</span>, a premier safari destination in the heart of <span class="font-semibold" style="color: var(--accent-gold);">Limpopo Province</span>. Experience authentic wildlife encounters and world-class safari adventures with professional guides and luxury accommodations.
                 </p>
                 
                 <!-- Location Badge -->
@@ -869,7 +731,7 @@
                     
                     <div class="fade-in">
                         <div class="inline-block px-6 py-2 sunset-gradient text-white rounded-full text-sm font-semibold mb-6">
-                            ⭐ Professional Excellence
+                            Professional Excellence
                         </div>
                         
                         <h2 class="text-5xl font-serif font-bold mb-8" style="color: var(--primary-green);">
@@ -2513,105 +2375,45 @@
     </footer>
 
     <script>
-        // Mobile Menu Functions
+        // Test function for debugging
+        function testMenuToggle() {
+            console.log('Testing menu toggle...');
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            console.log('Button found:', btn ? 'YES' : 'NO');
+            console.log('Menu found:', menu ? 'YES' : 'NO');
+            if (btn) console.log('Button onclick:', btn.getAttribute('onclick'));
+            toggleMobileMenu();
+        }
+
+        // Simple Mobile Menu Functions
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
-            const backdrop = document.getElementById('mobile-menu-backdrop');
-            const hamburgerIcon = document.getElementById('hamburger-icon');
-            const closeIcon = document.getElementById('close-icon');
-            const getHelpBtn = document.getElementById('get-help-btn');
-            
-            if (!mobileMenu || !hamburgerIcon || !closeIcon) return;
-            
-            // Use a data attribute to track state more reliably
-            const isOpen = mobileMenu.getAttribute('data-open') === 'true';
-            
-            if (isOpen) {
-                // Close menu
-                mobileMenu.classList.add('-translate-y-full');
-                mobileMenu.classList.remove('translate-y-0');
-                mobileMenu.setAttribute('data-open', 'false');
-                hamburgerIcon.classList.remove('hidden');
-                closeIcon.classList.add('hidden');
-                document.body.style.overflow = ''; // Re-enable scrolling
-                if (backdrop) {
-                    backdrop.style.opacity = '0';
-                    backdrop.style.pointerEvents = 'none';
-                }
-                // Hide Get Help button
-                if (getHelpBtn) {
-                    getHelpBtn.style.opacity = '0';
-                    getHelpBtn.style.pointerEvents = 'none';
-                }
-            } else {
-                // Open menu
-                mobileMenu.classList.remove('-translate-y-full');
-                mobileMenu.classList.add('translate-y-0');
-                mobileMenu.setAttribute('data-open', 'true');
-                hamburgerIcon.classList.add('hidden');
-                closeIcon.classList.remove('hidden');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
-                if (backdrop) {
-                    backdrop.style.opacity = '1';
-                    backdrop.style.pointerEvents = 'auto';
-                }
-                // Show Get Help button
-                if (getHelpBtn) {
-                    getHelpBtn.style.opacity = '1';
-                    getHelpBtn.style.pointerEvents = 'auto';
-                }
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
             }
         }
         
         function closeMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
-            const backdrop = document.getElementById('mobile-menu-backdrop');
-            const hamburgerIcon = document.getElementById('hamburger-icon');
-            const closeIcon = document.getElementById('close-icon');
-            const getHelpBtn = document.getElementById('get-help-btn');
-            
-            if (!mobileMenu || !hamburgerIcon || !closeIcon) return;
-            
-            mobileMenu.classList.add('-translate-y-full');
-            mobileMenu.classList.remove('translate-y-0');
-            mobileMenu.setAttribute('data-open', 'false');
-            hamburgerIcon.classList.remove('hidden');
-            closeIcon.classList.add('hidden');
-            document.body.style.overflow = ''; // Re-enable scrolling
-            if (backdrop) {
-                backdrop.style.opacity = '0';
-                backdrop.style.pointerEvents = 'none';
-            }
-            // Hide Get Help button
-            if (getHelpBtn) {
-                getHelpBtn.style.opacity = '0';
-                getHelpBtn.style.pointerEvents = 'none';
+            if (mobileMenu) {
+                mobileMenu.classList.add('hidden');
             }
         }
         
-        // Close mobile menu when clicking outside (improved)
+        // Close mobile menu when clicking outside
         document.addEventListener('click', function(event) {
             const mobileMenu = document.getElementById('mobile-menu');
             const menuButton = document.getElementById('mobile-menu-btn');
             
             if (!mobileMenu || !menuButton) return;
             
-            const isMenuOpen = mobileMenu.getAttribute('data-open') === 'true';
+            const isMenuOpen = !mobileMenu.classList.contains('hidden');
             const clickedInsideMenu = mobileMenu.contains(event.target);
             const clickedMenuButton = menuButton.contains(event.target);
             
             if (isMenuOpen && !clickedInsideMenu && !clickedMenuButton) {
                 closeMobileMenu();
-            }
-        });
-        
-        // Handle escape key to close menu
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                const mobileMenu = document.getElementById('mobile-menu');
-                if (mobileMenu && mobileMenu.getAttribute('data-open') === 'true') {
-                    closeMobileMenu();
-                }
             }
         });
         
@@ -2786,31 +2588,10 @@
             initParallax();
             initFloatingAnimations();
             
-            // Initialize mobile menu in closed state (nav is always visible)
+            // Initialize mobile menu in closed state
             const mobileMenu = document.getElementById('mobile-menu');
-            const getHelpBtn = document.getElementById('get-help-btn');
-            const floatingMenuBtn = document.getElementById('floating-menu-btn');
-            
             if (mobileMenu) {
-                mobileMenu.classList.add('-translate-y-full');
-                mobileMenu.classList.remove('translate-y-0');
-                mobileMenu.setAttribute('data-open', 'false');
-                // Ensure icons are in correct state
-                const hamburgerIcon = document.getElementById('hamburger-icon');
-                const closeIcon = document.getElementById('close-icon');
-                if (hamburgerIcon) hamburgerIcon.classList.remove('hidden');
-                if (closeIcon) closeIcon.classList.add('hidden');
-            }
-            
-            // Ensure Get Help button starts hidden
-            if (getHelpBtn) {
-                getHelpBtn.style.opacity = '0';
-                getHelpBtn.style.pointerEvents = 'none';
-            }
-            
-            // Hide floating menu button since nav is always visible
-            if (floatingMenuBtn) {
-                floatingMenuBtn.style.display = 'none';
+                mobileMenu.classList.add('hidden');
             }
             
             // Show traditional greeting after 2 seconds
