@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - Mulambwane Wildlife & Hunting Safaris</title>
+    <meta name="description" content="Discover the heritage story of Mulambwane Wildlife & Hunting Safaris. Community-owned conservation in Limpopo Province with 25+ years of excellence.">
+    <meta name="keywords" content="Mulambwane story, community safari, Limpopo heritage, conservation story, African safari heritage">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/get-help-loader.js" defer></script>
+</head>
+<body class="font-sans text-gray-800 scroll-smooth">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white shadow-lg z-50 border-b-2" style="border-color: var(--accent-gold);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo on the left -->
+                <div class="flex items-center cursor-pointer" onclick="window.location.href='index.html'">
+                    <img src="images/Logo.jpg" alt="Mulambwane Safaris Logo" class="h-16 w-24 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div id="logo-fallback" class="flex items-center safari-gradient px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300" style="display: none;">
+                        <div class="text-lg font-serif font-bold text-white">Mulambwane</div>
+                    </div>
+                </div>
+                
+                <!-- Desktop menu (visible on larger screens) -->
+                <div class="hidden md:flex space-x-1">
+                    <a href="index.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Home</a>
+                    <a href="story.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg bg-gradient-to-r from-[#abba70] to-[#889976] text-[#212022]">Our Story</a>
+                    <a href="hunting.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Hunting</a>
+                    <a href="lodge.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Lodge</a>
+                    <a href="gamemeat.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Game Meat</a>
+                    <a href="contact.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Contact</a>
+                </div>
+                
+                <!-- Hamburger button on the right (visible on mobile) -->
+                <button id="mobile-menu-btn" class="md:hidden p-2" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Simple Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t-2" style="border-color: var(--accent-gold);">
+            <div class="px-4 py-2 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Home</a>
+                <a href="story.html" class="block px-3 py-2 text-gray-800 bg-[#abba70] text-[#212022] rounded transition-colors duration-300">Our Story</a>
+                <a href="hunting.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Hunting Safaris</a>
+                <a href="lodge.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Safari Lodge</a>
+                <a href="gamemeat.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Game Meat</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Contact Us</a>
+</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
+        <img src="images/story-hero.jpg" alt="Story Hero" class="absolute inset-0 w-full h-full object-cover z-0" style="object-fit: cover;" />
+        <div class="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-black/60 z-10"></div>
+        <div class="absolute inset-0 african-pattern opacity-5 z-15"></div>
+        
+        <div class="relative z-20 text-center max-w-6xl mx-auto px-4 fade-in">
+            <div class="mb-6">
+                <div class="inline-block px-6 py-2 safari-gradient text-white rounded-full text-sm font-semibold mb-4">
+                    Professional Heritage Story
+                </div>
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl font-serif font-bold mb-8 african-text-shadow">
+                <span style="color: var(--accent-gold);">Our</span> Legacy
+            </h1>
+            
+            <div class="w-32 h-1 safari-gradient mx-auto mb-8 rounded"></div>
+            
+            <p class="text-xl md:text-2xl mb-12 leading-relaxed font-light max-w-4xl mx-auto" style="color: var(--cream-white);">
+                From ancestral lands to modern excellence. The story of Mulambwane is written in the soil of Limpopo, told through generations of professional safari expertise and commitment to conservation.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
+                <button onclick="scrollToSection('our-foundation')" class="safari-gradient text-white px-12 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl pulse-on-hover">
+                    Discover Our Journey
+                </button>
+                <button onclick="scrollToSection('mission-impact')" class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-gray-800">
+                    Community Impact
+                </button>
+            </div>
+            
+            <!-- Heritage Stats -->
+            <div class="grid grid-cols-3 gap-8 mt-12 max-w-2xl mx-auto">
+                <div class="text-center">
+                    <div class="text-3xl font-bold" style="color: var(--accent-gold);">500+</div>
+                    <div class="text-sm text-white/80">Community Members</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold" style="color: var(--accent-gold);">15,000</div>
+                    <div class="text-sm text-white/80">Hectares Protected</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold" style="color: var(--accent-gold);">25+</div>
+                    <div class="text-sm text-white/80">Years of Legacy</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Professional Foundation -->
+    <section id="our-foundation" class="py-24" style="background: linear-gradient(135deg, var(--cream-white) 0%, #f8f6f0 100%);">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <div class="relative">
+                        <img src="images/heritage-placeholder.jpg" alt="Professional Heritage" class="w-full h-96 object-cover rounded-3xl shadow-2xl tribal-border" />
+                        <div class="absolute -bottom-4 -right-4 w-24 h-24 safari-gradient rounded-full flex items-center justify-center shadow-xl">
+                            <span class="text-sm font-bold text-white">Excellence</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="inline-block px-6 py-2 sunset-gradient text-white rounded-full text-sm font-semibold mb-6">
+                        Professional Excellence
+                    </div>
+                    
+                    <h2 class="text-5xl font-serif font-bold mb-8" style="color: var(--primary-green);">
+                        Professional Excellence: <span style="color: var(--accent-gold);">Our Foundation</span>
+                    </h2>
+                    
+                    <div class="w-24 h-1 sunset-gradient mb-8 rounded"></div>
+                    
+                    <p class="text-xl leading-relaxed text-gray-700 mb-8">
+                        <strong style="color: var(--primary-green);">"Excellence through Experience"</strong> - This professional commitment forms the heart of everything we do at Mulambwane. Our team represents more than service providers—we embody decades of safari expertise and dedication to our clients.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4 mb-4">
+                            <div class="w-20 h-20 flex-shrink-0">
+                                <img src="images/community-ownership.jpg" alt="Community Ownership" class="w-20 h-20 object-cover rounded-xl shadow-md" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="w-12 h-12 safari-gradient rounded-full flex items-center justify-center flex-shrink-0" style="display: none;">
+                                    <span class="text-white font-bold text-xs">Partnership</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2" style="color: var(--primary-green);">Community Ownership</h4>
+                                <p class="text-gray-600">500+ community members collectively own and manage 15,000 hectares of pristine wilderness, ensuring benefits flow directly to families.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4 mb-4">
+                            <div class="w-20 h-20 flex-shrink-0">
+                                <img src="images/sustainable-future.jpg" alt="Sustainable Future" class="w-20 h-20 object-cover rounded-xl shadow-md" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="w-12 h-12 sunset-gradient rounded-full flex items-center justify-center flex-shrink-0" style="display: none;">
+                                    <span class="text-white font-bold text-xs">Growth</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2" style="color: var(--primary-green);">Sustainable Future</h4>
+                                <p class="text-gray-600">Every safari directly funds community development, education, healthcare, and conservation initiatives guided by traditional ecological wisdom.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4 mb-4">
+                            <div class="w-20 h-20 flex-shrink-0">
+                                <img src="images/cultural-heritage.jpg" alt="Cultural Heritage" class="w-20 h-20 object-cover rounded-xl shadow-md" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="w-12 h-12 forest-gradient rounded-full flex items-center justify-center flex-shrink-0" style="display: none;">
+                                    <span class="text-white font-bold text-xs">Heritage</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2" style="color: var(--primary-green);">Cultural Heritage</h4>
+                                <p class="text-gray-600">Preserving ancestral traditions, languages, and practices while creating modern opportunities for the next generation.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-6 rounded-2xl tribal-border" style="background: linear-gradient(135deg, var(--accent-gold)/10, var(--bush-green)/5);">
+                        <p class="text-lg font-semibold italic" style="color: var(--primary-green);">
+                            "When you visit Mulambwane, you're not just a guest—you become part of our safari family, contributing to a legacy that spans generations."
+                        </p>
+                        <p class="text-sm text-gray-600 mt-2">- Community Elders, Mulambwane CPA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Sacred Land of Limpopo -->
+    <section class="py-24" style="background: linear-gradient(135deg, var(--primary-green) 0%, var(--bush-green) 100%);">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-20 fade-in">
+                <div class="inline-block px-6 py-2 bg-white/20 text-white rounded-full text-sm font-semibold mb-6">
+                    Sacred Province of Africa
+                </div>
+                <h2 class="text-5xl md:text-6xl font-serif font-bold mb-8" style="color: var(--cream-white);">
+                    Limpopo: <span style="color: var(--accent-gold);">Land of Legends</span>
+                </h2>
+                <div class="w-32 h-1 bg-white mx-auto mb-8 rounded"></div>
+                <p class="text-xl max-w-4xl mx-auto leading-relaxed" style="color: var(--cream-white);">
+                    Where ancient baobab trees whisper ancestral wisdom and wildlife corridors connect sacred lands. This is Limpopo—the beating heart of Africa's heritage.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Baobab Heritage -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover-lift tribal-border">
+                    <div class="mb-6">
+                        <img src="images/ancient-baobab-trees.jpg" alt="Ancient Baobab Trees" class="w-full h-48 object-cover rounded-lg shadow-md" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="w-16 h-16 rounded-full sunset-gradient flex items-center justify-center mx-auto" style="display: none;">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Ancient Baobab Trees</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Home to some of Africa's oldest baobab trees, including specimens over 1,000 years old. These "Trees of Life" are sacred to our ancestors and serve as natural landmarks across our vast wilderness.
+                    </p>
+                </div>
+
+                <!-- Cultural Heritage -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover-lift tribal-border">
+                    <div class="mb-6">
+                        <img src="images/rich-cultural-heritage.jpg" alt="Rich Cultural Heritage" class="w-full h-48 object-cover rounded-lg shadow-md" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="w-16 h-16 rounded-full safari-gradient flex items-center justify-center mx-auto" style="display: none;">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Rich Cultural Heritage</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Limpopo is home to diverse African cultures including Venda, Tsonga, Pedi, and Ndebele peoples. Our guides share traditional knowledge, stories, and ancient tracking techniques passed down through generations.
+                    </p>
+                </div>
+
+                <!-- Wildlife Corridor -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover-lift tribal-border">
+                    <div class="mb-6">
+                        <img src="images/wildlife-migration-route.jpg" alt="Wildlife Migration Route" class="w-full h-48 object-cover rounded-lg shadow-md" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto" style="background: linear-gradient(135deg, #6B8E23, #8FBC8F); display: none;">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Wildlife Migration Route</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Located along ancient animal migration corridors connecting Kruger National Park with Zimbabwe and Botswana. This strategic position makes Mulambwane a vital wildlife sanctuary and exceptional safari destination.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Traditional Medicine & Plants -->
+            <div class="bg-white rounded-xl shadow-lg p-8 tribal-border">
+                <div class="mb-8">
+                    <img src="images/traditional-healing-medicinal-plants.jpg" alt="Traditional Healing & Medicinal Plants" class="w-full h-64 object-cover rounded-lg shadow-md">
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-serif font-bold text-gray-900 mb-6">Traditional Healing & Medicinal Plants</h3>
+                        <p class="text-lg leading-relaxed text-gray-700 mb-4">
+                            Limpopo Province is renowned as the "pharmacy of Africa," home to over 3,000 medicinal plant species. Our guided bush walks include educational sessions about traditional healing plants used by our ancestors for centuries.
+                        </p>
+                        <ul class="space-y-2 text-gray-600">
+                            <li class="flex items-center"><span class="mr-2 font-bold" style="color: var(--accent-gold);">•</span> African Potato (Hypoxis hemerocallidea)</li>
+                            <li class="flex items-center"><span class="mr-2 font-bold" style="color: var(--accent-gold);">•</span> Sutherlandia (Cancer Bush)</li>
+                            <li class="flex items-center"><span class="mr-2 font-bold" style="color: var(--accent-gold);">•</span> Marula Tree (Sclerocarya birrea)</li>
+                            <li class="flex items-center"><span class="mr-2 font-bold" style="color: var(--accent-gold);">•</span> Wild Fig Trees (Ficus sycamorus)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="bg-gradient-to-br from-green-100 to-yellow-100 p-6 rounded-xl">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4">Traditional Knowledge Sharing</h4>
+                            <p class="text-gray-700 leading-relaxed mb-4">
+                                Experience authentic cultural exchange as our local guides, many of whom are traditional healers (sangomas), share ancestral knowledge about the medicinal and spiritual properties of indigenous plants.
+                            </p>
+                            <div class="bg-green-200 px-4 py-2 rounded-full text-green-800 text-sm font-semibold">
+                                Authentic Cultural Experience
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Impact -->
+    <section id="mission-impact" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-bold text-gray-900 mb-6">Our Mission & Your Impact</h2>
+                <h3 class="text-2xl text-gray-700 mb-8">How Your Journey Creates a Lasting Impact</h3>
+                <p class="text-lg text-gray-600 max-w-4xl mx-auto mb-12">
+                    Our mission is to operate a world-class safari destination that serves as a powerful engine for socio-economic development. We believe that tourism and conservation, when managed responsibly, can be the most effective tools for community upliftment.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="text-center bg-white p-6 rounded-lg shadow-sm hover-lift">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 relative">
+                        <div class="text-3xl font-bold text-green-700">100%</div>
+                    </div>
+                    <div class="text-gray-700 font-medium">Community Owned</div>
+                </div>
+                <div class="text-center bg-white p-6 rounded-lg shadow-sm hover-lift">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div class="text-2xl font-bold text-green-700">15,000</div>
+                    </div>
+                    <div class="text-gray-700 font-medium">Hectares Protected</div>
+                </div>
+                <div class="text-center bg-white p-6 rounded-lg shadow-sm hover-lift">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div class="text-2xl font-bold text-blue-600">250+</div>
+                    </div>
+                    <div class="text-gray-700 font-medium">Families Supported</div>
+                </div>
+                <div class="text-center bg-white p-6 rounded-lg shadow-sm hover-lift">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div class="text-2xl font-bold text-purple-600">50+</div>
+                    </div>
+                    <div class="text-gray-700 font-medium">Local Jobs Created</div>
+                </div>
+            </div>
+
+            <!-- Your Impact Details -->
+            <div class="bg-white rounded-lg shadow-sm p-8">
+                <h3 class="text-2xl font-serif font-bold text-gray-900 mb-8 text-center">Your Impact</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2-2 0.5-2 1v1m6-10a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Economic Empowerment</h4>
+                        <p class="text-gray-600">Revenue from every safari is reinvested into the community, funding sustainable job creation, local enterprise development, and essential infrastructure projects.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Educational Support</h4>
+                        <p class="text-gray-600">A portion of our proceeds supports educational bursaries and skills development programs for the youth of the Mulambwane community.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-3">Conservation Leadership</h4>
+                        <p class="text-gray-600">By making wildlife a valuable asset for the community, we create a powerful incentive for its protection, ensuring our children inherit a land as wild and beautiful as we did.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 safari-gradient text-white">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+                Ready to Be Part of Our Story?
+            </h2>
+            <p class="text-xl mb-8 leading-relaxed">
+                Experience the authentic heart of Africa and contribute to a legacy of conservation and community empowerment that spans generations.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" class="bg-white text-[#abb874] px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                    Join Our Journey
+                </a>
+                <a href="hunting.html" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-[#abb874]">
+                    Plan Your Safari
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="images/Logo.jpg" alt="Mulambwane Safaris Logo" class="h-16 w-24 rounded-full mr-4">
+                        <h3 class="text-2xl font-serif font-bold">Mulambwane Wildlife & Hunting Safaris</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4 leading-relaxed">
+                        Experience authentic South African safari adventures in the heart of Limpopo Province. Our community-owned operation combines conservation, culture, and world-class service.
+                    </p>
+                    <div class="text-sm text-gray-400">
+                        <p>Limpopo Province, South Africa</p>
+                        <p>15,000+ Hectares of Protected Wildlife</p>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Home</a></li>
+                        <li><a href="story.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Our Story</a></li>
+                        <li><a href="hunting.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Hunting Safaris</a></li>
+                        <li><a href="lodge.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Safari Lodge</a></li>
+                        <li><a href="gamemeat.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Game Meat</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>📧 info@mulambwane.com</p>
+                        <p>📞 +27 123 456 789</p>
+                        <p>📍 Limpopo Province, South Africa</p>
+                    </div>
+                    <div class="mt-4">
+                        <a href="contact.html" class="bg-[#abb874] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#889976] transition-colors">
+                            Get in Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 Mulambwane Wildlife & Hunting Safaris. All rights reserved.</p>
+                <p class="text-sm mt-2">Community-owned • Conservation-focused • Authentically African</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
+

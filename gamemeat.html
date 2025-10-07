@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Game Meat - Mulambwane Wildlife & Hunting Safaris</title>
+    <meta name="description" content="Ethically sourced, premium African game meat from Mulambwane Wildlife Reserve. Wild, free-range, and chemical-free game meat with Ubuntu conservation impact.">
+    <meta name="keywords" content="South African game meat, wild game meat, ethical hunting, sustainable game meat, African biltong, droëwors, free-range meat">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/get-help-loader.js" defer></script>
+</head>
+<body class="font-sans text-gray-800 scroll-smooth">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white shadow-lg z-50 border-b-2" style="border-color: var(--accent-gold);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo on the left -->
+                <div class="flex items-center cursor-pointer" onclick="window.location.href='index.html'">
+                    <img src="images/Logo.jpg" alt="Mulambwane Safaris Logo" class="h-16 w-24 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div id="logo-fallback" class="flex items-center safari-gradient px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300" style="display: none;">
+                        <div class="text-lg font-serif font-bold text-white">Mulambwane</div>
+                    </div>
+                </div>
+                
+                <!-- Desktop menu (visible on larger screens) -->
+                <div class="hidden md:flex space-x-1">
+                    <a href="index.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Home</a>
+                    <a href="story.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Our Story</a>
+                    <a href="hunting.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Hunting</a>
+                    <a href="lodge.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Lodge</a>
+                    <a href="gamemeat.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg bg-gradient-to-r from-[#abba70] to-[#889976] text-[#212022]">Game Meat</a>
+                    <a href="contact.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Contact</a>
+                </div>
+                
+                <!-- Hamburger button on the right (visible on mobile) -->
+                <button id="mobile-menu-btn" class="md:hidden p-2" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Simple Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t-2" style="border-color: var(--accent-gold);">
+            <div class="px-4 py-2 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Home</a>
+                <a href="story.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Our Story</a>
+                <a href="hunting.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Hunting Safaris</a>
+                <a href="lodge.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Safari Lodge</a>
+                <a href="gamemeat.html" class="block px-3 py-2 text-gray-800 bg-[#abba70] text-[#212022] rounded transition-colors duration-300">Game Meat</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Contact Us</a>
+</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
+        <img src="images/gamemeat-hero.jpg" alt="Premium African Game Meat" class="absolute inset-0 w-full h-full object-cover z-0" style="object-fit: cover;" />
+        <div class="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-black/60 z-10"></div>
+        <div class="absolute inset-0 african-pattern opacity-8 z-15"></div>
+        
+        <div class="relative z-20 text-center max-w-6xl mx-auto px-4 fade-in">
+            <div class="mb-6">
+                <div class="inline-block px-6 py-2 safari-gradient text-white rounded-full text-sm font-semibold mb-4">
+                    Premium Wild Harvest
+                </div>
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl font-serif font-bold mb-8 african-text-shadow">
+                Wild <span style="color: var(--accent-gold);">Harvest</span> Excellence
+            </h1>
+            
+            <div class="w-32 h-1 safari-gradient mx-auto mb-8 rounded"></div>
+            
+            <p class="text-xl md:text-2xl mb-12 leading-relaxed font-light max-w-4xl mx-auto" style="color: var(--cream-white);">
+                From the pristine wilderness of Limpopo to your table. Experience authentic African flavors through our ethically sourced, heritage-crafted game meat products. Each bite tells the story of Ubuntu conservation.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
+                <button onclick="scrollToSection('shop-section')" class="safari-gradient text-white px-12 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl pulse-on-hover">
+                    Shop Premium Selection
+                </button>
+                <button onclick="scrollToSection('products-section')" class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-gray-800">
+                    View Product Catalog
+                </button>
+            </div>
+            
+            <!-- Quality Promise -->
+            <div class="grid grid-cols-3 gap-8 mt-12 max-w-2xl mx-auto">
+                <div class="text-center">
+                    <div class="text-3xl font-bold" style="color: var(--accent-gold);">100%</div>
+                    <div class="text-sm text-white/80">Free-Range Wild</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold" style="color: var(--accent-gold);">Zero</div>
+                    <div class="text-sm text-white/80">Hormones & Chemicals</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold" style="color: var(--accent-gold);">Ubuntu</div>
+                    <div class="text-sm text-white/80">Conservation Impact</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ubuntu Philosophy in Practice -->
+    <section class="py-24" style="background: linear-gradient(135deg, var(--cream-white) 0%, #f8f6f0 100%);">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <div class="relative">
+                        <img src="images/game-sourcing-placeholder.jpg" alt="Ubuntu Conservation Philosophy" class="w-full h-96 object-cover rounded-3xl shadow-2xl tribal-border" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="w-full h-96 forest-gradient rounded-3xl shadow-2xl tribal-border flex items-center justify-center text-white text-6xl font-bold" style="display: none;">
+                            🌿
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 w-24 h-24 sunset-gradient rounded-full flex items-center justify-center shadow-xl">
+                            <span class="text-2xl">🥩</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fade-in">
+                    <div class="inline-block px-6 py-2 forest-gradient text-white rounded-full text-sm font-semibold mb-6">
+                        Conservation Through Utilization
+                    </div>
+                    
+                    <h2 class="text-5xl font-serif font-bold mb-8" style="color: var(--primary-green);">
+                        From Sacred <span style="color: var(--accent-gold);">Land to Table</span>
+                    </h2>
+                    
+                    <div class="w-24 h-1 sunset-gradient mb-8 rounded"></div>
+                    
+                    <p class="text-xl leading-relaxed text-gray-700 mb-8">
+                        Every product embodies our Venda traditional philosophy: <strong style="color: var(--primary-green);">"I am because we are."</strong> Our sustainable harvesting practices ensure wildlife populations thrive while providing premium, ethically-sourced nutrition for your family.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 safari-gradient rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-white font-bold">🦌</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2" style="color: var(--primary-green);">Wild & Free-Range</h4>
+                                <p class="text-gray-600">Animals roam freely across 15,000 hectares of pristine wilderness, living natural lives in their ancestral habitat with zero human intervention.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 sunset-gradient rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-white font-bold">🔬</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2" style="color: var(--primary-green);">Pure & Natural</h4>
+                                <p class="text-gray-600">No hormones, antibiotics, or chemicals. Just pure, lean protein packed with natural nutrients, omega-3s, and authentic African flavors.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 forest-gradient rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-white font-bold">💚</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2" style="color: var(--primary-green);">Conservation Impact</h4>
+                                <p class="text-gray-600">Each purchase directly funds community conservation, anti-poaching efforts, and habitat protection across our vast wilderness preserve.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-6 rounded-2xl tribal-border" style="background: linear-gradient(135deg, var(--accent-gold)/10, var(--bush-green)/5);">
+                        <p class="text-lg font-semibold italic" style="color: var(--primary-green);">
+                            "Every meal becomes a conservation action. You nourish your family while protecting Africa's wildlife heritage."
+                        </p>
+                        <p class="text-sm text-gray-600 mt-2">- Mulambwane Conservation Team</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Selection -->
+    <section id="products-section" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <div class="inline-block px-6 py-2 safari-gradient text-white rounded-full text-sm font-semibold mb-6">
+                    Wild Harvest Collection
+                </div>
+                <h2 class="text-5xl font-serif font-bold mb-8" style="color: var(--primary-green);">
+                    Explore Our <span style="color: var(--accent-gold);">Premium Selection</span>
+                </h2>
+                <div class="w-32 h-1 safari-gradient mx-auto mb-8 rounded"></div>
+                <p class="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+                    Discover authentic African game meat products, crafted with traditional methods and modern quality standards for exceptional flavor and nutrition.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 tribal-border overflow-hidden">
+                    <div class="relative">
+                        <img src="images/biltong.jpg" alt="Traditional Biltong & Droëwors" class="h-64 w-full object-cover" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="h-64 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center" style="display: none;">
+                            <div class="text-center text-white">
+                                <div class="text-6xl mb-4">🥩</div>
+                                <div class="text-xl font-bold">Traditional Biltong</div>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-gradient-to-r from-red-500 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            Popular
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-serif font-semibold mb-4" style="color: var(--primary-green);">Traditional Biltong & Droëwors</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Crafted from prime cuts using traditional South African recipes. Our biltong and droëwors are made with time-honored techniques passed down through generations.
+                        </p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Air-dried using traditional methods</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Premium spice blend</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> High protein, low fat</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Long shelf life</li>
+                        </ul>
+                        <button class="w-full safari-gradient text-white py-3 rounded-xl font-bold transition-all duration-300 transform hover:scale-105">
+                            Order Now
+                        </button>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 tribal-border overflow-hidden">
+                    <div class="relative">
+                        <img src="images/prime-cuts.jpg" alt="Prime Cuts for the Connoisseur" class="h-64 w-full object-cover" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="h-64 bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center" style="display: none;">
+                            <div class="text-center text-white">
+                                <div class="text-6xl mb-4">🥩</div>
+                                <div class="text-xl font-bold">Prime Cuts</div>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            Premium
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-serif font-semibold mb-4" style="color: var(--primary-green);">Prime Cuts for the Connoisseur</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Including tenderloins, fillets, and loins for the discerning chef. These premium cuts offer exceptional flavor and tenderness for gourmet cooking.
+                        </p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li class="flex items-center"><span class="text-purple-500 mr-2">✓</span> Restaurant-quality cuts</li>
+                            <li class="flex items-center"><span class="text-purple-500 mr-2">✓</span> Exceptional tenderness</li>
+                            <li class="flex items-center"><span class="text-purple-500 mr-2">✓</span> Rich, distinctive flavor</li>
+                            <li class="flex items-center"><span class="text-purple-500 mr-2">✓</span> Perfect for special occasions</li>
+                        </ul>
+                        <button class="w-full sunset-gradient text-white py-3 rounded-xl font-bold transition-all duration-300 transform hover:scale-105">
+                            Order Now
+                        </button>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 tribal-border overflow-hidden">
+                    <div class="relative">
+                        <img src="images/sausages.jpg" alt="Game Boerewors & Sausages" class="h-64 w-full object-cover" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="h-64 bg-gradient-to-br from-green-500 to-blue-600 flex items-center justify-center" style="display: none;">
+                            <div class="text-center text-white">
+                                <div class="text-6xl mb-4">🌭</div>
+                                <div class="text-xl font-bold">Boerewors</div>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-gradient-to-r from-green-500 to-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+                            Braai Ready
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-serif font-semibold mb-4" style="color: var(--primary-green);">Game Boerewors & Sausages</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            A delicious and leaner alternative perfect for the braai. Our game sausages combine traditional flavors with the health benefits of wild game.
+                        </p>
+                        <ul class="text-sm text-gray-600 space-y-2 mb-6">
+                            <li class="flex items-center"><span class="text-blue-500 mr-2">✓</span> Perfect for braai & BBQ</li>
+                            <li class="flex items-center"><span class="text-blue-500 mr-2">✓</span> Lean & flavorful</li>
+                            <li class="flex items-center"><span class="text-blue-500 mr-2">✓</span> Traditional spices</li>
+                            <li class="flex items-center"><span class="text-blue-500 mr-2">✓</span> Family-friendly</li>
+                        </ul>
+                        <button class="w-full forest-gradient text-white py-3 rounded-xl font-bold transition-all duration-300 transform hover:scale-105">
+                            Order Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section id="shop-section" class="py-24 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <div class="inline-block px-6 py-2 forest-gradient text-white rounded-full text-sm font-semibold mb-6">
+                    Premium Game Meat Order
+                </div>
+                <h2 class="text-5xl font-serif font-bold mb-8" style="color: var(--primary-green);">
+                    Order Your <span style="color: var(--accent-gold);">Wild Harvest</span>
+                </h2>
+                <div class="w-32 h-1 safari-gradient mx-auto mb-8 rounded"></div>
+                <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                    Experience the authentic taste of the African bush. Our premium game meat is ethically sourced and delivered fresh to your door.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-start">
+                <!-- Order Form -->
+                <div class="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 tribal-border shadow-2xl">
+                    <h3 class="text-3xl font-bold mb-8 text-center" style="color: var(--primary-green);">Place Your Order</h3>
+                    
+                    <form id="gamemeat-order-form" class="space-y-6" onsubmit="submitGameMeatOrder(event)">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">First Name *</label>
+                                <input type="text" name="firstName" id="order-firstName" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors" placeholder="Your first name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Last Name *</label>
+                                <input type="text" name="lastName" id="order-lastName" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors" placeholder="Your last name">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Email *</label>
+                                <input type="email" name="email" id="order-email" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors" placeholder="your.email@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Phone *</label>
+                                <input type="tel" name="phone" id="order-phone" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors" placeholder="+27 123 456 789">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Delivery Address *</label>
+                            <textarea name="address" id="order-address" required rows="3" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors resize-none" placeholder="Your full delivery address including postal code"></textarea>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-4">Select Products *</label>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between p-4 border-2 border-gray-200 rounded-xl">
+                                    <div class="flex items-center">
+                                        <input type="checkbox" name="products" value="biltong" id="biltong" class="mr-3 h-4 w-4 text-green-600">
+                                        <label for="biltong" class="font-medium">Traditional Biltong & Droëwors</label>
+                                    </div>
+                                    <span class="font-bold text-green-600">From R180/kg</span>
+                                </div>
+                                <div class="flex items-center justify-between p-4 border-2 border-gray-200 rounded-xl">
+                                    <div class="flex items-center">
+                                        <input type="checkbox" name="products" value="prime-cuts" id="prime-cuts" class="mr-3 h-4 w-4 text-green-600">
+                                        <label for="prime-cuts" class="font-medium">Prime Cuts & Fillets</label>
+                                    </div>
+                                    <span class="font-bold text-green-600">From R320/kg</span>
+                                </div>
+                                <div class="flex items-center justify-between p-4 border-2 border-gray-200 rounded-xl">
+                                    <div class="flex items-center">
+                                        <input type="checkbox" name="products" value="sausages" id="sausages" class="mr-3 h-4 w-4 text-green-600">
+                                        <label for="sausages" class="font-medium">Game Boerewors & Sausages</label>
+                                    </div>
+                                    <span class="font-bold text-green-600">From R140/kg</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Preferred Delivery Date</label>
+                            <input type="date" name="deliveryDate" id="order-deliveryDate" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Additional Notes</label>
+                            <textarea name="notes" id="order-notes" rows="4" placeholder="Quantity preferences, special requests, or dietary considerations..." 
+                                     class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors resize-none"></textarea>
+                        </div>
+                        
+                        <button type="submit" id="order-submit-btn" class="w-full safari-gradient text-white py-4 rounded-xl text-lg font-bold transition-all duration-300 transform hover:scale-105 pulse-on-hover">
+                            Place Order
+                        </button>
+                        
+                        <div id="order-message" class="hidden text-center p-4 rounded-lg"></div>
+                    </form>
+                </div>
+
+                <!-- Order Information -->
+                <div class="space-y-8">
+                    <div class="bg-white rounded-3xl p-8 shadow-xl tribal-border">
+                        <h4 class="text-2xl font-bold mb-6" style="color: var(--primary-green);">Product Information</h4>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-gradient-to-r from-orange-50 to-red-50 rounded-xl">
+                                <h5 class="font-bold text-lg mb-2" style="color: var(--primary-green);">Traditional Biltong</h5>
+                                <p class="text-gray-600 text-sm mb-2">Air-dried game meat with traditional spices</p>
+                                <p class="font-bold" style="color: var(--accent-gold);">From R180 per kg</p>
+                            </div>
+                            <div class="p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl">
+                                <h5 class="font-bold text-lg mb-2" style="color: var(--primary-green);">Prime Cuts</h5>
+                                <p class="text-gray-600 text-sm mb-2">Premium steaks, fillets & tenderloins</p>
+                                <p class="font-bold" style="color: var(--accent-gold);">From R320 per kg</p>
+                            </div>
+                            <div class="p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl">
+                                <h5 class="font-bold text-lg mb-2" style="color: var(--primary-green);">Game Sausages</h5>
+                                <p class="text-gray-600 text-sm mb-2">Boerewors & specialty sausages</p>
+                                <p class="font-bold" style="color: var(--accent-gold);">From R140 per kg</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-3xl p-8 shadow-xl tribal-border">
+                        <h4 class="text-2xl font-bold mb-6" style="color: var(--primary-green);">Delivery & Payment</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-4">🚚</span>
+                                <div>
+                                    <p class="font-semibold">Delivery Areas</p>
+                                    <p class="text-gray-600 text-sm">Limpopo, Gauteng, North West</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-4">💳</span>
+                                <div>
+                                    <p class="font-semibold">Payment Options</p>
+                                    <p class="text-gray-600 text-sm">EFT, Card, Cash on Delivery</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-4">📅</span>
+                                <div>
+                                    <p class="font-semibold">Processing Time</p>
+                                    <p class="text-gray-600 text-sm">3-5 business days</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-2xl mr-4">🧊</span>
+                                <div>
+                                    <p class="font-semibold">Temperature Control</p>
+                                    <p class="text-gray-600 text-sm">Cold chain maintained</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-green-100 to-yellow-100 rounded-3xl p-8 tribal-border">
+                        <h4 class="text-2xl font-bold mb-4" style="color: var(--primary-green);">Conservation Impact</h4>
+                        <p class="text-gray-700 mb-4">
+                            Every purchase supports sustainable wildlife management and community conservation in Limpopo Province.
+                        </p>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Ethical wildlife utilization</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Community economic empowerment</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Anti-poaching funding</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Habitat conservation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="images/Logo.jpg" alt="Mulambwane Safaris Logo" class="h-16 w-24 rounded-full mr-4">
+                        <h3 class="text-2xl font-serif font-bold">Mulambwane Wildlife & Hunting Safaris</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4 leading-relaxed">
+                        Experience authentic South African safari adventures in the heart of Limpopo Province. Our community-owned operation combines conservation, culture, and world-class service.
+                    </p>
+                    <div class="text-sm text-gray-400">
+                        <p>Limpopo Province, South Africa</p>
+                        <p>15,000+ Hectares of Protected Wildlife</p>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Home</a></li>
+                        <li><a href="story.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Our Story</a></li>
+                        <li><a href="hunting.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Hunting Safaris</a></li>
+                        <li><a href="lodge.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Safari Lodge</a></li>
+                        <li><a href="gamemeat.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Game Meat</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>📧 info@mulambwane.com</p>
+                        <p>📞 +27 123 456 789</p>
+                        <p>📍 Limpopo Province, South Africa</p>
+                    </div>
+                    <div class="mt-4">
+                        <a href="contact.html" class="bg-[#abb874] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#889976] transition-colors">
+                            Get in Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 Mulambwane Wildlife & Hunting Safaris. All rights reserved.</p>
+                <p class="text-sm mt-2">Community-owned • Conservation-focused • Authentically African</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function submitGameMeatOrder(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitBtn = document.getElementById('order-submit-btn');
+            const messageDiv = document.getElementById('order-message');
+            
+            // Get selected products
+            const selectedProducts = [];
+            const productCheckboxes = form.querySelectorAll('input[name="products"]:checked');
+            productCheckboxes.forEach(checkbox => {
+                selectedProducts.push(checkbox.value);
+            });
+            
+            if (selectedProducts.length === 0) {
+                messageDiv.className = 'text-center p-4 rounded-lg bg-red-100 text-red-700';
+                messageDiv.textContent = 'Please select at least one product.';
+                messageDiv.classList.remove('hidden');
+                return;
+            }
+            
+            // Show loading state
+            submitBtn.textContent = 'Processing Order...';
+            submitBtn.disabled = true;
+            
+            // Simulate order processing
+            setTimeout(() => {
+                messageDiv.className = 'text-center p-4 rounded-lg bg-green-100 text-green-700';
+                messageDiv.textContent = 'Order received! We will contact you within 24 hours to confirm details and arrange payment.';
+                messageDiv.classList.remove('hidden');
+                
+                // Reset form
+                form.reset();
+                submitBtn.textContent = 'Place Order';
+                submitBtn.disabled = false;
+                
+                // Hide message after 10 seconds
+                setTimeout(() => {
+                    messageDiv.classList.add('hidden');
+                }, 10000);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
+

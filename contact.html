@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Mulambwane Wildlife & Hunting Safaris</title>
+    <meta name="description" content="Contact Mulambwane Wildlife & Hunting Safaris for professional safari planning, lodge bookings, and hunting experiences in Limpopo Province, South Africa.">
+    <meta name="keywords" content="contact safari operator, South Africa safari booking, Limpopo hunting lodge contact, wildlife safari inquiry">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/get-help-loader.js" defer></script>
+</head>
+<body class="font-sans text-gray-800 scroll-smooth">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white shadow-lg z-50 border-b-2" style="border-color: var(--accent-gold);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo on the left -->
+                <div class="flex items-center cursor-pointer" onclick="window.location.href='index.html'">
+                    <img src="images/Logo.jpg" alt="Mulambwane Safaris Logo" class="h-16 w-24 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div id="logo-fallback" class="flex items-center safari-gradient px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300" style="display: none;">
+                        <div class="text-lg font-serif font-bold text-white">Mulambwane</div>
+                    </div>
+                </div>
+                
+                <!-- Desktop menu (visible on larger screens) -->
+                <div class="hidden md:flex space-x-1">
+                    <a href="index.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Home</a>
+                    <a href="story.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Our Story</a>
+                    <a href="hunting.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Hunting</a>
+                    <a href="lodge.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Lodge</a>
+                    <a href="gamemeat.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Game Meat</a>
+                    <a href="contact.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg bg-gradient-to-r from-[#abba70] to-[#889976] text-[#212022]">Contact</a>
+                </div>
+                
+                <!-- Hamburger button on the right (visible on mobile) -->
+                <button id="mobile-menu-btn" class="md:hidden p-2" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Simple Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t-2" style="border-color: var(--accent-gold);">
+            <div class="px-4 py-2 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Home</a>
+                <a href="story.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Our Story</a>
+                <a href="hunting.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Hunting Safaris</a>
+                <a href="lodge.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Safari Lodge</a>
+                <a href="gamemeat.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Game Meat</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-800 bg-[#abba70] text-[#212022] rounded transition-colors duration-300">Contact Us</a>
+</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
+        <img src="images/contact-hero.jpg" alt="Connect with Mulambwane Safaris" class="absolute inset-0 w-full h-full object-cover z-0" style="object-fit: cover;" />
+        <div class="absolute inset-0 bg-gradient-to-br from-black/70 via-black/40 to-black/60 z-10"></div>
+        <div class="absolute inset-0 african-pattern opacity-8 z-15"></div>
+        
+        <div class="relative z-20 text-center max-w-6xl mx-auto px-4 fade-in">
+            <div class="mb-6">
+                <div class="inline-block px-6 py-2 safari-gradient text-white rounded-full text-sm font-semibold mb-4">
+                    Connect With Us
+                </div>
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl font-serif font-bold mb-8 african-text-shadow">
+                Your <span style="color: var(--accent-gold);">Adventure</span> Awaits
+            </h1>
+            
+            <div class="w-32 h-1 safari-gradient mx-auto mb-8 rounded"></div>
+            
+            <p class="text-xl md:text-2xl mb-12 leading-relaxed font-light max-w-4xl mx-auto" style="color: var(--cream-white);">
+                Connect with our Ubuntu family today. Let us craft your perfect African adventure while supporting community conservation and authentic cultural experiences.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
+                <button onclick="scrollToSection('contact-form-section')" class="safari-gradient text-white px-12 py-4 rounded-full text-lg font-bold transition-all duration-300 transform hover:scale-105 shadow-2xl pulse-on-hover">
+                    Start Planning Now
+                </button>
+                <button onclick="scrollToSection('contact-details-section')" class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-gray-800">
+                    Contact Information
+                </button>
+            </div>
+            
+            <!-- Quick Contact Stats -->
+            <div class="grid grid-cols-3 gap-8 mt-12 max-w-2xl mx-auto">
+                <div class="text-center">
+                    <div class="text-3xl font-bold" style="color: var(--accent-gold);">24/7</div>
+                    <div class="text-sm text-white/80">Expert Support</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold" style="color: var(--accent-gold);">< 2hr</div>
+                    <div class="text-sm text-white/80">Response Time</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold" style="color: var(--accent-gold);">100%</div>
+                    <div class="text-sm text-white/80">Premium Service</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact-form-section" class="py-24" style="background: linear-gradient(135deg, var(--cream-white) 0%, #f8f6f0 100%);">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-20 fade-in">
+                <div class="inline-block px-6 py-2 safari-gradient text-white rounded-full text-sm font-semibold mb-6">
+                    Professional Service
+                </div>
+                <h2 class="text-5xl md:text-6xl font-serif font-bold mb-8" style="color: var(--primary-green);">
+                    Let's Create Your <span style="color: var(--accent-gold);">Safari Adventure</span>
+                </h2>
+                <div class="w-32 h-1 safari-gradient mx-auto mb-8 rounded"></div>
+                <p class="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+                    Experience professional safari planning at its finest. Our experienced team crafts personalized safari adventures with attention to every detail, ensuring an unforgettable African experience.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white rounded-3xl p-8 shadow-xl tribal-border">
+                    <h3 class="text-3xl font-serif font-bold mb-8 text-center" style="color: var(--primary-green);">Send Us an Inquiry</h3>
+                    <form id="contact-form" class="space-y-6" onsubmit="submitContactForm(event)">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">First Name *</label>
+                                <input type="text" name="firstName" id="contact-firstName" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors" placeholder="Your first name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name *</label>
+                                <input type="text" name="lastName" id="contact-lastName" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors" placeholder="Your last name">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                            <input type="email" name="email" id="contact-email" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors" placeholder="your.email@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" name="phone" id="contact-phone" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors" placeholder="+27 123 456 789">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">What are you interested in? *</label>
+                            <select name="interest" id="contact-interest" required class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors">
+                                <option value="">Select an option</option>
+                                <option value="Hunting Safari">Hunting Safari</option>
+                                <option value="Lodge Accommodation">Lodge Accommodation</option>
+                                <option value="Game Meat Products">Game Meat Products</option>
+                                <option value="Cultural Experiences">Cultural Experiences</option>
+                                <option value="Conservation Tours">Conservation Tours</option>
+                                <option value="Group Bookings">Group Bookings</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Travel Dates</label>
+                            <div class="grid grid-cols-2 gap-4">
+                                <input type="date" name="arrivalDate" id="arrival-date" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors">
+                                <input type="date" name="departureDate" id="departure-date" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Number of Guests</label>
+                            <select name="guests" id="guest-count" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors">
+                                <option value="">Select guest count</option>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3-4">3-4 Guests</option>
+                                <option value="5-8">5-8 Guests</option>
+                                <option value="9+">9+ Guests</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Your Message *</label>
+                            <textarea name="message" id="contact-message" required rows="5" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:outline-none transition-colors resize-none" placeholder="Tell us about your safari dreams, special requirements, or any questions you have..."></textarea>
+                        </div>
+                        <button type="submit" id="contact-submit-btn" class="w-full safari-gradient text-white py-4 rounded-xl text-lg font-bold transition-all duration-300 transform hover:scale-105 pulse-on-hover">
+                            Send Inquiry
+                        </button>
+                        
+                        <div id="contact-message-result" class="hidden text-center p-4 rounded-lg"></div>
+                    </form>
+                </div>
+
+                <!-- Contact Details & Information -->
+                <div class="space-y-8">
+                    <div id="contact-details-section" class="bg-white rounded-3xl p-8 shadow-xl tribal-border">
+                        <h3 class="text-2xl font-serif font-bold mb-6" style="color: var(--primary-green);">Contact Details</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Bookings & Inquiries</h4>
+                                    <p class="text-gray-600">bookings@mulambwane.com</p>
+                                    <p class="text-gray-600">info@mulambwane.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Phone & WhatsApp</h4>
+                                    <p class="text-gray-600">+27 123 456 789</p>
+                                    <p class="text-gray-600 text-sm">Available 7 AM - 9 PM (SAST)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Physical Address</h4>
+                                    <p class="text-gray-600">Mulambwane Wildlife Reserve<br>Limpopo Province<br>South Africa</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">Operating Hours</h4>
+                                    <p class="text-gray-600">Monday - Sunday: 7:00 AM - 9:00 PM</p>
+                                    <p class="text-gray-600 text-sm">South African Standard Time (SAST)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Placeholder -->
+                    <div class="bg-white rounded-3xl p-8 shadow-xl tribal-border">
+                        <h4 class="text-2xl font-bold mb-6" style="color: var(--primary-green);">Find Us</h4>
+                        <div class="bg-gradient-to-br from-green-100 to-yellow-100 rounded-xl h-64 flex items-center justify-center">
+                            <div class="text-center">
+                                <svg class="w-16 h-16 mx-auto mb-4" style="color: var(--primary-green);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                                <p class="font-bold text-lg" style="color: var(--primary-green);">Mulambwane Wildlife Reserve</p>
+                                <p class="text-gray-600">Limpopo Province, South Africa</p>
+                                <p class="text-sm text-gray-500 mt-2">Interactive map coming soon</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Why Choose Us -->
+                    <div class="bg-gradient-to-br from-green-100 to-yellow-100 rounded-3xl p-8 tribal-border">
+                        <h4 class="text-2xl font-bold mb-6" style="color: var(--primary-green);">Why Choose Mulambwane?</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-3 text-lg">✓</span>
+                                <p class="text-gray-700">Community-owned conservation operation</p>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-3 text-lg">✓</span>
+                                <p class="text-gray-700">Professional safari guides & services</p>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-3 text-lg">✓</span>
+                                <p class="text-gray-700">15,000+ hectares of pristine wilderness</p>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-3 text-lg">✓</span>
+                                <p class="text-gray-700">Authentic cultural experiences</p>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-3 text-lg">✓</span>
+                                <p class="text-gray-700">Luxury lodge accommodation</p>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-green-500 mr-3 text-lg">✓</span>
+                                <p class="text-gray-700">Sustainable tourism practices</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <div class="inline-block px-6 py-2 forest-gradient text-white rounded-full text-sm font-semibold mb-6">
+                    Common Questions
+                </div>
+                <h2 class="text-4xl font-serif font-bold mb-6" style="color: var(--primary-green);">
+                    Frequently Asked <span style="color: var(--accent-gold);">Questions</span>
+                </h2>
+                <div class="w-24 h-1 safari-gradient mx-auto mb-6 rounded"></div>
+                <p class="text-gray-600">Find quick answers to common questions about Mulambwane Safaris.</p>
+            </div>
+            <div class="space-y-6">
+                <div class="bg-white rounded-2xl shadow-lg p-6 tribal-border">
+                    <h3 class="text-lg font-semibold mb-3" style="color: var(--primary-green);">How do I book a safari?</h3>
+                    <p class="text-gray-700">You can send us an inquiry using the contact form above, email us directly, or call our bookings number. We will guide you through the process and help tailor your experience to your preferences and budget.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 tribal-border">
+                    <h3 class="text-lg font-semibold mb-3" style="color: var(--primary-green);">What is included in a safari package?</h3>
+                    <p class="text-gray-700">All packages include professional guide services, accommodation at our lodge, meals, and activities as specified in your chosen package. Airport transfers and specific equipment may vary by package type.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 tribal-border">
+                    <h3 class="text-lg font-semibold mb-3" style="color: var(--primary-green);">Is Mulambwane suitable for families?</h3>
+                    <p class="text-gray-700">Absolutely! We offer family-friendly accommodations and activities suitable for children. Our cultural experiences and wildlife viewing are educational and engaging for all ages. Please mention your family requirements when booking.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 tribal-border">
+                    <h3 class="text-lg font-semibold mb-3" style="color: var(--primary-green);">Do you cater for special dietary needs?</h3>
+                    <p class="text-gray-700">Yes, our kitchen can accommodate most dietary requirements including vegetarian, vegan, halal, and food allergies. Please let us know your specific needs when making your booking.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 tribal-border">
+                    <h3 class="text-lg font-semibold mb-3" style="color: var(--primary-green);">How do I get to Mulambwane?</h3>
+                    <p class="text-gray-700">We are located in Limpopo Province, South Africa. The closest airport is OR Tambo International Airport in Johannesburg. We can arrange transfers or provide detailed driving directions upon booking confirmation.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg p-6 tribal-border">
+                    <h3 class="text-lg font-semibold mb-3" style="color: var(--primary-green);">What is the best time to visit?</h3>
+                    <p class="text-gray-700">South Africa offers excellent safari opportunities year-round. The dry season (May-September) is ideal for game viewing, while the wet season (October-April) offers lush landscapes and bird watching. We can advise based on your interests.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="images/Logo.jpg" alt="Mulambwane Safaris Logo" class="h-16 w-24 rounded-full mr-4">
+                        <h3 class="text-2xl font-serif font-bold">Mulambwane Wildlife & Hunting Safaris</h3>
+                    </div>
+                    <p class="text-gray-300 mb-4 leading-relaxed">
+                        Experience authentic South African safari adventures in the heart of Limpopo Province. Our community-owned operation combines conservation, culture, and world-class service.
+                    </p>
+                    <div class="text-sm text-gray-400">
+                        <p>Limpopo Province, South Africa</p>
+                        <p>15,000+ Hectares of Protected Wildlife</p>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Home</a></li>
+                        <li><a href="story.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Our Story</a></li>
+                        <li><a href="hunting.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Hunting Safaris</a></li>
+                        <li><a href="lodge.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Safari Lodge</a></li>
+                        <li><a href="gamemeat.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Game Meat</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <p>📧 info@mulambwane.com</p>
+                        <p>📞 +27 123 456 789</p>
+                        <p>📍 Limpopo Province, South Africa</p>
+                    </div>
+                    <div class="mt-4">
+                        <button onclick="scrollToSection('contact-form-section')" class="bg-[#abb874] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#889976] transition-colors">
+                            Get in Touch
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 Mulambwane Wildlife & Hunting Safaris. All rights reserved.</p>
+                <p class="text-sm mt-2">Community-owned • Conservation-focused • Authentically African</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const submitBtn = document.getElementById('contact-submit-btn');
+            const messageDiv = document.getElementById('contact-message-result');
+            
+            // Show loading state
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Simulate form submission
+            setTimeout(() => {
+                messageDiv.className = 'text-center p-4 rounded-lg bg-green-100 text-green-700';
+                messageDiv.textContent = 'Thank you for your inquiry! We will respond within 24 hours with detailed information about your safari adventure.';
+                messageDiv.classList.remove('hidden');
+                
+                // Reset form
+                form.reset();
+                submitBtn.textContent = 'Send Inquiry';
+                submitBtn.disabled = false;
+                
+                // Hide message after 10 seconds
+                setTimeout(() => {
+                    messageDiv.classList.add('hidden');
+                }, 10000);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
+

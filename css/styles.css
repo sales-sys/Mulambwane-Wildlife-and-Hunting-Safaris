@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Ubuntu:wght@300;400;500;700&display=swap');
+
+:root {
+    /* Official Mulambwane Color Palette */
+    --primary-green: #889976;      /* Primary green */
+    --accent-gold: #abba70;        /* Light green accent */
+    --earth-brown: #212022;        /* Dark charcoal */
+    --bush-green: #879677;         /* Secondary green */
+    --sunset-orange: #abb874;      /* Olive green */
+    --deep-brown: #212022;         /* Dark charcoal */
+    --cream-white: #ffffff;        /* Pure white */
+    --copper-accent: #abba70;      /* Light green highlight */
+}
+
+.nav-link {
+    position: relative;
+    color: black;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: linear-gradient(45deg, var(--accent-gold), var(--bush-green));
+    transition: width 0.3s ease;
+    position: absolute;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--earth-brown) !important;
+    background: linear-gradient(45deg, var(--accent-gold), var(--bush-green)) !important;
+}
+
+/* African Pattern Decorations */
+.african-pattern {
+    background-image: 
+        radial-gradient(circle at 25% 25%, var(--accent-gold) 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, var(--bush-green) 2px, transparent 2px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+}
+
+.tribal-border {
+    border-image: linear-gradient(45deg, var(--accent-gold), var(--bush-green), var(--earth-brown)) 1;
+    border-width: 3px;
+    border-style: solid;
+}
+
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(74, 93, 58, 0.3);
+}
+
+.fade-in {
+    animation: fadeIn 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Safari-themed scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, var(--accent-gold), var(--bush-green));
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, var(--bush-green), var(--earth-brown));
+}
+
+/* African text shadow effect */
+.african-text-shadow {
+    text-shadow: 2px 2px 4px rgba(62, 39, 35, 0.4);
+}
+
+/* Safari gradient background */
+.safari-gradient {
+    background: linear-gradient(135deg, var(--accent-gold), var(--bush-green), var(--primary-green));
+}
+
+.earth-gradient {
+    background: linear-gradient(135deg, var(--earth-brown), var(--deep-brown));
+}
+
+/* Button hover animations */
+.btn-hover-scale {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-hover-scale:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Pulse animation for call-to-action buttons */
+.pulse-on-hover:hover {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Parallax effect for hero sections */
+.parallax-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Hero background styles */
+.hero-bg {
+    background-image: url('../images/hero-background.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #212022; /* Fallback color */
+}
+
+.hero-section {
+    position: relative;
+    background: linear-gradient(135deg, rgba(33, 32, 34, 0.7), rgba(171, 186, 112, 0.3)), 
+                url('../images/hero-background.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Get Help Button Styles */
+#get-help-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: linear-gradient(135deg, #abb874, #889976);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Hide floating button on mobile screens */
+@media (max-width: 767px) {
+    #get-help-btn {
+        display: none !important;
+    }
+}
+
+#get-help-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    background: linear-gradient(135deg, #889976, #abb874);
+}
+
+/* Additional animation styles */
+.animate-in {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Additional fade-in animation for homepage */
+.animate-fade-in {
+    animation: fadeIn 1.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ripple effect */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Enhanced hover effects */
+.hover-lift:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(212, 175, 55, 0.25);
+}
+
+/* Floating elements */
+.floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Card hover effects */
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .hover-lift:hover {
+        transform: translateY(-5px) scale(1.01);
+    }
+    
+    #get-help-btn {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+}

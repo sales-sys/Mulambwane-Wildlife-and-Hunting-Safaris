@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mulambwane Wildlife & Hunting Safaris - Premier Safari Destination</title>
+    <meta name="description" content="Experience authentic wildlife encounters at Mulambwane Wildlife & Hunting Safaris, Limpopo's premier safari destination. World-class hunting safaris, luxury lodge accommodation, and conservation through community.">
+    <meta name="keywords" content="South Africa safari, Limpopo hunting safari, wildlife lodge, hunting outfitter, Big 5 hunting, safari accommodation, game meat, conservation">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/get-help-loader.js" defer></script>
+</head>
+<body class="font-sans text-gray-800 scroll-smooth">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white shadow-lg z-50 border-b-2" style="border-color: var(--accent-gold);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo on the left -->
+                <div class="flex items-center cursor-pointer" onclick="window.location.href='index.html'">
+                    <img src="images/Logo.jpg" alt="Mulambwane Safaris Logo" class="h-16 w-24 rounded-full shadow-md hover:shadow-lg transition-shadow duration-300" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div id="logo-fallback" class="flex items-center safari-gradient px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300" style="display: none;">
+                        <div class="text-lg font-serif font-bold text-white">Mulambwane</div>
+                    </div>
+                </div>
+                
+                <!-- Desktop menu (visible on larger screens) -->
+                <div class="hidden md:flex space-x-1">
+                    <a href="index.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg bg-gradient-to-r from-[#abba70] to-[#889976] text-[#212022]">Home</a>
+                    <a href="story.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Our Story</a>
+                    <a href="hunting.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Hunting</a>
+                    <a href="lodge.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Lodge</a>
+                    <a href="gamemeat.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Game Meat</a>
+                    <a href="contact.html" class="nav-link px-4 py-2 rounded-full font-semibold transition-all duration-300 hover:bg-gradient-to-r hover:from-[#abba70] hover:to-[#889976] hover:text-[#212022] hover:shadow-lg">Contact</a>
+                </div>
+                
+                <!-- Hamburger button on the right (visible on mobile) -->
+                <button id="mobile-menu-btn" class="md:hidden p-2" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Simple Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t-2" style="border-color: var(--accent-gold);">
+            <div class="px-4 py-2 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-800 bg-[#abba70] text-[#212022] rounded transition-colors duration-300">Home</a>
+                <a href="story.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Our Story</a>
+                <a href="hunting.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Hunting Safaris</a>
+                <a href="lodge.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Safari Lodge</a>
+                <a href="gamemeat.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Game Meat</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-800 hover:bg-[#abba70] hover:text-[#212022] rounded transition-colors duration-300">Contact Us</a>
+                <!-- Mobile Get Help button will be added here by the component loader -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section relative min-h-screen flex items-center justify-center text-white overflow-hidden">
+            <div class="hero-bg absolute inset-0"></div>
+            <div class="relative z-10 text-center px-4 max-w-6xl mx-auto">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+                    <span class="bg-gradient-to-r from-[#abb874] to-white bg-clip-text text-transparent">Mulambwane</span><br>
+                    <span class="text-white">Wildlife & Hunting Safaris</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed text-gray-200">
+                    Experience the untamed beauty of Limpopo Province where ancient traditions meet world-class safari excellence
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                    <a href="story.html" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-gray-800">
+                        Discover Our Story
+                    </a>
+                    <a href="hunting.html" class="text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105" style="background-color: #abb874;" onmouseover="this.style.backgroundColor='#889976'" onmouseout="this.style.backgroundColor='#abb874'">
+                        Plan Your Safari
+                    </a>
+                </div>
+                
+                <!-- Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="bg-black bg-opacity-30 backdrop-blur-sm rounded-lg p-4">
+                        <div class="text-3xl font-bold text-[#abb874]">25+</div>
+                        <div class="text-sm text-gray-300">Years Experience</div>
+                    </div>
+                    <div class="bg-black bg-opacity-30 backdrop-blur-sm rounded-lg p-4">
+                        <div class="text-3xl font-bold text-[#abb874]">15,000+</div>
+                        <div class="text-sm text-gray-300">Hectares</div>
+                    </div>
+                    <div class="bg-black bg-opacity-30 backdrop-blur-sm rounded-lg p-4">
+                        <div class="text-3xl font-bold text-[#abb874]">30+</div>
+                        <div class="text-sm text-gray-300">Species</div>
+                    </div>
+                    <div class="bg-black bg-opacity-30 backdrop-blur-sm rounded-lg p-4">
+                        <div class="text-3xl font-bold text-[#abb874]">100%</div>
+                        <div class="text-sm text-gray-300">Community Owned</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Ubuntu Philosophy Section -->
+        <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: #212022;">
+                        The Spirit of <span style="color: #abb874;">Ubuntu</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                        "I am because we are" - Our community-owned approach ensures that every safari contributes to the prosperity of local communities while preserving Africa's natural heritage.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 mb-16">
+                    <div class="text-center p-8 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #abb874;">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4" style="color: #212022;">Community Ownership</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            100% community-owned and operated, ensuring direct benefits to local families and sustainable economic development.
+                        </p>
+                        <a href="story.html" class="font-medium" style="color: #abb874;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#abb874'">Our Impact →</a>
+                    </div>
+
+                    <div class="text-center p-8 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #abb874;">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4" style="color: #212022;">Conservation Excellence</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Dedicated to preserving wildlife habitats and promoting sustainable hunting practices that benefit both animals and communities.
+                        </p>
+                        <a href="story.html" class="font-medium" style="color: #abb874;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#abb874'">Learn More →</a>
+                    </div>
+
+                    <div class="text-center p-8 rounded-2xl bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="background-color: #abb874;">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4" style="color: #212022;">Cultural Heritage</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Celebrating and preserving indigenous traditions, customs, and knowledge passed down through generations of local communities.
+                        </p>
+                        <a href="story.html" class="font-medium" style="color: #abb874;" onmouseover="this.style.color='white'" onmouseout="this.style.color='#abb874'">Discover →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Preview Section -->
+        <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: #212022;">
+                        Experience <span style="color: #abb874;">Africa</span>
+                    </h2>
+                    <p class="text-xl max-w-3xl mx-auto leading-relaxed" style="color: #212022;">
+                        From world-class hunting safaris to luxury lodge accommodations and premium game meat, we offer complete African experiences.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                        <div class="h-48 overflow-hidden">
+                            <img src="images/hunting-safari.jpg" alt="Hunting Safaris" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #abb874, #889976)';">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3" style="color: #212022;">Hunting Safaris</h3>
+                            <p class="text-gray-600 mb-4 text-sm">World-class hunting experiences with expert guides and ethical practices.</p>
+                            <a href="hunting.html" class="text-sm font-semibold" style="color: #abb874;">Explore Packages →</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                        <div class="h-48 overflow-hidden">
+                            <img src="images/lodge-gallery1.jpg" alt="Safari Lodge" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #889976, #abb874)';">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3" style="color: #212022;">Safari Lodge</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Luxury accommodations in the heart of the African wilderness.</p>
+                            <a href="lodge.html" class="text-sm font-semibold" style="color: #abb874;">View Lodge →</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                        <div class="h-48 overflow-hidden">
+                            <img src="images/prime-cuts.jpg" alt="Premium Game Meat" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #abb874, #889976)';">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3" style="color: #212022;">Game Meat</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Premium quality game meat products sourced sustainably from our reserve.</p>
+                            <a href="gamemeat.html" class="text-sm font-semibold" style="color: #abb874;">Shop Now →</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                        <div class="h-48 overflow-hidden">
+                            <img src="images/heart-of-limpopo.jpg" alt="Our Story" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #889976, #abb874)';">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3" style="color: #212022;">Our Story</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Learn about our community heritage and conservation mission.</p>
+                            <a href="story.html" class="text-sm font-semibold" style="color: #abb874;">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="py-20 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#889976] via-[#abba70] to-[#889976]"></div>
+            <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6" style="color: #212022;">
+                    Ready for Your <span style="color: #212022;">African Adventure?</span>
+                </h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto leading-relaxed" style="color: #212022;">
+                    Join us for an unforgettable experience where conservation meets tradition, and every moment creates lasting memories.
+                </p>
+                <a href="story.html" class="border-2 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-[#212022]" style="border-color: #212022; background-color: #212022;">
+                    Start Your Journey
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <img src="images/Logo.jpg" alt="Mulambwane Safaris" class="h-16 w-24 rounded-full mr-3">
+                        <span class="text-xl font-bold text-white">Mulambwane Safaris</span>
+                    </div>
+                    <p class="text-gray-400 mb-4 max-w-md">
+                        Experience authentic African wildlife adventures with our community-owned safari operations in the heart of Limpopo Province.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-[#abb874] transition-colors" title="Facebook">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-[#abb874] transition-colors" title="Instagram">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987 6.62 0 11.987-5.367 11.987-11.987C24.014 5.367 18.637.001 12.017.001zM8.449 16.988c-2.504 0-4.531-2.027-4.531-4.531s2.027-4.531 4.531-4.531 4.531 2.027 4.531 4.531-2.027 4.531-4.531 4.531zm7.119 0c-2.504 0-4.531-2.027-4.531-4.531s2.027-4.531 4.531-4.531 4.531 2.027 4.531 4.531-2.027 4.531-4.531 4.531z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-[#abb874] transition-colors" title="TikTok">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-[#abb874] transition-colors" title="YouTube">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Home</a></li>
+                        <li><a href="story.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Our Story</a></li>
+                        <li><a href="hunting.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Hunting Safaris</a></li>
+                        <li><a href="lodge.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Lodge</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-[#abb874] transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-4">Contact Info</h3>
+                    <div class="space-y-2 text-gray-400">
+                        <p>Limpopo Province, South Africa</p>
+                        <p>Phone: +27 (0) 123 456 789</p>
+                        <p>Email: info@mulambwane.co.za</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2024 Mulambwane Wildlife & Hunting Safaris. All rights reserved. | Community Owned & Operated
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/get-help-loader.js"></script>
+</body>
+</html>
