@@ -150,7 +150,7 @@ async function submitContactForm(event) {
             throw new Error('Please fill in all required fields: First Name, Last Name, Email, and Message');
         }
         
-        const response = await fetch('/.netlify/functions/contact-new', {
+        const response = await fetch('/.netlify/functions/contact-working', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -208,7 +208,7 @@ async function submitBookingForm(event) {
             throw new Error('Please fill in all required fields: First Name, Last Name, Email, Check-in Date, Check-out Date, and Number of Adults');
         }
         
-        const response = await fetch('/.netlify/functions/booking-new', {
+        const response = await fetch('/.netlify/functions/booking-working', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
