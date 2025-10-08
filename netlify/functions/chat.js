@@ -45,8 +45,8 @@ exports.handler = async (event, context) => {
         'hunting': 'We offer professional hunting safaris featuring Big 5 game including Cape Buffalo, Greater Kudu, Sable Antelope, and more. Our experienced guides provide spoor reading and bushcraft training.',
         'lodge': 'Our luxury bush suites offer authentic African accommodation with modern amenities. We have a traditional boma, common lounge area, and cultural experiences.',
         'game meat': 'We provide premium game meat including traditional biltong, droëwors, prime cuts, and game boerewors. All ethically sourced from our conservation efforts.',
-        'booking': 'You can book through our lodge reservation form or contact us directly at info@mulambwane.com or +27 123 456 789.',
-        'default': 'Thank you for your interest in Mulambwane Wildlife & Hunting Safaris! We offer hunting safaris, luxury lodge accommodation, and premium game meat. For specific inquiries, please contact us at info@mulambwane.com or +27 123 456 789.'
+        'booking': 'You can book through our lodge reservation form or contact us directly at mulambwanesafaris@gmail.com or +27 73 342 6833.',
+        'default': 'Thank you for your interest in Mulambwane Wildlife & Hunting Safaris! We offer hunting safaris, luxury lodge accommodation, and premium game meat. For specific inquiries, please contact us at mulambwanesafaris@gmail.com or +27 73 342 6833.'
       };
       
       const lowerMessage = message.toLowerCase();

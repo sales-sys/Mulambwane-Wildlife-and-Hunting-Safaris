@@ -114,11 +114,11 @@ function getLocalChatResponse(message) {
     
     // Booking and contact
     if (lowerMessage.includes('book') || lowerMessage.includes('reserve') || lowerMessage.includes('contact') || lowerMessage.includes('phone')) {
-        return "You can book through our website's reservation forms or contact us directly:\n📧 info@mulambwane.com\n📞 +27 123 456 789\n📍 Waterpoort Louis Trichardt, Limpopo Province, South Africa";
+        return "You can book through our website's reservation forms or contact us directly:\n📧 mulambwanesafaris@gmail.com\n📞 +27 73 342 6833\n📍 Waterpoort Louis Trichardt, Limpopo Province, South Africa";
     }
     
     // Default response
-    return "Thank you for your interest in Mulambwane Wildlife & Hunting Safaris! We specialize in hunting safaris, luxury lodge accommodation, and premium game meat. For specific questions, contact us at info@mulambwane.com or +27 123 456 789.";
+    return "Thank you for your interest in Mulambwane Wildlife & Hunting Safaris! We specialize in hunting safaris, luxury lodge accommodation, and premium game meat. For specific questions, contact us at mulambwanesafaris@gmail.com or +27 73 342 6833.";
 }
 
 // Contact form submission
