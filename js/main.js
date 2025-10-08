@@ -136,20 +136,24 @@ async function submitContactForm(event) {
     submitBtn.disabled = true;
     
     try {
-        const response = await fetch('/netlify/functions/contact', {
+        const response = await fetch('/.netlify/functions/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
         
         if (response.ok) {
+            const result = await response.json();
             showMessage('Thank you! Your message has been sent successfully. We\'ll get back to you soon.', 'success');
             form.reset();
         } else {
-            showMessage('Sorry, there was an error sending your message. Please try again or contact us directly.', 'error');
+            const errorData = await response.text();
+            console.error('Contact form error:', response.status, errorData);
+            showMessage(`Error ${response.status}: ${errorData}. Please contact us directly at mulambwanesafaris@gmail.com or +27 73 342 6833`, 'error');
         }
     } catch (error) {
-        showMessage('Sorry, there was an error sending your message. Please try again or contact us directly.', 'error');
+        console.error('Contact form network error:', error);
+        showMessage('Network error. Please check your connection or contact us directly at mulambwanesafaris@gmail.com or +27 73 342 6833', 'error');
     } finally {
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
@@ -171,20 +175,24 @@ async function submitBookingForm(event) {
     submitBtn.disabled = true;
     
     try {
-        const response = await fetch('/netlify/functions/booking', {
+        const response = await fetch('/.netlify/functions/booking', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
         
         if (response.ok) {
+            const result = await response.json();
             showMessage('Thank you! Your booking request has been submitted. We\'ll contact you within 24 hours to confirm your safari experience.', 'success');
             form.reset();
         } else {
-            showMessage('Sorry, there was an error processing your booking. Please try again or contact us directly.', 'error');
+            const errorData = await response.text();
+            console.error('Booking response error:', response.status, errorData);
+            showMessage(`Booking Error ${response.status}: ${errorData}. Please contact us directly at mulambwanesafaris@gmail.com or +27 73 342 6833`, 'error');
         }
     } catch (error) {
-        showMessage('Sorry, there was an error processing your booking. Please try again or contact us directly.', 'error');
+        console.error('Booking fetch error:', error);
+        showMessage(`Network error: ${error.message}. Please contact us directly at mulambwanesafaris@gmail.com or +27 73 342 6833`, 'error');
     } finally {
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
@@ -215,6 +223,57 @@ function showMessage(message, type) {
             messageDiv.remove();
         }
     }, 5000);
+}
+
+// Local booking message for testing
+function showLocalBookingMessage(data) {
+    const bookingDetails = `
+BOOKING REQUEST RECEIVED (Local Testing)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📧 This booking would be sent to: mulambwanesafaris@gmail.com
+📞 Contact: +27 73 342 6833
+
+Booking Details:
+• Name: ${data.firstName} ${data.lastName}
+• Email: ${data.email}
+• Phone: ${data.phone || 'Not provided'}
+• Check-in: ${data.checkin}
+• Check-out: ${data.checkout}
+• Guests: ${data.guests}
+• Room Type: ${data.roomType}
+• Special Requests: ${data.specialRequests || 'None'}
+
+To complete this booking:
+1. Deploy to Netlify with Gmail setup
+2. Or contact us directly on WhatsApp: +27 73 342 6833
+`;
+    
+    console.log(bookingDetails);
+    showMessage('✅ Booking details captured! (Local testing mode - check console for details. On Netlify, this will email automatically)', 'success');
+    
+    // Create WhatsApp message for immediate booking
+    const whatsappMessage = `Hi Mulambwane Safari! New booking request:
+
+Name: ${data.firstName} ${data.lastName}
+Email: ${data.email}
+Phone: ${data.phone || 'Not provided'}
+Check-in: ${data.checkin}
+Check-out: ${data.checkout}
+Guests: ${data.guests}
+Room Type: ${data.roomType}
+Special Requests: ${data.specialRequests || 'None'}
+
+Please confirm availability and pricing.`;
+    
+    const whatsappUrl = `https://wa.me/27733426833?text=${encodeURIComponent(whatsappMessage)}`;
+    
+    // Show option to send via WhatsApp
+    setTimeout(() => {
+        if (confirm('Would you like to send this booking via WhatsApp for immediate response?')) {
+            window.open(whatsappUrl, '_blank');
+        }
+    }, 2000);
 }
 
 // Smooth scroll functionality
