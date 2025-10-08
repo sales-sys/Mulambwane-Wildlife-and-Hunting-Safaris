@@ -108,7 +108,7 @@ exports.handler = async (event, context) => {
     // Email to your business
     const businessEmail = {
       from: process.env.EMAIL_USER,
-      to: 'Sales@mumarketing.org', // Your business email
+      to: 'mulambwanesafaris@gmail.com', // Your business email
       subject: `New Safari Lodge Booking - ${data.firstName} ${data.lastName}`,
       text: bookingDetails,
       html: `
@@ -182,7 +182,7 @@ exports.handler = async (event, context) => {
             </ul>
             
             <p>If you have any immediate questions, please contact us:</p>
-            <p><a href="mailto:Sales@mumarketing.org">Sales@mumarketing.org</a><br>
+            <p><a href="mailto:mulambwanesafaris@gmail.com">mulambwanesafaris@gmail.com</a><br>
             +27 (0)73 342 6833</p>
             
             <div style="background: linear-gradient(135deg, #889976, #abba70); color: white; padding: 15px; text-align: center; margin-top: 30px;">

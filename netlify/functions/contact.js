@@ -111,7 +111,7 @@ exports.handler = async (event, context) => {
     // Email to your business
     const businessEmail = {
       from: process.env.EMAIL_USER,
-      to: 'Sales@mumarketing.org', // Your general inquiry email
+      to: 'mulambwanesafaris@gmail.com', // Your general inquiry email
       subject: `New Inquiry: ${data.interest || 'General'} - ${data.firstName} ${data.lastName}`,
       text: inquiryDetails,
       html: `
@@ -175,9 +175,9 @@ exports.handler = async (event, context) => {
             <p>In the meantime, feel free to explore more about our offerings on our website or contact us directly:</p>
             
             <div style="background: #f8f6f0; padding: 15px; border-radius: 5px; margin: 20px 0;">
-              <p><strong>Email:</strong> <a href="mailto:info@mulambwane.co.za">info@mulambwane.co.za</a><br>
-              <strong>Phone:</strong> +27 (0)15 793 2436<br>
-              <strong>Bookings:</strong> <a href="mailto:Sales@mumarketing.org">Sales@mumarketing.org</a></p>
+              <p><strong>Email:</strong> <a href="mailto:mulambwanesafaris@gmail.com">mulambwanesafaris@gmail.com</a><br>
+              <strong>Phone:</strong> +27 73 342 6833<br>
+              <strong>Bookings:</strong> <a href="mailto:mulambwanesafaris@gmail.com">mulambwanesafaris@gmail.com</a></p>
             </div>
             
             <div style="background: linear-gradient(135deg, #889976, #abba70); color: white; padding: 20px; text-align: center; margin-top: 30px; border-radius: 5px;">
