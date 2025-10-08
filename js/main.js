@@ -55,9 +55,13 @@ async function sendChatMessage(event) {
     document.getElementById('chatbot-messages').appendChild(thinkingDiv);
     
     try {
-        const response = await fetch('/netlify/functions/chat', {
+        // Try Netlify function first
+        const response = await fetch('/.netlify/functions/chat', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
             body: JSON.stringify({ message })
         });
         
@@ -67,17 +71,54 @@ async function sendChatMessage(event) {
         
         if (response.ok) {
             const data = await response.json();
-            addChatMessage('bot', data.reply);
+            addChatMessage('bot', data.reply || data.message || 'I received your message!');
         } else {
-            addChatMessage('bot', 'I apologize, but I\'m having trouble connecting right now. Please try contacting us directly at info@mulambwane.com or +27 123 456 789.');
+            console.error('Response not OK:', response.status, response.statusText);
+            // Fallback to local response
+            addChatMessage('bot', getLocalChatResponse(message));
         }
     } catch (error) {
+        console.error('Fetch error:', error);
         // Remove thinking indicator
         const thinking = document.getElementById('thinking-indicator');
         if (thinking) thinking.remove();
         
-        addChatMessage('bot', 'I apologize, but I\'m having trouble connecting right now. Please try contacting us directly at info@mulambwane.com or +27 123 456 789.');
+        // Fallback to local response
+        addChatMessage('bot', getLocalChatResponse(message));
     }
+}
+
+// Local chatbot response function as fallback
+function getLocalChatResponse(message) {
+    const lowerMessage = message.toLowerCase();
+    
+    // Greeting responses
+    if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+        return "Hello! Welcome to Mulambwane Wildlife & Hunting Safaris! I'm here to help you with information about our hunting safaris, luxury lodge, and premium game meat. How can I assist you today?";
+    }
+    
+    // Hunting safari inquiries
+    if (lowerMessage.includes('hunt') || lowerMessage.includes('safari') || lowerMessage.includes('big 5')) {
+        return "Our professional hunting safaris offer Big 5 experiences including Cape Buffalo, Greater Kudu, and Sable Antelope. We provide expert guides, spoor reading training, and bushcraft skills. Would you like to know more about our hunting packages?";
+    }
+    
+    // Lodge accommodation
+    if (lowerMessage.includes('lodge') || lowerMessage.includes('accommodation') || lowerMessage.includes('stay') || lowerMessage.includes('room')) {
+        return "Our luxury bush suites offer authentic African accommodation with modern amenities. Features include traditional boma dining, common lounge areas, and cultural experiences. We're located in the heart of Limpopo's wilderness. Would you like to make a reservation?";
+    }
+    
+    // Game meat products
+    if (lowerMessage.includes('game meat') || lowerMessage.includes('biltong') || lowerMessage.includes('meat') || lowerMessage.includes('order')) {
+        return "We offer premium game meat including traditional biltong, droëwors, prime cuts, and game boerewors. All ethically sourced from our conservation efforts. You can place orders through our website or contact us directly.";
+    }
+    
+    // Booking and contact
+    if (lowerMessage.includes('book') || lowerMessage.includes('reserve') || lowerMessage.includes('contact') || lowerMessage.includes('phone')) {
+        return "You can book through our website's reservation forms or contact us directly:\n📧 info@mulambwane.com\n📞 +27 123 456 789\n📍 Waterpoort Louis Trichardt, Limpopo Province, South Africa";
+    }
+    
+    // Default response
+    return "Thank you for your interest in Mulambwane Wildlife & Hunting Safaris! We specialize in hunting safaris, luxury lodge accommodation, and premium game meat. For specific questions, contact us at info@mulambwane.com or +27 123 456 789.";
 }
 
 // Contact form submission
