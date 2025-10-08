@@ -27,11 +27,11 @@ exports.handler = async (event, context) => {
     console.log('Received booking data:', data);
 
     // Validate required fields
-    if (!data.firstName || !data.lastName || !data.email || !data.serviceType) {
+    if (!data.firstName || !data.lastName || !data.email || !data.checkIn || !data.checkOut || !data.adults) {
       return {
         statusCode: 400,
         headers: { 'Access-Control-Allow-Origin': '*' },
-        body: JSON.stringify({ error: 'Missing required fields' })
+        body: JSON.stringify({ error: 'Missing required fields: firstName, lastName, email, checkIn, checkOut, adults' })
       };
     }
 
@@ -60,24 +60,29 @@ exports.handler = async (event, context) => {
     const businessEmail = {
       from: process.env.EMAIL_USER,
       to: 'mulambwanesafaris@gmail.com',
-      subject: `New Booking Request - ${data.serviceType}`,
+      subject: `New Lodge Booking Request - ${data.firstName} ${data.lastName}`,
       text: `
-NEW BOOKING REQUEST
-==================
+NEW LODGE BOOKING REQUEST
+========================
 
-Name: ${data.firstName} ${data.lastName}
-Email: ${data.email}
-Phone: ${data.phone || 'Not provided'}
-Service: ${data.serviceType}
-Dates: ${data.dates || 'Not specified'}
-Group Size: ${data.groupSize || 'Not specified'}
-Budget: ${data.budget || 'Not specified'}
+Guest Information:
+• Name: ${data.firstName} ${data.lastName}
+• Email: ${data.email}
+• Phone: ${data.phone || 'Not provided'}
+
+Booking Details:
+• Check-in: ${data.checkIn}
+• Check-out: ${data.checkOut}
+• Adults: ${data.adults}
+• Children: ${data.children || '0'}
+• Suite Preference: ${data.suite || 'Not specified'}
 
 Special Requests:
 ${data.specialRequests || 'None'}
 
 ---
 Sent from Mulambwane Safari Website
+Lodge Booking System
       `
     };
 

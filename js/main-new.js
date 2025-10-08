@@ -143,7 +143,12 @@ async function submitContactForm(event) {
             message: formData.get('message')
         };
         
-        console.log('Sending contact data:', data);
+        console.log('📧 Contact form data being sent:', data);
+        
+        // Check for missing required fields
+        if (!data.firstName || !data.lastName || !data.email || !data.message) {
+            throw new Error('Please fill in all required fields: First Name, Last Name, Email, and Message');
+        }
         
         const response = await fetch('/.netlify/functions/contact-new', {
             method: 'POST',
@@ -188,14 +193,20 @@ async function submitBookingForm(event) {
             lastName: formData.get('lastName'),
             email: formData.get('email'),
             phone: formData.get('phone'),
-            serviceType: formData.get('serviceType'),
-            dates: formData.get('dates'),
-            groupSize: formData.get('groupSize'),
-            budget: formData.get('budget'),
+            checkIn: formData.get('checkIn'),
+            checkOut: formData.get('checkOut'),
+            adults: formData.get('adults'),
+            children: formData.get('children'),
+            suite: formData.get('suite'),
             specialRequests: formData.get('specialRequests')
         };
         
-        console.log('Sending booking data:', data);
+        console.log('🏨 Booking form data being sent:', data);
+        
+        // Check for missing required fields
+        if (!data.firstName || !data.lastName || !data.email || !data.checkIn || !data.checkOut || !data.adults) {
+            throw new Error('Please fill in all required fields: First Name, Last Name, Email, Check-in Date, Check-out Date, and Number of Adults');
+        }
         
         const response = await fetch('/.netlify/functions/booking-new', {
             method: 'POST',

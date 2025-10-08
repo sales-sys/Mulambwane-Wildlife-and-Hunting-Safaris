@@ -408,35 +408,6 @@
                 element.scrollIntoView({ behavior: 'smooth' });
             }
         }
-
-        function submitContactForm(event) {
-            event.preventDefault();
-            
-            const form = event.target;
-            const submitBtn = document.getElementById('contact-submit-btn');
-            const messageDiv = document.getElementById('contact-message-result');
-            
-            // Show loading state
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            
-            // Simulate form submission
-            setTimeout(() => {
-                messageDiv.className = 'text-center p-4 rounded-lg bg-green-100 text-green-700';
-                messageDiv.textContent = 'Thank you for your inquiry! We will respond within 24 hours with detailed information about your safari adventure.';
-                messageDiv.classList.remove('hidden');
-                
-                // Reset form
-                form.reset();
-                submitBtn.textContent = 'Send Inquiry';
-                submitBtn.disabled = false;
-                
-                // Hide message after 10 seconds
-                setTimeout(() => {
-                    messageDiv.classList.add('hidden');
-                }, 10000);
-            }, 2000);
-        }
     </script>
 </body>
 </html>
