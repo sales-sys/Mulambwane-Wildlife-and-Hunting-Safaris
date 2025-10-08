@@ -61,25 +61,41 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Log environment variables (safely)
+    // Debug environment variables
+    console.log('=== BOOKING EMAIL DEBUG INFO ===');
     console.log('EMAIL_USER exists:', !!process.env.EMAIL_USER);
+    console.log('EMAIL_USER value:', process.env.EMAIL_USER);
     console.log('EMAIL_PASS exists:', !!process.env.EMAIL_PASS);
-    console.log('Full nodemailer object:', nodemailer);
-    console.log('nodemailer keys:', Object.keys(nodemailer));
-    console.log('nodemailer.createTransporter type:', typeof nodemailer.createTransporter);
-    console.log('nodemailer.default:', nodemailer.default);
-    
-    // Use the correct function name: createTransport (not createTransporter)
-    console.log('Using createTransport:', typeof nodemailer.createTransport);
+    console.log('EMAIL_PASS length:', process.env.EMAIL_PASS ? process.env.EMAIL_PASS.length : 0);
+    console.log('EMAIL_SERVICE:', process.env.EMAIL_SERVICE);
+    console.log('================================');
     
     // Create email transporter (you'll need to set up environment variables)
     const transporter = nodemailer.createTransport({
-      service: 'gmail', // or your preferred email service
+      service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER, // Set this in Netlify environment variables
-        pass: process.env.EMAIL_PASS  // Set this in Netlify environment variables
-      }
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      },
+      debug: true, // Enable debug output
+      logger: true // Log to console
     });
+
+    // Test the transporter
+    try {
+      console.log('Testing booking email transporter...');
+      await transporter.verify();
+      console.log('✅ Booking email transporter verified successfully');
+    } catch (verifyError) {
+      console.error('❌ Booking email transporter verification failed:', verifyError);
+      return {
+        statusCode: 500,
+        headers: { 'Access-Control-Allow-Origin': '*' },
+        body: JSON.stringify({ 
+          error: 'Email configuration error: ' + verifyError.message 
+        })
+      };
+    }
 
     // Format the booking details for email
     const bookingDetails = `
