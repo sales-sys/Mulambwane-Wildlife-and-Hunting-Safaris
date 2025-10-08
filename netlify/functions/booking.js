@@ -28,219 +28,119 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    // Parse the booking form data
     const data = JSON.parse(event.body);
     
-    // Validate required fields
-    const requiredFields = ['firstName', 'lastName', 'email', 'checkIn', 'checkOut', 'adults'];
-    const missingFields = requiredFields.filter(field => !data[field]);
-    
-    if (missingFields.length > 0) {
-      return {
-        statusCode: 400,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-        body: JSON.stringify({ 
-          error: `Missing required fields: ${missingFields.join(', ')}` 
-        })
-      };
-    }
-
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(data.email)) {
-      return {
-        statusCode: 400,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-        body: JSON.stringify({ 
-          error: 'Invalid email address' 
-        })
-      };
-    }
-
-    // Debug environment variables
-    console.log('=== BOOKING EMAIL DEBUG INFO ===');
-    console.log('EMAIL_USER exists:', !!process.env.EMAIL_USER);
-    console.log('EMAIL_USER value:', process.env.EMAIL_USER);
-    console.log('EMAIL_PASS exists:', !!process.env.EMAIL_PASS);
-    console.log('EMAIL_PASS length:', process.env.EMAIL_PASS ? process.env.EMAIL_PASS.length : 0);
-    console.log('EMAIL_SERVICE:', process.env.EMAIL_SERVICE);
-    console.log('================================');
-    
-    // Create email transporter (you'll need to set up environment variables)
+    // Create email transporter - EXACT WORKING METHOD
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
       },
-      debug: true, // Enable debug output
-      logger: true // Log to console
+      debug: true,
+      logger: true
     });
 
     // Test the transporter
     try {
-      console.log('Testing booking email transporter...');
+      console.log('Testing email transporter...');
       await transporter.verify();
-      console.log('✅ Booking email transporter verified successfully');
+      console.log('✅ Email transporter verified successfully');
     } catch (verifyError) {
-      console.error('❌ Booking email transporter verification failed:', verifyError);
+      console.error('❌ Email transporter verification failed:', verifyError);
       return {
         statusCode: 500,
         headers: { 'Access-Control-Allow-Origin': '*' },
         body: JSON.stringify({ 
-          error: 'Email configuration error: ' + verifyError.message 
+          error: 'Email service configuration error',
+          details: verifyError.message 
         })
       };
     }
 
-    // Format the booking details for email
-    const bookingDetails = `
-      NEW SAFARI LODGE BOOKING REQUEST
-      ==============================
-      
-      Guest Information:
-      - Name: ${data.firstName} ${data.lastName}
-      - Email: ${data.email}
-      - Phone: ${data.phone || 'Not provided'}
-      
-      Booking Details:
-      - Check-in: ${data.checkIn}
-      - Check-out: ${data.checkOut}
-      - Adults: ${data.adults}
-      - Children: ${data.children || 'None'}
-      - Suite Preference: ${data.suite || 'No preference'}
-      
-      Special Requests:
-      ${data.specialRequests || 'None'}
-      
-      ==============================
-      Please respond to this booking request within 24 hours.
-    `;
-
-    // Email to your business
+    // Email to business
     const businessEmail = {
       from: process.env.EMAIL_USER,
-      to: 'mulambwanesafaris@gmail.com', // Your business email
-      subject: `New Safari Lodge Booking - ${data.firstName} ${data.lastName}`,
-      text: bookingDetails,
+      to: 'mulambwanesafaris@gmail.com',
+      subject: `Lodge Booking Request - ${data.firstName} ${data.lastName}`,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <div style="background: linear-gradient(135deg, #889976, #abba70); color: white; padding: 20px; text-align: center;">
-            <h1> New Safari Lodge Booking Request</h1>
-          </div>
-          <div style="padding: 20px; background: #f9f9f9;">
-            <h2 style="color: #889976;">Guest Information</h2>
-            <table style="width: 100%; border-collapse: collapse;">
-              <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Name:</td><td style="padding: 8px; border: 1px solid #ddd;">${data.firstName} ${data.lastName}</td></tr>
-              <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Email:</td><td style="padding: 8px; border: 1px solid #ddd;">${data.email}</td></tr>
-              <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Phone:</td><td style="padding: 8px; border: 1px solid #ddd;">${data.phone || 'Not provided'}</td></tr>
-            </table>
-            
-            <h2 style="color: #889976; margin-top: 20px;">Booking Details</h2>
-            <table style="width: 100%; border-collapse: collapse;">
-              <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Check-in:</td><td style="padding: 8px; border: 1px solid #ddd;">${data.checkIn}</td></tr>
-              <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Check-out:</td><td style="padding: 8px; border: 1px solid #ddd;">${data.checkOut}</td></tr>
-              <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Adults:</td><td style="padding: 8px; border: 1px solid #ddd;">${data.adults}</td></tr>
-              <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Children:</td><td style="padding: 8px; border: 1px solid #ddd;">${data.children || 'None'}</td></tr>
-              <tr><td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Suite:</td><td style="padding: 8px; border: 1px solid #ddd;">${data.suite || 'No preference'}</td></tr>
-            </table>
-            
-            ${data.specialRequests ? `
-              <h2 style="color: #889976; margin-top: 20px;">Special Requests</h2>
-              <div style="background: white; padding: 15px; border-left: 4px solid #abba70; margin: 10px 0;">
-                ${data.specialRequests}
-              </div>
-            ` : ''}
-            
-            <div style="background: #889976; color: white; padding: 15px; margin-top: 20px; text-align: center;">
-              <p><strong>Please respond within 24 hours</strong></p>
-            </div>
-          </div>
+        <h2>New Lodge Booking Request</h2>
+        <h3>Guest Information</h3>
+        <p><strong>Name:</strong> ${data.firstName} ${data.lastName}</p>
+        <p><strong>Email:</strong> ${data.email}</p>
+        <p><strong>Phone:</strong> ${data.phone || 'Not provided'}</p>
+        
+        <h3>Booking Details</h3>
+        <p><strong>Check-in:</strong> ${data.checkIn}</p>
+        <p><strong>Check-out:</strong> ${data.checkOut}</p>
+        <p><strong>Adults:</strong> ${data.adults}</p>
+        <p><strong>Children:</strong> ${data.children || '0'}</p>
+        <p><strong>Suite Preference:</strong> ${data.suite || 'Not specified'}</p>
+        
+        <h3>Special Requests</h3>
+        <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
+          ${data.specialRequests || 'None'}
         </div>
+        <hr>
+        <p><em>Sent from Mulambwane Safari Website Lodge Booking Form</em></p>
       `
     };
 
     // Confirmation email to customer
-    const customerEmail = {
+    const confirmationEmail = {
       from: process.env.EMAIL_USER,
       to: data.email,
-      subject: `Booking Confirmation - Mulambwane Wildlife & Hunting Safaris`,
+      subject: 'Lodge Booking Request Received - Mulambwane Wildlife & Hunting Safaris',
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <div style="background: linear-gradient(135deg, #889976, #abba70); color: white; padding: 20px; text-align: center;">
-            <h1>Thank you for your booking request!</h1>
-          </div>
-          <div style="padding: 20px;">
-            <p>Dear ${data.firstName},</p>
-            
-            <p>Thank you for choosing Mulambwane Wildlife & Hunting Safaris! We have received your booking request and our team will review it shortly.</p>
-            
-            <div style="background: #f8f6f0; padding: 20px; border-left: 4px solid #abba70; margin: 20px 0;">
-              <h3 style="color: #889976; margin-top: 0;">Your Booking Details:</h3>
-              <ul style="list-style: none; padding: 0;">
-                <li><strong>Check-in:</strong> ${data.checkIn}</li>
-                <li><strong>Check-out:</strong> ${data.checkOut}</li>
-                <li><strong>Adults:</strong> ${data.adults}</li>
-                <li><strong>Children:</strong> ${data.children || 'None'}</li>
-                <li><strong>Suite:</strong> ${data.suite || 'No preference'}</li>
-              </ul>
-            </div>
-            
-            <p><strong>What happens next?</strong></p>
-            <ul>
-              <li>We'll review your request within 24 hours</li>
-              <li>You'll receive a detailed quote and availability confirmation</li>
-              <li>Our team may contact you for any additional details</li>
-            </ul>
-            
-            <p>If you have any immediate questions, please contact us:</p>
-            <p><a href="mailto:mulambwanesafaris@gmail.com">mulambwanesafaris@gmail.com</a><br>
-            +27 (0)73 342 6833</p>
-            
-            <div style="background: linear-gradient(135deg, #889976, #abba70); color: white; padding: 15px; text-align: center; margin-top: 30px;">
-              <p><em>"The Soul of Africa is Calling"</em></p>
-            </div>
-          </div>
-        </div>
+        <h2>Thank you for your booking request, ${data.firstName}!</h2>
+        <p>We have received your lodge booking request and will contact you within 24 hours to confirm availability and provide detailed information.</p>
+        
+        <h3>Your Booking Request:</h3>
+        <p><strong>Check-in:</strong> ${data.checkIn}<br>
+        <strong>Check-out:</strong> ${data.checkOut}<br>
+        <strong>Guests:</strong> ${data.adults} Adults${data.children && data.children !== '0' ? ', ' + data.children + ' Children' : ''}<br>
+        <strong>Suite Preference:</strong> ${data.suite || 'Not specified'}</p>
+        
+        ${data.specialRequests ? `<h3>Special Requests:</h3>
+        <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
+          ${data.specialRequests}
+        </div>` : ''}
+        
+        <h3>Contact Information:</h3>
+        <p><strong>Email:</strong> <a href="mailto:mulambwanesafaris@gmail.com">mulambwanesafaris@gmail.com</a><br>
+        <strong>Phone:</strong> +27 73 342 6833<br>
+        <strong>Bookings:</strong> <a href="mailto:mulambwanesafaris@gmail.com">mulambwanesafaris@gmail.com</a></p>
+        
+        <p>Best regards,<br>
+        Mulambwane Wildlife & Hunting Safaris Team</p>
       `
     };
 
     // Send both emails
-    await transporter.sendMail(businessEmail);
-    await transporter.sendMail(customerEmail);
+    console.log('Sending business notification email...');
+    const businessResult = await transporter.sendMail(businessEmail);
+    console.log('✅ Business email sent:', businessResult.messageId);
 
-    console.log('Booking request sent successfully:', {
-      name: `${data.firstName} ${data.lastName}`,
-      email: data.email,
-      checkIn: data.checkIn,
-      checkOut: data.checkOut
-    });
+    console.log('Sending customer confirmation email...');
+    const confirmationResult = await transporter.sendMail(confirmationEmail);
+    console.log('✅ Confirmation email sent:', confirmationResult.messageId);
 
     return {
       statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
+      headers: { 'Access-Control-Allow-Origin': '*' },
       body: JSON.stringify({ 
         success: true,
-        message: 'Your booking request has been sent successfully! We will contact you within 24 hours.' 
+        message: 'Booking request sent successfully! We will contact you within 24 hours. Check your email for confirmation.'
       })
     };
 
   } catch (error) {
-    console.error('Booking function error:', error);
-    
+    console.error('Booking form error:', error);
     return {
       statusCode: 500,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
+      headers: { 'Access-Control-Allow-Origin': '*' },
       body: JSON.stringify({ 
-        error: 'Failed to process booking request. Please try again or contact us directly.' 
+        error: 'Failed to send booking request: ' + error.message 
       })
     };
   }

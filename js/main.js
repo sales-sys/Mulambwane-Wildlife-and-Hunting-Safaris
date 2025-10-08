@@ -121,78 +121,112 @@ function getLocalChatResponse(message) {
     return "Thank you for your interest in Mulambwane Wildlife & Hunting Safaris! We specialize in hunting safaris, luxury lodge accommodation, and premium game meat. For specific questions, contact us at mulambwanesafaris@gmail.com or +27 73 342 6833.";
 }
 
-// Contact form submission
+// 🔄 BRAND NEW CONTACT FORM - CLEAN START
 async function submitContactForm(event) {
     event.preventDefault();
     
     const form = event.target;
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
-    
-    // Show loading state
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
     
     try {
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        const formData = new FormData(form);
+        const data = {
+            firstName: formData.get('firstName'),
+            lastName: formData.get('lastName'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            interest: formData.get('interest'),
+            message: formData.get('message')
+        };
+        
+        console.log('📧 Contact form data being sent:', data);
+        
+        // Check for missing required fields
+        if (!data.firstName || !data.lastName || !data.email || !data.message) {
+            throw new Error('Please fill in all required fields: First Name, Last Name, Email, and Message');
+        }
+        
         const response = await fetch('/.netlify/functions/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
         
-        if (response.ok) {
-            const result = await response.json();
-            showMessage('Thank you! Your message has been sent successfully. We\'ll get back to you soon.', 'success');
+        const result = await response.json();
+        console.log('Contact response:', result);
+        
+        if (response.ok && result.success) {
+            showMessage('✅ Thank you! Your message has been sent successfully. We\'ll get back to you soon.', 'success');
             form.reset();
         } else {
-            const errorData = await response.text();
-            console.error('Contact form error:', response.status, errorData);
-            showMessage(`Error ${response.status}: ${errorData}. Please contact us directly at mulambwanesafaris@gmail.com or +27 73 342 6833`, 'error');
+            throw new Error(result.error || 'Failed to send message');
         }
+        
     } catch (error) {
-        console.error('Contact form network error:', error);
-        showMessage('Network error. Please check your connection or contact us directly at mulambwanesafaris@gmail.com or +27 73 342 6833', 'error');
+        console.error('Contact form error:', error);
+        showMessage('❌ Error sending message: ' + error.message + '. Please contact us directly at mulambwanesafaris@gmail.com', 'error');
     } finally {
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
     }
 }
 
-// Booking form submission
+// 🔄 BRAND NEW BOOKING FORM - CLEAN START
 async function submitBookingForm(event) {
     event.preventDefault();
     
     const form = event.target;
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
-    
-    // Show loading state
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Booking...';
-    submitBtn.disabled = true;
     
     try {
+        submitBtn.textContent = 'Booking...';
+        submitBtn.disabled = true;
+        
+        const formData = new FormData(form);
+        const data = {
+            firstName: formData.get('firstName'),
+            lastName: formData.get('lastName'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            checkIn: formData.get('checkIn'),
+            checkOut: formData.get('checkOut'),
+            adults: formData.get('adults'),
+            children: formData.get('children'),
+            suite: formData.get('suite'),
+            specialRequests: formData.get('specialRequests')
+        };
+        
+        console.log('🏨 Booking form data being sent:', data);
+        
+        // Check for missing required fields
+        if (!data.firstName || !data.lastName || !data.email || !data.checkIn || !data.checkOut || !data.adults) {
+            throw new Error('Please fill in all required fields: First Name, Last Name, Email, Check-in Date, Check-out Date, and Number of Adults');
+        }
+        
         const response = await fetch('/.netlify/functions/booking', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         });
         
-        if (response.ok) {
-            const result = await response.json();
-            showMessage('Thank you! Your booking request has been submitted. We\'ll contact you within 24 hours to confirm your safari experience.', 'success');
+        const result = await response.json();
+        console.log('Booking response:', result);
+        
+        if (response.ok && result.success) {
+            showMessage('✅ Booking request sent successfully! We\'ll contact you within 24 hours.', 'success');
             form.reset();
         } else {
-            const errorData = await response.text();
-            console.error('Booking response error:', response.status, errorData);
-            showMessage(`Booking Error ${response.status}: ${errorData}. Please contact us directly at mulambwanesafaris@gmail.com or +27 73 342 6833`, 'error');
+            throw new Error(result.error || 'Failed to send booking request');
         }
+        
     } catch (error) {
-        console.error('Booking fetch error:', error);
-        showMessage(`Network error: ${error.message}. Please contact us directly at mulambwanesafaris@gmail.com or +27 73 342 6833`, 'error');
+        console.error('Booking form error:', error);
+        showMessage('❌ Error sending booking: ' + error.message + '. Please contact us directly at mulambwanesafaris@gmail.com', 'error');
     } finally {
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
