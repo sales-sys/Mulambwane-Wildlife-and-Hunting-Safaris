@@ -19,6 +19,39 @@ exports.handler = async (event, context) => {
       };
     }
 
+    // Check if OpenAI API key is available
+    if (!process.env.OPENAI_API_KEY) {
+      // Fallback responses for testing
+      const fallbackResponses = {
+        'hello': 'Hello! Welcome to Mulambwane Wildlife & Hunting Safaris! How can I help you today?',
+        'hunting': 'We offer professional hunting safaris featuring Big 5 game including Cape Buffalo, Greater Kudu, Sable Antelope, and more. Our experienced guides provide spoor reading and bushcraft training.',
+        'lodge': 'Our luxury bush suites offer authentic African accommodation with modern amenities. We have a traditional boma, common lounge area, and cultural experiences.',
+        'game meat': 'We provide premium game meat including traditional biltong, droëwors, prime cuts, and game boerewors. All ethically sourced from our conservation efforts.',
+        'booking': 'You can book through our lodge reservation form or contact us directly at info@mulambwane.com or +27 123 456 789.',
+        'default': 'Thank you for your interest in Mulambwane Wildlife & Hunting Safaris! We offer hunting safaris, luxury lodge accommodation, and premium game meat. For specific inquiries, please contact us at info@mulambwane.com or +27 123 456 789.'
+      };
+      
+      const lowerMessage = message.toLowerCase();
+      let response = fallbackResponses.default;
+      
+      for (const [key, value] of Object.entries(fallbackResponses)) {
+        if (lowerMessage.includes(key)) {
+          response = value;
+          break;
+        }
+      }
+      
+      return {
+        statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Access-Control-Allow-Methods': 'POST, OPTIONS'
+        },
+        body: JSON.stringify({ reply: response })
+      };
+    }
+
     // Call OpenAI API (API key stored as environment variable in Netlify)
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -27,7 +60,7 @@ exports.handler = async (event, context) => {
         'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
       },
       body: JSON.stringify({
-        model: 'gpt-4.1-mini',
+        model: 'gpt-4o-mini',
         messages: [
           {
             role: 'system',
@@ -64,7 +97,7 @@ exports.handler = async (event, context) => {
           'Access-Control-Allow-Methods': 'POST, OPTIONS'
         },
         body: JSON.stringify({
-          message: data.choices[0].message.content.trim()
+          reply: data.choices[0].message.content.trim()
         })
       };
     } else {
