@@ -1,20 +1,7 @@
 const nodemailer = require('nodemailer');
 
 exports.handler = async (event, context) => {
-  // Only allow POST requests
-  if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      },
-      body: JSON.stringify({ error: 'Method not allowed' })
-    };
-  }
-
-  // Handle preflight CORS requests
+  // Handle CORS
   if (event.httpMethod === 'OPTIONS') {
     return {
       statusCode: 200,
@@ -27,42 +14,45 @@ exports.handler = async (event, context) => {
     };
   }
 
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 405,
+      headers: { 'Access-Control-Allow-Origin': '*' },
+      body: JSON.stringify({ error: 'Method not allowed' })
+    };
+  }
+
   try {
+    console.log('📧 Contact form started...');
     const data = JSON.parse(event.body);
+    console.log('📧 Received data:', data);
     
-    // Create email transporter - EXACT WORKING METHOD
+    // Simple validation
+    if (!data.firstName || !data.lastName || !data.email || !data.message) {
+      console.log('❌ Missing required fields');
+      return {
+        statusCode: 400,
+        headers: { 'Access-Control-Allow-Origin': '*' },
+        body: JSON.stringify({ error: 'Please fill in all required fields: First Name, Last Name, Email, and Message' })
+      };
+    }
+
+    // Create transporter (same as working test)
+    console.log('📧 Creating transporter...');
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
-      },
-      debug: true,
-      logger: true
+      }
     });
 
-    // Test the transporter
-    try {
-      console.log('Testing email transporter...');
-      await transporter.verify();
-      console.log('✅ Email transporter verified successfully');
-    } catch (verifyError) {
-      console.error('❌ Email transporter verification failed:', verifyError);
-      return {
-        statusCode: 500,
-        headers: { 'Access-Control-Allow-Origin': '*' },
-        body: JSON.stringify({ 
-          error: 'Email service configuration error',
-          details: verifyError.message 
-        })
-      };
-    }
-
-    // Email to business
-    const businessEmail = {
+    // Send email to business
+    console.log('📧 Sending business email...');
+    const businessResult = await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: 'mulambwanesafaris@gmail.com',
-      subject: `Website Contact Form - ${data.firstName} ${data.lastName}`,
+      subject: `Website Contact - ${data.firstName} ${data.lastName}`,
       html: `
         <h2>New Contact Form Submission</h2>
         <p><strong>Name:</strong> ${data.firstName} ${data.lastName}</p>
@@ -73,42 +63,28 @@ exports.handler = async (event, context) => {
         <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
           ${data.message}
         </div>
-        <hr>
-        <p><em>Sent from Mulambwane Safari Website Contact Form</em></p>
       `
-    };
+    });
 
-    // Confirmation email to customer
-    const confirmationEmail = {
+    console.log('✅ Business email sent:', businessResult.messageId);
+
+    // Send confirmation to customer
+    console.log('📧 Sending confirmation email...');
+    const confirmationResult = await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: data.email,
-      subject: 'Thank you for contacting Mulambwane Wildlife & Hunting Safaris',
+      subject: 'Thank you for contacting Mulambwane Safaris',
       html: `
-        <h2>Thank you for your inquiry, ${data.firstName}!</h2>
-        <p>We have received your message and will respond within 24 hours.</p>
-        
+        <h2>Thank you, ${data.firstName}!</h2>
+        <p>We received your message and will respond within 24 hours.</p>
         <h3>Your Message:</h3>
         <div style="background: #f5f5f5; padding: 15px; border-radius: 5px;">
           ${data.message}
         </div>
-        
-        <h3>Contact Information:</h3>
-        <p><strong>Email:</strong> <a href="mailto:mulambwanesafaris@gmail.com">mulambwanesafaris@gmail.com</a><br>
-        <strong>Phone:</strong> +27 73 342 6833<br>
-        <strong>Bookings:</strong> <a href="mailto:mulambwanesafaris@gmail.com">mulambwanesafaris@gmail.com</a></p>
-        
-        <p>Best regards,<br>
-        Mulambwane Wildlife & Hunting Safaris Team</p>
+        <p>Contact us: mulambwanesafaris@gmail.com | +27 73 342 6833</p>
       `
-    };
+    });
 
-    // Send both emails
-    console.log('Sending business notification email...');
-    const businessResult = await transporter.sendMail(businessEmail);
-    console.log('✅ Business email sent:', businessResult.messageId);
-
-    console.log('Sending customer confirmation email...');
-    const confirmationResult = await transporter.sendMail(confirmationEmail);
     console.log('✅ Confirmation email sent:', confirmationResult.messageId);
 
     return {
@@ -121,7 +97,7 @@ exports.handler = async (event, context) => {
     };
 
   } catch (error) {
-    console.error('Contact form error:', error);
+    console.error('❌ Contact form error:', error);
     return {
       statusCode: 500,
       headers: { 'Access-Control-Allow-Origin': '*' },
