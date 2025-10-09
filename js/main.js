@@ -134,14 +134,7 @@ async function submitContactForm(event) {
         submitBtn.disabled = true;
         
         const formData = new FormData(form);
-        const data = {
-            firstName: formData.get('firstName'),
-            lastName: formData.get('lastName'),
-            email: formData.get('email'),
-            phone: formData.get('phone'),
-            interest: formData.get('interest'),
-            message: formData.get('message')
-        };
+        const data = Object.fromEntries(formData);
         
         console.log('📧 Contact form data being sent:', data);
         
@@ -188,18 +181,7 @@ async function submitBookingForm(event) {
         submitBtn.disabled = true;
         
         const formData = new FormData(form);
-        const data = {
-            firstName: formData.get('firstName'),
-            lastName: formData.get('lastName'),
-            email: formData.get('email'),
-            phone: formData.get('phone'),
-            checkIn: formData.get('checkIn'),
-            checkOut: formData.get('checkOut'),
-            adults: formData.get('adults'),
-            children: formData.get('children'),
-            suite: formData.get('suite'),
-            specialRequests: formData.get('specialRequests')
-        };
+        const data = Object.fromEntries(formData);
         
         console.log('🏨 Booking form data being sent:', data);
         
