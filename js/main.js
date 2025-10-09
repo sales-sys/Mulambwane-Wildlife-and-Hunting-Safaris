@@ -217,28 +217,31 @@ async function submitBookingForm(event) {
 
 // Utility function to show messages
 function showMessage(message, type) {
-    // Remove existing message
-    const existingMessage = document.getElementById('form-message');
-    if (existingMessage) {
-        existingMessage.remove();
+    // Try to find existing message divs in the page
+    let messageDiv = document.getElementById('contact-message-result') || 
+                    document.getElementById('booking-message') || 
+                    document.getElementById('form-message');
+    
+    if (!messageDiv) {
+        // Create new message div if none exists
+        messageDiv = document.createElement('div');
+        messageDiv.id = 'form-message';
+        messageDiv.className = 'fixed top-20 left-1/2 transform -translate-x-1/2 z-50 p-4 rounded-lg shadow-lg transition-all duration-300';
+        document.body.appendChild(messageDiv);
     }
     
-    // Create new message
-    const messageDiv = document.createElement('div');
-    messageDiv.id = 'form-message';
-    messageDiv.className = `fixed top-20 left-1/2 transform -translate-x-1/2 z-50 p-4 rounded-lg shadow-lg transition-all duration-300 ${
-        type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
-    }`;
-    messageDiv.textContent = message;
+    // Set message content and styling
+    messageDiv.className = messageDiv.className.replace(/bg-\w+-\d+/g, '').replace(/text-\w+-\d+/g, '');
+    messageDiv.className += type === 'success' ? ' bg-green-100 text-green-700' : ' bg-red-100 text-red-700';
+    messageDiv.innerHTML = message;
+    messageDiv.classList.remove('hidden');
     
-    document.body.appendChild(messageDiv);
-    
-    // Auto-remove after 5 seconds
+    // Auto-hide after 7 seconds
     setTimeout(() => {
         if (messageDiv) {
-            messageDiv.remove();
+            messageDiv.classList.add('hidden');
         }
-    }, 5000);
+    }, 7000);
 }
 
 // Local booking message for testing
@@ -382,36 +385,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Form submission functions for individual pages
-function submitBookingForm(event) {
-    event.preventDefault();
-    
-    const form = event.target;
-    const submitBtn = document.getElementById('booking-submit-btn');
-    const messageDiv = document.getElementById('booking-message');
-    
-    // Show loading state
-    submitBtn.textContent = 'Processing Booking...';
-    submitBtn.disabled = true;
-    
-    // Simulate booking processing
-    setTimeout(() => {
-        messageDiv.className = 'text-center p-4 rounded-lg bg-green-100 text-green-700';
-        messageDiv.textContent = 'Booking inquiry received! We will contact you within 24 hours to confirm availability and finalize your reservation.';
-        messageDiv.classList.remove('hidden');
-        
-        // Reset form
-        form.reset();
-        submitBtn.textContent = 'Reserve Your Wildlife Experience';
-        submitBtn.disabled = false;
-        
-        // Hide message after 10 seconds
-        setTimeout(() => {
-            messageDiv.classList.add('hidden');
-        }, 10000);
-    }, 2000);
-}
-
+// Game meat order function
 function submitGameMeatOrder(event) {
     event.preventDefault();
     
@@ -446,35 +420,6 @@ function submitGameMeatOrder(event) {
         // Reset form
         form.reset();
         submitBtn.textContent = 'Place Order';
-        submitBtn.disabled = false;
-        
-        // Hide message after 10 seconds
-        setTimeout(() => {
-            messageDiv.classList.add('hidden');
-        }, 10000);
-    }, 2000);
-}
-
-function submitContactForm(event) {
-    event.preventDefault();
-    
-    const form = event.target;
-    const submitBtn = document.getElementById('contact-submit-btn');
-    const messageDiv = document.getElementById('contact-message-result');
-    
-    // Show loading state
-    submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
-    
-    // Simulate form submission
-    setTimeout(() => {
-        messageDiv.className = 'text-center p-4 rounded-lg bg-green-100 text-green-700';
-        messageDiv.textContent = 'Thank you for your inquiry! We will respond within 24 hours with detailed information about your safari adventure.';
-        messageDiv.classList.remove('hidden');
-        
-        // Reset form
-        form.reset();
-        submitBtn.textContent = 'Send Inquiry';
         submitBtn.disabled = false;
         
         // Hide message after 10 seconds
