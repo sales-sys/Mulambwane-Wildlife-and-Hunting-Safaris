@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Debug Test - Mulambwane Safaris</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+        .form-section { border: 1px solid #ddd; padding: 20px; margin: 20px 0; border-radius: 5px; }
+        button { background: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #45a049; }
+        .result { margin-top: 20px; padding: 15px; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        input, textarea, select { width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ddd; border-radius: 3px; }
+    </style>
+</head>
+<body>
+    <h1>🐛 Form Debug Test</h1>
+    <p>This will test the actual contact and booking forms with real data.</p>
+
+    <!-- Contact Form Test -->
+    <div class="form-section">
+        <h2>📧 Contact Form Test</h2>
+        <form id="contact-test-form">
+            <input type="text" name="firstName" placeholder="First Name" value="John" required>
+            <input type="text" name="lastName" placeholder="Last Name" value="Doe" required>
+            <input type="email" name="email" placeholder="Email" value="test@example.com" required>
+            <input type="tel" name="phone" placeholder="Phone" value="+27 123 456 789">
+            <select name="interest">
+                <option value="Hunting Safari">Hunting Safari</option>
+                <option value="Lodge Stay">Lodge Stay</option>
+                <option value="Game Meat">Game Meat</option>
+            </select>
+            <textarea name="message" placeholder="Your message" required>This is a test message to verify the contact form is working correctly.</textarea>
+            <button type="submit">🧪 Test Contact Form</button>
+        </form>
+        <div id="contact-result"></div>
+    </div>
+
+    <!-- Booking Form Test -->
+    <div class="form-section">
+        <h2>🏨 Booking Form Test</h2>
+        <form id="booking-test-form">
+            <input type="text" name="firstName" placeholder="First Name" value="Jane" required>
+            <input type="text" name="lastName" placeholder="Last Name" value="Smith" required>
+            <input type="email" name="email" placeholder="Email" value="test2@example.com" required>
+            <input type="tel" name="phone" placeholder="Phone" value="+27 987 654 321">
+            <input type="date" name="checkIn" value="2025-11-01" required>
+            <input type="date" name="checkOut" value="2025-11-05" required>
+            <select name="adults" required>
+                <option value="2">2 Adults</option>
+                <option value="4">4 Adults</option>
+            </select>
+            <select name="children">
+                <option value="0">No Children</option>
+                <option value="2">2 Children</option>
+            </select>
+            <select name="suite">
+                <option value="deluxe">Deluxe Wildlife Suite</option>
+                <option value="family">Family Wildlife Suite</option>
+            </select>
+            <textarea name="specialRequests" placeholder="Special requests">Test booking with dietary requirements: vegetarian meals please.</textarea>
+            <button type="submit">🧪 Test Booking Form</button>
+        </form>
+        <div id="booking-result"></div>
+    </div>
+
+    <script>
+        // Contact Form Test
+        document.getElementById('contact-test-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const button = e.target.querySelector('button');
+            const resultDiv = document.getElementById('contact-result');
+            
+            button.textContent = 'Testing...';
+            button.disabled = true;
+            
+            try {
+                const formData = new FormData(e.target);
+                const data = Object.fromEntries(formData);
+                
+                console.log('📧 Sending contact data:', data);
+                
+                const response = await fetch('/.netlify/functions/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                console.log('📧 Contact response:', response.status, result);
+                
+                if (response.ok && result.success) {
+                    resultDiv.innerHTML = `
+                        <div class="result success">
+                            <h3>✅ Contact Form Works!</h3>
+                            <p><strong>Message:</strong> ${result.message}</p>
+                            <p>Check mulambwanesafaris@gmail.com for the email!</p>
+                        </div>
+                    `;
+                } else {
+                    throw new Error(result.error || 'Contact form failed');
+                }
+                
+            } catch (error) {
+                console.error('📧 Contact error:', error);
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <h3>❌ Contact Form Failed</h3>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                        <p>Check browser console for details.</p>
+                    </div>
+                `;
+            } finally {
+                button.textContent = '🧪 Test Contact Form';
+                button.disabled = false;
+            }
+        });
+
+        // Booking Form Test
+        document.getElementById('booking-test-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const button = e.target.querySelector('button');
+            const resultDiv = document.getElementById('booking-result');
+            
+            button.textContent = 'Testing...';
+            button.disabled = true;
+            
+            try {
+                const formData = new FormData(e.target);
+                const data = Object.fromEntries(formData);
+                
+                console.log('🏨 Sending booking data:', data);
+                
+                const response = await fetch('/.netlify/functions/booking', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                console.log('🏨 Booking response:', response.status, result);
+                
+                if (response.ok && result.success) {
+                    resultDiv.innerHTML = `
+                        <div class="result success">
+                            <h3>✅ Booking Form Works!</h3>
+                            <p><strong>Message:</strong> ${result.message}</p>
+                            <p>Check mulambwanesafaris@gmail.com for the booking!</p>
+                        </div>
+                    `;
+                } else {
+                    throw new Error(result.error || 'Booking form failed');
+                }
+                
+            } catch (error) {
+                console.error('🏨 Booking error:', error);
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <h3>❌ Booking Form Failed</h3>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                        <p>Check browser console for details.</p>
+                    </div>
+                `;
+            } finally {
+                button.textContent = '🧪 Test Booking Form';
+                button.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
